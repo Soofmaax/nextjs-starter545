@@ -112,3 +112,56 @@ export async function getPostsByCategorySlug(
     return [];
   }
 }
+
+export async function getRelatedPosts(slug: string): Promise<SanityPost[]> {
+  if (!projectId || !dataset) {
+    return [];
+  }
+
+  if (!slug) {
+    return [];
+  }
+
+  try {
+    const currentPost = await getPostBySlug(slug);
+
+    if (!currentPost) {
+      return [];
+    }
+
+    const categorySlug = currentPost.categorySlug?.trim() || null;
+    const authorIds = (currentPost.authors ?? [])
+      .map((author) => author._id)
+      .filter((id): id is string => Boolean(id));
+
+    if (!categorySlug && authorIds.length === 0) {
+      return [];
+    }
+
+    const query = `*[_type == "post" && defined(slug.current) && slug.current != $slug && (status == "published" || !defined(status))
+      && (
+        category->slug.current == $categorySlug ||
+        count((authors[]._ref)[@ in $authorIds]) > 0
+      )]
+      | order(publishedAt desc)[0...3] {
+        _id,
+        title,
+        "slug": slug.current,
+        publishedAt,
+        excerpt,
+        "categoryTitle": category->title,
+        "categorySlug": category->slug.current,
+        authors[]->{ _id, name, role }
+      }`;
+
+    const relatedPosts = await client.fetch<SanityPost[]>(query, {
+      slug,
+      categorySlug,
+      authorIds,
+    });
+
+    return relatedPosts ?? [];
+  } catch {
+    return [];
+  }
+}

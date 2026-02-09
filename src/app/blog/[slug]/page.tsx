@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { PortableText } from "@portabletext/react";
 
-import { getPostBySlug } from "../../../lib/sanity.client";
+import { getPostBySlug, getRelatedPosts, type SanityPost } from "../../../lib/sanity.client";
 
 type BlogPostPageProps = {
   params: {
@@ -17,6 +17,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   if (!post) {
     notFound();
   }
+
+  const relatedPosts: SanityPost[] = await getRelatedPosts(slug);
 
   const publishedDate = post.publishedAt ? new Date(post.publishedAt) : null;
   const formattedDate =
@@ -121,6 +123,52 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               <p className="mt-4 text-[11px] text-slate-500">Publié le {formattedDate}</p>
             ) : null}
           </article>
+
+          {relatedPosts.length > 0 ? (
+            <section className="app-panel space-y-3 text-sm text-slate-800">
+              <h2 className="text-sm font-semibold tracking-tight text-slate-950">
+                Lire aussi
+              </h2>
+              <ul className="space-y-2 text-xs text-slate-700">
+                {relatedPosts.map((related) => (
+                  <li key={related._id} className="flex flex-col gap-0.5">
+                    <a
+                      href={`/blog/${related.slug}`}
+                      className="text-amber-700 underline-offset-4 hover:underline"
+                    >
+                      {related.title}
+                    </a>
+                    <div className="flex flex-wrap gap-2 text-[11px] text-slate-500">
+                      {related.categoryTitle && related.categorySlug ? (
+                        <a
+                          href={`/blog/theme/${related.categorySlug}`}
+                          className="hover:underline"
+                        >
+                          Thème : {related.categoryTitle}
+                        </a>
+                      ) : related.categoryTitle ? (
+                        <span>Thème : {related.categoryTitle}</span>
+                      ) : null}
+                      {related.authors && related.authors.length > 0 ? (
+                        <span>
+                          Auteurs :
+                          {" "}
+                          {related.authors
+                            .filter((author) => author.name && author.name.trim().length > 0)
+                            .map((author) =>
+                              author.role
+                                ? `${author.name} (${author.role})`
+                                : author.name,
+                            )
+                            .join(", ")}
+                        </span>
+                      ) : null}
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ) : null}
 
           {/* Bas de page simplifié */}
           <section className="border-t border-slate-800/70 pt-6 text-[11px] text-slate-400">

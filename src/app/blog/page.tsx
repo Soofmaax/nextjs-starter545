@@ -13,6 +13,11 @@ type ArticleCard = {
   authors?: { name: string; role?: string }[];
 };
 
+type ThemeOption = {
+  title: string;
+  slug: string;
+};
+
 const ARTICLES: ArticleCard[] = [
   {
     slug: "tiers-au-contrat-janvier-2026",
@@ -48,6 +53,7 @@ export default async function BlogIndexPage({
   let authorOptions: string[] = [];
   let themeOptions: string[] = [];
   let recentPosts: SanityPost[] = [];
+  let exploreThemes: ThemeOption[] = [];
 
   try {
     const sanityPosts = await getPosts();
@@ -99,14 +105,28 @@ export default async function BlogIndexPage({
       );
 
       const themeNames = new Set<string>();
+      const themeMap = new Map<string, string>();
+
       sanityPosts.forEach((post) => {
-        if (post.categoryTitle && post.categoryTitle.trim().length > 0) {
-          themeNames.add(post.categoryTitle);
+        const title = post.categoryTitle?.trim();
+        const slug = post.categorySlug?.trim();
+
+        if (title && title.length > 0) {
+          themeNames.add(title);
+
+          if (slug && slug.length > 0 && !themeMap.has(slug)) {
+            themeMap.set(slug, title);
+          }
         }
       });
+
       themeOptions = Array.from(themeNames).sort((a, b) =>
         a.localeCompare(b, "fr"),
       );
+
+      exploreThemes = Array.from(themeMap.entries())
+        .map(([slug, title]) => ({ slug, title }))
+        .sort((a, b) => a.title.localeCompare(b.title, "fr"));
     }
   } catch {
     // Silent fallback to static ARTICLES
@@ -134,6 +154,22 @@ export default async function BlogIndexPage({
               Les publications sont classées par thèmes afin de faciliter leur
               consultation. Bonne lecture.
             </p>
+            {exploreThemes.length > 0 ? (
+              <div className="pt-2 text-[11px] text-slate-600">
+                <p className="font-semibold text-slate-700">Explorer par thème</p>
+                <div className="mt-1 flex flex-wrap gap-2">
+                  {exploreThemes.map((theme) => (
+                    <a
+                      key={theme.slug}
+                      href={`/blog/theme/${theme.slug}`}
+                      className="inline-flex items-center rounded-full border border-slate-300 bg-white/90 px-3 py-1 text-[11px] text-slate-900 underline-offset-4 hover:bg-slate-100 hover:underline"
+                    >
+                      {theme.title}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            ) : null}
             {recentPosts.length > 0 ? (
               <div className="pt-2 text-xs text-slate-600">
                 <p className="font-semibold text-slate-700">Articles récents</p>
