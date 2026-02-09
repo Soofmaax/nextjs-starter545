@@ -1,16 +1,17 @@
 export default function ContactPage() {
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-50">
-      <main className="mx-auto flex max-w-3xl flex-col gap-10 px-6 pb-24 pt-16">
+    <div className="app-shell">
+      <main className="app-main">
+        <div className="mx-auto flex w-full max-w-3xl flex-col gap-10">
         {/* En-tête */}
-        <header className="space-y-3 border-b border-white/10 pb-6">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-sky-300">
+        <header className="app-panel space-y-4">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-slate-500">
             Temple Boyer Legal
           </p>
-          <h1 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl">
+          <h1 className="text-balance text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
             Contactez-nous
           </h1>
-          <p className="max-w-2xl text-sm text-slate-200">
+          <p className="max-w-2xl text-sm text-slate-700">
             Pour toute demande d&apos;information, prise de rendez-vous ou
             sollicitation de devis, vous pouvez utiliser le formulaire ci-dessous
             ou contacter directement le Cabinet.
@@ -18,15 +19,15 @@ export default function ContactPage() {
         </header>
 
         {/* Coordonnées */}
-        <section className="space-y-3 rounded-3xl border border-white/10 bg-slate-950/70 p-4 text-xs text-slate-200">
-          <p className="font-semibold text-slate-100">Cabinet Temple Boyer Legal</p>
+        <section className="app-panel space-y-3 text-xs text-slate-800">
+          <p className="font-semibold text-slate-900">Cabinet Temple Boyer Legal</p>
           <p>10, avenue de Wagram</p>
           <p>75008 Paris</p>
           <p>
             Email :
             <a
               href="mailto:contact@templeboyer-legal.com"
-              className="ml-1 text-sky-300 underline-offset-4 hover:underline"
+              className="ml-1 text-amber-700 underline-offset-4 hover:underline"
             >
               contact@templeboyer-legal.com
             </a>
@@ -34,7 +35,7 @@ export default function ContactPage() {
         </section>
 
         {/* Avertissement données personnelles */}
-        <section className="space-y-3 rounded-3xl border border-white/10 bg-slate-950/80 p-4 text-[11px] leading-relaxed text-slate-300">
+        <section className="app-panel space-y-3 text-[11px] leading-relaxed text-slate-800">
           <p>
             En remplissant ce formulaire, vous reconnaissez avoir pris
             connaissance de la politique de confidentialité ci-dessous et des
@@ -70,7 +71,7 @@ export default function ContactPage() {
               par courriel à
               <a
                 href="mailto:contact@templeboyer-legal.com"
-                className="ml-1 text-sky-300 underline-offset-4 hover:underline"
+                className="ml-1 text-amber-700 underline-offset-4 hover:underline"
               >
                 contact@templeboyer-legal.com
               </a>
@@ -87,72 +88,72 @@ export default function ContactPage() {
         </section>
 
         {/* Formulaire de contact (maquette) */}
-        <section className="rounded-3xl border border-white/10 bg-slate-950/80 p-5 text-xs text-slate-200">
+        <section className="app-panel text-xs text-slate-800">
           <form className="space-y-3">
             <div className="space-y-1.5">
-              <label htmlFor="nom" className="text-[11px] text-slate-200">
+              <label htmlFor="nom" className="text-[11px] text-slate-700">
                 Votre nom*
               </label>
               <input
                 id="nom"
                 name="nom"
-                className="w-full rounded-xl border border-white/15 bg-black/40 px-3 py-2 text-xs text-slate-50 outline-none ring-sky-500/40 placeholder:text-slate-500 focus:border-sky-400 focus:ring-2"
+                className="w-full rounded-xl border border-slate-300 bg-white/90 px-3 py-2 text-xs text-slate-900 outline-none ring-amber-500/20 placeholder:text-slate-400 focus:border-amber-500 focus:ring-2"
                 placeholder="Votre nom complet"
               />
             </div>
             <div className="space-y-1.5">
-              <label htmlFor="email" className="text-[11px] text-slate-200">
+              <label htmlFor="email" className="text-[11px] text-slate-700">
                 Votre adresse email*
               </label>
               <input
                 id="email"
                 name="email"
                 type="email"
-                className="w-full rounded-xl border border-white/15 bg-black/40 px-3 py-2 text-xs text-slate-50 outline-none ring-sky-500/40 placeholder:text-slate-500 focus:border-sky-400 focus:ring-2"
+                className="w-full rounded-xl border border-slate-300 bg-white/90 px-3 py-2 text-xs text-slate-900 outline-none ring-amber-500/20 placeholder:text-slate-400 focus:border-amber-500 focus:ring-2"
                 placeholder="vous@exemple.com"
               />
             </div>
             <div className="space-y-1.5">
-              <label htmlFor="telephone" className="text-[11px] text-slate-200">
+              <label htmlFor="telephone" className="text-[11px] text-slate-700">
                 Votre numéro de téléphone
               </label>
               <input
                 id="telephone"
                 name="telephone"
-                className="w-full rounded-xl border border-white/15 bg-black/40 px-3 py-2 text-xs text-slate-50 outline-none ring-sky-500/40 placeholder:text-slate-500 focus:border-sky-400 focus:ring-2"
+                className="w-full rounded-xl border border-slate-300 bg-white/90 px-3 py-2 text-xs text-slate-900 outline-none ring-amber-500/20 placeholder:text-slate-400 focus:border-amber-500 focus:ring-2"
                 placeholder="Numéro (facultatif)"
               />
             </div>
             <div className="space-y-1.5">
-              <label htmlFor="objet" className="text-[11px] text-slate-200">
+              <label htmlFor="objet" className="text-[11px] text-slate-700">
                 Objet
               </label>
               <input
                 id="objet"
                 name="objet"
-                className="w-full rounded-xl border border-white/15 bg-black/40 px-3 py-2 text-xs text-slate-50 outline-none ring-sky-500/40 placeholder:text-slate-500 focus:border-sky-400 focus:ring-2"
+                className="w-full rounded-xl border border-slate-300 bg-white/90 px-3 py-2 text-xs text-slate-900 outline-none ring-amber-500/20 placeholder:text-slate-400 focus:border-amber-500 focus:ring-2"
                 placeholder="Objet de votre demande"
               />
             </div>
             <div className="space-y-1.5">
-              <label htmlFor="message" className="text-[11px] text-slate-200">
+              <label htmlFor="message" className="text-[11px] text-slate-700">
                 Votre message
               </label>
               <textarea
                 id="message"
                 name="message"
                 rows={4}
-                className="w-full rounded-xl border border-white/15 bg-black/40 px-3 py-2 text-xs text-slate-50 outline-none ring-sky-500/40 placeholder:text-slate-500 focus:border-sky-400 focus:ring-2"
+                className="w-full rounded-xl border border-slate-300 bg-white/90 px-3 py-2 text-xs text-slate-900 outline-none ring-amber-500/20 placeholder:text-slate-400 focus:border-amber-500 focus:ring-2"
                 placeholder="Décrivez brièvement votre demande"
               />
             </div>
-            <p className="text-[10px] text-slate-400">
+            <p className="text-[10px] text-slate-500">
               Ce formulaire est proposé à titre indicatif dans cette maquette.
               Aucun envoi effectif n&apos;est réalisé depuis ce site de démonstration.
             </p>
             <button
               type="button"
-              className="mt-1 inline-flex items-center justify-center rounded-full bg-sky-500 px-5 py-2 text-[11px] font-semibold text-slate-950 shadow-lg shadow-sky-500/40 transition hover:bg-sky-400"
+              className="mt-1 inline-flex items-center justify-center rounded-full bg-amber-500 px-5 py-2 text-[11px] font-semibold text-slate-950 shadow-[0_18px_45px_rgba(180,83,9,0.45)] transition-colors hover:bg-amber-500/90"
             >
               Envoyer
             </button>
@@ -160,7 +161,7 @@ export default function ContactPage() {
         </section>
 
         {/* Bas de page simplifié */}
-        <section className="border-t border-white/10 pt-6 text-[11px] text-slate-400">
+        <section className="border-t border-slate-800/70 pt-6 text-[11px] text-slate-400">
           <p>
             Maître Sarah Temple-Boyer – Avocat d&apos;affaires international, Paris –
             Cabinet Temple Boyer Legal, 10 avenue de Wagram, 75008 Paris –
@@ -171,6 +172,7 @@ export default function ContactPage() {
             réservés.
           </p>
         </section>
+        </div>
       </main>
     </div>
   );

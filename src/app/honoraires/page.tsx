@@ -1,16 +1,17 @@
 export default function HonorairesPage() {
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-50">
-      <main className="mx-auto flex max-w-3xl flex-col gap-12 px-6 pb-24 pt-16">
+    <div className="app-shell">
+      <main className="app-main">
+        <div className="mx-auto flex w-full max-w-3xl flex-col gap-12">
         {/* En-tête */}
-        <header className="space-y-3 border-b border-white/10 pb-6">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-sky-300">
+        <header className="app-panel space-y-4">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-slate-500">
             Temple Boyer Legal
           </p>
-          <h1 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl">
+          <h1 className="text-balance text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
             Honoraires
           </h1>
-          <p className="max-w-2xl text-sm text-slate-200">
+          <p className="max-w-2xl text-sm text-slate-700">
             Les honoraires du Cabinet Temple Boyer Legal sont fixés en toute
             transparence avec le client, après acceptation d&apos;un devis, dans le
             respect des règles déontologiques de la profession d&apos;avocat.
@@ -18,15 +19,15 @@ export default function HonorairesPage() {
         </header>
 
         {/* Coordonnées */}
-        <section className="space-y-3 rounded-3xl border border-white/10 bg-slate-950/70 p-4 text-xs text-slate-200">
-          <p className="font-semibold text-slate-100">Cabinet Temple Boyer Legal</p>
+        <section className="app-panel space-y-3 text-xs text-slate-800">
+          <p className="font-semibold text-slate-900">Cabinet Temple Boyer Legal</p>
           <p>10, avenue de Wagram</p>
           <p>75008 Paris</p>
           <p>
             Email :
             <a
               href="mailto:contact@templeboyer-legal.com"
-              className="ml-1 text-sky-300 underline-offset-4 hover:underline"
+              className="ml-1 text-amber-700 underline-offset-4 hover:underline"
             >
               contact@templeboyer-legal.com
             </a>
@@ -34,7 +35,7 @@ export default function HonorairesPage() {
         </section>
 
         {/* Principe général */}
-        <section className="space-y-4 text-sm leading-relaxed text-slate-200">
+        <section className="app-panel space-y-4 text-sm leading-relaxed text-slate-700">
           <p>
             Dès le premier rendez-vous, téléphonique ou physique, gratuit, et après
             une étude préliminaire du dossier, le Cabinet Temple Boyer Legal
@@ -51,8 +52,8 @@ export default function HonorairesPage() {
         </section>
 
         {/* Honoraires au temps passé */}
-        <section className="space-y-3 rounded-3xl border border-white/10 bg-slate-950/80 p-5 text-sm text-slate-200">
-          <h2 className="text-base font-semibold text-slate-50">
+        <section className="app-panel space-y-3 text-sm text-slate-800">
+          <h2 className="text-base font-semibold text-slate-950">
             1. Les honoraires au temps passé
           </h2>
           <p>
@@ -66,7 +67,7 @@ export default function HonorairesPage() {
             généralement entre <span className="font-semibold">200 € et 350 € HT</span>{' '}
             de l&apos;heure pour les prestations à forte valeur ajoutée, telles que :
           </p>
-          <ul className="list-disc space-y-1 pl-6 text-xs">
+          <ul className="list-disc space-y-1 pl-6 text-xs text-slate-700">
             <li>consultations juridiques,</li>
             <li>
               analyse juridique d&apos;une situation, évaluation des risques et
@@ -86,7 +87,7 @@ export default function HonorairesPage() {
             juridictions…), le Cabinet applique un taux horaire réduit, précisé
             dans la convention.
           </p>
-          <p className="text-xs text-slate-300">
+          <p className="text-xs text-slate-600">
             Lors de l&apos;établissement du devis, et sur la base des informations
             communiquées, le Cabinet détaille, dans toute la mesure du possible,
             les coûts anticipés par type de prestations envisagées.
@@ -94,8 +95,8 @@ export default function HonorairesPage() {
         </section>
 
         {/* Honoraire au forfait */}
-        <section className="space-y-3 rounded-3xl border border-white/10 bg-slate-950/80 p-5 text-sm text-slate-200">
-          <h2 className="text-base font-semibold text-slate-50">
+        <section className="app-panel space-y-3 text-sm text-slate-800">
+          <h2 className="text-base font-semibold text-slate-950">
             2. L&apos;honoraire au forfait
           </h2>
           <p>
@@ -110,8 +111,8 @@ export default function HonorairesPage() {
         </section>
 
         {/* Honoraire de résultat */}
-        <section className="space-y-3 rounded-3xl border border-white/10 bg-slate-950/80 p-5 text-sm text-slate-200">
-          <h2 className="text-base font-semibold text-slate-50">
+        <section className="app-panel space-y-3 text-sm text-slate-800">
+          <h2 className="text-base font-semibold text-slate-950">
             3. Les honoraires de résultat
           </h2>
           <p>
@@ -119,7 +120,7 @@ export default function HonorairesPage() {
             l&apos;avantage procuré au client. Il s&apos;agit d&apos;un complément de
             rémunération qui s&apos;ajoute :
           </p>
-          <ul className="list-disc space-y-1 pl-6 text-xs">
+          <ul className="list-disc space-y-1 pl-6 text-xs text-slate-700">
             <li>soit à un honoraire au temps passé ;</li>
             <li>soit à un honoraire forfaitaire.</li>
           </ul>
@@ -132,9 +133,9 @@ export default function HonorairesPage() {
         </section>
 
         {/* Protection juridique & remboursement */}
-        <section className="space-y-4 text-sm leading-relaxed text-slate-200">
+        <section className="app-panel space-y-4 text-sm leading-relaxed text-slate-700">
           <div className="space-y-2">
-            <h2 className="text-base font-semibold text-slate-50">
+            <h2 className="text-base font-semibold text-slate-950">
               Assurance protection juridique
             </h2>
             <p>
@@ -150,7 +151,7 @@ export default function HonorairesPage() {
           </div>
 
           <div className="space-y-2">
-            <h2 className="text-base font-semibold text-slate-50">
+            <h2 className="text-base font-semibold text-slate-950">
               Remboursement des honoraires par la partie adverse
             </h2>
             <p>
@@ -158,7 +159,7 @@ export default function HonorairesPage() {
               partie adverse à vous indemniser pour tout ou partie des honoraires
               et frais engagés.
             </p>
-            <p className="text-xs text-slate-300">
+            <p className="text-xs text-slate-600">
               En matière civile, cette indemnisation est prévue par l&apos;article 700
               du Code de procédure civile ; en matière pénale, par l&apos;article 475-1
               du Code de procédure pénale.
@@ -167,7 +168,7 @@ export default function HonorairesPage() {
         </section>
 
         {/* Bas de page simplifié */}
-        <section className="border-t border-white/10 pt-6 text-[11px] text-slate-400">
+        <section className="border-t border-slate-800/70 pt-6 text-[11px] text-slate-400">
           <p>
             Maître Sarah Temple-Boyer – Avocat d&apos;affaires international, Paris –
             Cabinet Temple Boyer Legal, 10 avenue de Wagram, 75008 Paris –
@@ -178,6 +179,7 @@ export default function HonorairesPage() {
             réservés.
           </p>
         </section>
+        </div>
       </main>
     </div>
   );

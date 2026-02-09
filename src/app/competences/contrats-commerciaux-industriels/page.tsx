@@ -37,17 +37,17 @@ const PUBLICATIONS = [
 
 export default function ContratsCommerciauxIndustrielsPage() {
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-50">
-      <main className="mx-auto flex max-w-6xl flex-col gap-16 px-6 pb-24 pt-16">
+    <div className="app-shell">
+      <main className="app-main">
         {/* En-tête */}
-        <header className="space-y-3 border-b border-white/10 pb-8">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-sky-300">
+        <header className="app-panel space-y-4">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-slate-500">
             Temple Boyer Legal – Compétences
           </p>
-          <h1 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl">
+          <h1 className="text-balance text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
             Spécialiste des contrats commerciaux et industriels
           </h1>
-          <p className="max-w-2xl text-sm text-slate-200">
+          <p className="max-w-2xl text-sm text-slate-700">
             TEMPLE BOYER LEGAL – Cabinet d&apos;avocat d&apos;affaires international, conseil
             &amp; contentieux, bénéficie d&apos;une expertise approfondie en matière de
             contrats commerciaux et industriels, y compris de dimension
@@ -56,7 +56,7 @@ export default function ContratsCommerciauxIndustrielsPage() {
         </header>
 
         {/* Intro */}
-        <section className="space-y-4 text-sm leading-relaxed text-slate-200">
+        <section className="app-panel space-y-4 text-sm leading-relaxed text-slate-700">
           <p>
             Notre expertise approfondie, acquise au contact d&apos;une clientèle très
             diversifiée et de schémas contractuels variés, nous confère une vision à
@@ -72,29 +72,33 @@ export default function ContratsCommerciauxIndustrielsPage() {
         </section>
 
         {/* Compétences */}
-        <section className="grid gap-8 md:grid-cols-2">
-          <div className="space-y-4 rounded-3xl border border-white/10 bg-slate-950/80 p-5 text-xs text-slate-200">
-            <h2 className="text-sm font-semibold text-slate-50">
+        <section className="app-panel grid gap-8 md:grid-cols-2">
+          <div className="space-y-4 rounded-2xl border border-slate-200 bg-white/90 p-5 text-xs text-slate-800">
+            <h2 className="text-sm font-semibold text-slate-900">
               Contrats commerciaux
             </h2>
             <ul className="space-y-2">
               {SKILLS_COMMERCIAUX.map((item) => (
                 <li key={item} className="flex gap-2">
-                  <span className="mt-[5px] h-1.5 w-1.5 rounded-full bg-sky-400" />
+                  <span className="mt-[5px] flex h-5 w-5 items-center justify-center rounded-full bg-amber-500/10 text-[10px] text-amber-700">
+                    •
+                  </span>
                   <span>{item}</span>
                 </li>
               ))}
             </ul>
           </div>
 
-          <div className="space-y-4 rounded-3xl border border-white/10 bg-slate-950/80 p-5 text-xs text-slate-200">
-            <h2 className="text-sm font-semibold text-slate-50">
+          <div className="space-y-4 rounded-2xl border border-slate-200 bg-white/90 p-5 text-xs text-slate-800">
+            <h2 className="text-sm font-semibold text-slate-900">
               Contrats industriels &amp; contract management
             </h2>
             <ul className="space-y-2">
               {SKILLS_INDUSTRIELS.map((item) => (
                 <li key={item} className="flex gap-2">
-                  <span className="mt-[5px] h-1.5 w-1.5 rounded-full bg-emerald-400" />
+                  <span className="mt-[5px] flex h-5 w-5 items-center justify-center rounded-full bg-amber-500/10 text-[10px] text-amber-700">
+                    •
+                  </span>
                   <span>{item}</span>
                 </li>
               ))}
@@ -103,14 +107,17 @@ export default function ContratsCommerciauxIndustrielsPage() {
         </section>
 
         {/* Exemples d'opérations */}
-        <section className="space-y-4">
-          <h2 className="text-lg font-semibold tracking-tight sm:text-xl">
+        <section className="app-panel space-y-4">
+          <h2 className="text-lg font-semibold tracking-tight text-slate-950 sm:text-xl">
             Exemples d&apos;opérations
           </h2>
-          <ul className="space-y-2 rounded-3xl border border-white/10 bg-slate-950/70 p-4 text-xs text-slate-200">
+          <ul className="space-y-2 text-xs text-slate-800">
             {OPERATIONS.map((op) => (
-              <li key={op} className="flex gap-2">
-                <span className="mt-[5px] h-1.5 w-1.5 rounded-full bg-sky-400" />
+              <li
+                key={op}
+                className="flex gap-2 rounded-2xl border border-slate-200 bg-white/90 px-3 py-3"
+              >
+                <span className="mt-[5px] h-1.5 w-1.5 rounded-full bg-amber-500" />
                 <span>{op}</span>
               </li>
             ))}
@@ -118,14 +125,17 @@ export default function ContratsCommerciauxIndustrielsPage() {
         </section>
 
         {/* Publications liées */}
-        <section className="space-y-4">
-          <h2 className="text-lg font-semibold tracking-tight sm:text-xl">
+        <section className="app-panel space-y-4">
+          <h2 className="text-lg font-semibold tracking-tight text-slate-950 sm:text-xl">
             Publications liées
           </h2>
-          <ul className="space-y-2 rounded-3xl border border-white/10 bg-slate-950/70 p-4 text-xs text-slate-200">
+          <ul className="space-y-2 text-xs text-slate-800">
             {PUBLICATIONS.map((pub) => (
-              <li key={pub} className="flex gap-2">
-                <span className="mt-[5px] h-1.5 w-1.5 rounded-full bg-indigo-400" />
+              <li
+                key={pub}
+                className="flex gap-2 rounded-2xl border border-slate-200 bg-white/90 px-3 py-3"
+              >
+                <span className="mt-[5px] h-1.5 w-1.5 rounded-full bg-amber-500" />
                 <span>{pub} (voir la publication)</span>
               </li>
             ))}
@@ -133,7 +143,7 @@ export default function ContratsCommerciauxIndustrielsPage() {
         </section>
 
         {/* Bas de page simplifié */}
-        <section className="border-t border-white/10 pt-6 text-[11px] text-slate-400">
+        <section className="border-t border-slate-800/70 pt-6 text-[11px] text-slate-400">
           <p>
             Maître Sarah Temple-Boyer – Avocat d&apos;affaires international, Paris –
             Cabinet Temple Boyer Legal, 10 avenue de Wagram, 75008 Paris –

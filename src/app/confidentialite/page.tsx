@@ -1,16 +1,17 @@
 export default function ConfidentialitePage() {
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-50">
-      <main className="mx-auto flex max-w-3xl flex-col gap-10 px-6 pb-24 pt-16">
+    <div className="app-shell">
+      <main className="app-main">
+        <div className="mx-auto flex w-full max-w-3xl flex-col gap-10">
         {/* En-tête */}
-        <header className="space-y-3 border-b border-white/10 pb-6">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-sky-300">
+        <header className="app-panel space-y-4">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-slate-500">
             Temple Boyer Legal
           </p>
-          <h1 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl">
+          <h1 className="text-balance text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
             Politique de confidentialité et de protection des données personnelles
           </h1>
-          <p className="max-w-2xl text-sm text-slate-200">
+          <p className="max-w-2xl text-sm text-slate-700">
             Le Cabinet, en sa qualité de responsable de traitement, attache une
             grande importance à la protection et au respect de vos données
             personnelles et à la confidentialité de vos échanges.
@@ -18,8 +19,8 @@ export default function ConfidentialitePage() {
         </header>
 
         {/* 1. Résumé */}
-        <section className="space-y-3 text-sm leading-relaxed text-slate-200">
-          <h2 className="text-base font-semibold text-slate-50">1. Résumé</h2>
+        <section className="app-panel space-y-3 text-sm leading-relaxed text-slate-800">
+          <h2 className="text-base font-semibold text-slate-950">1. Résumé</h2>
           <p>
             La présente politique vise à vous informer de nos pratiques relatives
             à la collecte, l&apos;utilisation et le partage des informations que vous
@@ -43,7 +44,7 @@ export default function ConfidentialitePage() {
             et à la loi Informatique et Libertés du 6 janvier 1978 modifiée, il
             est précisé que :
           </p>
-          <ul className="list-disc space-y-1 pl-6 text-[13px]">
+          <ul className="list-disc space-y-1 pl-6 text-[13px] text-slate-700">
             <li>
               Le responsable du traitement est Me Sarah Temple-Boyer (coordonnées
               ci-dessus).
@@ -71,8 +72,8 @@ export default function ConfidentialitePage() {
         </section>
 
         {/* 2. Informations recueillies */}
-        <section className="space-y-3 text-sm leading-relaxed text-slate-200">
-          <h2 className="text-base font-semibold text-slate-50">
+        <section className="app-panel space-y-3 text-sm leading-relaxed text-slate-800">
+          <h2 className="text-base font-semibold text-slate-950">
             2. Les informations que nous recueillons
           </h2>
           <p>
@@ -80,7 +81,7 @@ export default function ConfidentialitePage() {
             catégories de données.
           </p>
 
-          <h3 className="text-sm font-semibold text-slate-50">
+          <h3 className="text-sm font-semibold text-slate-950">
             2.1. Informations que vous nous transmettez directement
           </h3>
           <p>
@@ -90,7 +91,7 @@ export default function ConfidentialitePage() {
             nous contactez (téléphone, email, autre moyen de communication).
           </p>
           <p>Ces données peuvent inclure :</p>
-          <ul className="list-disc space-y-1 pl-6 text-[13px]">
+          <ul className="list-disc space-y-1 pl-6 text-[13px] text-slate-700">
             <li>
               les données nécessaires à la prise de contact ou à l&apos;accès aux
               services fournis via le Site : nom, prénom, adresse e-mail, adresse
@@ -109,7 +110,7 @@ export default function ConfidentialitePage() {
             </li>
           </ul>
 
-          <h3 className="text-sm font-semibold text-slate-50">
+          <h3 className="text-sm font-semibold text-slate-950">
             2.2. Données recueillies automatiquement
           </h3>
           <p>
@@ -128,7 +129,7 @@ export default function ConfidentialitePage() {
             section « Cookies et technologies similaires » ci-dessous.
           </p>
 
-          <h3 className="text-sm font-semibold text-slate-50">
+          <h3 className="text-sm font-semibold text-slate-950">
             2.3. Durée de conservation
           </h3>
           <p>
@@ -138,12 +139,12 @@ export default function ConfidentialitePage() {
         </section>
 
         {/* 3. Utilisation des données */}
-        <section className="space-y-3 text-sm leading-relaxed text-slate-200">
-          <h2 className="text-base font-semibold text-slate-50">
+        <section className="app-panel space-y-3 text-sm leading-relaxed text-slate-800">
+          <h2 className="text-base font-semibold text-slate-950">
             3. Comment utilisons-nous les données que nous recueillons ?
           </h2>
           <p>Les données collectées sont utilisées pour :</p>
-          <ul className="list-disc space-y-1 pl-6 text-[13px]">
+          <ul className="list-disc space-y-1 pl-6 text-[13px] text-slate-700">
             <li>vous contacter et répondre à vos demandes ;</li>
             <li>
               exécuter les contrats conclus entre vous et nous (par exemple, une
@@ -165,8 +166,8 @@ export default function ConfidentialitePage() {
         </section>
 
         {/* 4. Destinataires */}
-        <section className="space-y-3 text-sm leading-relaxed text-slate-200">
-          <h2 className="text-base font-semibold text-slate-50">
+        <section className="app-panel space-y-3 text-sm leading-relaxed text-slate-800">
+          <h2 className="text-base font-semibold text-slate-950">
             4. Qui sont les destinataires des informations et pourquoi ?
           </h2>
           <p>
@@ -182,7 +183,7 @@ export default function ConfidentialitePage() {
             Les données ne sont partagées avec ces tiers que dans les cas suivants
             :
           </p>
-          <ul className="list-disc space-y-1 pl-6 text-[13px]">
+          <ul className="list-disc space-y-1 pl-6 text-[13px] text-slate-700">
             <li>
               exécution d&apos;un contrat ou fourniture/amélioration des services
               (ex. : solutions de paiement, support technique) ;
@@ -208,8 +209,8 @@ export default function ConfidentialitePage() {
         </section>
 
         {/* 5-6. Localisation & droits */}
-        <section className="space-y-3 text-sm leading-relaxed text-slate-200">
-          <h2 className="text-base font-semibold text-slate-50">
+        <section className="app-panel space-y-3 text-sm leading-relaxed text-slate-800">
+          <h2 className="text-base font-semibold text-slate-950">
             5. Localisation des données
           </h2>
           <p>
@@ -218,14 +219,14 @@ export default function ConfidentialitePage() {
             de certains prestataires conformes au RGPD.
           </p>
 
-          <h2 className="mt-4 text-base font-semibold text-slate-50">
+          <h2 className="mt-4 text-base font-semibold text-slate-950">
             6. Vos droits sur vos données personnelles
           </h2>
           <p>
             Conformément à la réglementation applicable, vous disposez des droits
             suivants sur vos Données Personnelles :
           </p>
-          <ul className="list-disc space-y-1 pl-6 text-[13px]">
+          <ul className="list-disc space-y-1 pl-6 text-[13px] text-slate-700">
             <li>droit d&apos;accès et d&apos;obtention d&apos;une copie des données ;</li>
             <li>droit de rectification des données inexactes ou incomplètes ;</li>
             <li>droit d&apos;effacement dans les cas prévus par la loi ;</li>
@@ -247,8 +248,8 @@ export default function ConfidentialitePage() {
         </section>
 
         {/* 7. Cookies */}
-        <section className="space-y-3 text-sm leading-relaxed text-slate-200">
-          <h2 className="text-base font-semibold text-slate-50">
+        <section className="app-panel space-y-3 text-sm leading-relaxed text-slate-800">
+          <h2 className="text-base font-semibold text-slate-950">
             7. Cookies et technologies similaires
           </h2>
           <p>
@@ -273,8 +274,8 @@ export default function ConfidentialitePage() {
         </section>
 
         {/* 8-11. Divers */}
-        <section className="space-y-3 text-sm leading-relaxed text-slate-200">
-          <h2 className="text-base font-semibold text-slate-50">
+        <section className="app-panel space-y-3 text-sm leading-relaxed text-slate-800">
+          <h2 className="text-base font-semibold text-slate-950">
             8. Confidentialité de vos identifiants
           </h2>
           <p>
@@ -283,7 +284,7 @@ export default function ConfidentialitePage() {
             passe et vous vous engagez à ne pas le communiquer à des tiers.
           </p>
 
-          <h2 className="mt-4 text-base font-semibold text-slate-50">
+          <h2 className="mt-4 text-base font-semibold text-slate-950">
             9. Liens vers d&apos;autres sites
           </h2>
           <p>
@@ -294,7 +295,7 @@ export default function ConfidentialitePage() {
             sites tiers.
           </p>
 
-          <h2 className="mt-4 text-base font-semibold text-slate-50">
+          <h2 className="mt-4 text-base font-semibold text-slate-950">
             10. Modification de la politique de confidentialité
           </h2>
           <p>
@@ -305,13 +306,13 @@ export default function ConfidentialitePage() {
             régulièrement.
           </p>
 
-          <h2 className="mt-4 text-base font-semibold text-slate-50">11. Contact</h2>
+          <h2 className="mt-4 text-base font-semibold text-slate-950">11. Contact</h2>
           <p>
             Pour toute question relative à la présente politique de
             confidentialité ou pour exercer vos droits, vous pouvez nous contacter
             :
           </p>
-          <ul className="list-disc space-y-1 pl-6 text-[13px]">
+          <ul className="list-disc space-y-1 pl-6 text-[13px] text-slate-700">
             <li>via le formulaire de contact disponible sur le Site ;</li>
             <li>
               ou par courrier à l&apos;adresse suivante : Me Sarah Temple-Boyer,
@@ -321,7 +322,7 @@ export default function ConfidentialitePage() {
         </section>
 
         {/* Bas de page simplifié */}
-        <section className="border-t border-white/10 pt-6 text-[11px] text-slate-400">
+        <section className="border-t border-slate-800/70 pt-6 text-[11px] text-slate-400">
           <p>
             Maître Sarah Temple-Boyer – Avocat d&apos;affaires international, Paris –
             Cabinet Temple Boyer Legal, 10 avenue de Wagram, 75008 Paris –
@@ -332,6 +333,7 @@ export default function ConfidentialitePage() {
             réservés.
           </p>
         </section>
+        </div>
       </main>
     </div>
   );

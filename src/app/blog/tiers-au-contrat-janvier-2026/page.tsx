@@ -1,30 +1,31 @@
 export default function BlogArticleTiersContrat() {
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-50">
-      <main className="mx-auto flex max-w-3xl flex-col gap-10 px-6 pb-24 pt-16">
+    <div className="app-shell">
+      <main className="app-main">
+        <div className="mx-auto flex w-full max-w-3xl flex-col gap-10">
         {/* En-tête */}
-        <header className="space-y-3 border-b border-white/10 pb-6">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-sky-300">
+        <header className="app-panel space-y-4">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-slate-500">
             Temple Boyer Legal – Actualités
           </p>
-          <h1 className="text-balance text-2xl font-semibold tracking-tight sm:text-3xl">
+          <h1 className="text-balance text-2xl font-semibold tracking-tight text-slate-950 sm:text-3xl">
             Le tiers au contrat ne peut pas tout avoir : agir en responsabilité pour
             manquement contractuel sans subir les limites contractuelles prévues
           </h1>
-          <p className="text-xs text-slate-300">Actualités – janvier 2026</p>
+          <p className="text-xs text-slate-600">Actualités – janvier 2026</p>
         </header>
 
         {/* Coordonnées / retour */}
-        <section className="flex flex-col gap-4 rounded-3xl border border-white/10 bg-slate-950/70 p-4 text-xs text-slate-200 sm:flex-row sm:items-start sm:justify-between">
+        <section className="app-panel flex flex-col gap-4 text-xs text-slate-800 sm:flex-row sm:items-start sm:justify-between">
           <div className="space-y-1">
-            <p className="font-semibold text-slate-100">Cabinet Temple Boyer Legal</p>
+            <p className="font-semibold text-slate-900">Cabinet Temple Boyer Legal</p>
             <p>10, avenue de Wagram</p>
             <p>75008 Paris</p>
             <p>
               Email :
               <a
                 href="mailto:contact@templeboyer-legal.com"
-                className="ml-1 text-sky-300 underline-offset-4 hover:underline"
+                className="ml-1 text-amber-700 underline-offset-4 hover:underline"
               >
                 contact@templeboyer-legal.com
               </a>
@@ -33,7 +34,7 @@ export default function BlogArticleTiersContrat() {
           <div className="flex flex-col items-start gap-2 pt-2 sm:items-end sm:pt-0">
             <a
               href="/blog"
-              className="rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-[11px] font-medium text-slate-100 underline-offset-4 hover:bg-white/10 hover:underline"
+              className="rounded-full border border-slate-300 bg-transparent px-4 py-1.5 text-[11px] font-medium text-slate-900 transition-colors hover:bg-slate-100"
             >
               Retour aux actualités
             </a>
@@ -41,7 +42,7 @@ export default function BlogArticleTiersContrat() {
         </section>
 
         {/* Contenu de l'article */}
-        <article className="space-y-6 text-sm leading-relaxed text-slate-100">
+        <article className="app-panel space-y-6 text-sm leading-relaxed text-slate-800">
           <p>
             Par un arrêt du 17 décembre 2025 (n°24-20.154), la Cour de cassation
             poursuit un courant jurisprudentiel désormais bien établi concernant
@@ -52,7 +53,7 @@ export default function BlogArticleTiersContrat() {
             Deux décisions majeures avaient déjà posé les bases :
           </p>
 
-          <ul className="list-disc space-y-1 pl-6 text-slate-100">
+          <ul className="list-disc space-y-1 pl-6 text-slate-800">
             <li>
               <span className="font-semibold">Arrêt « Boot Shop » de 2006</span>[1]
               : un tiers peut engager la responsabilité d&apos;une partie à un contrat
@@ -150,7 +151,7 @@ export default function BlogArticleTiersContrat() {
             <li>permettre au juge de remettre en cause la volonté des parties.</li>
           </ul>
 
-          <p className="mt-4 rounded-2xl bg-sky-500/10 p-4 text-sm text-sky-100">
+          <p className="mt-4 rounded-2xl bg-amber-50 p-4 text-sm text-slate-900">
             <span className="font-semibold">À retenir en une phrase :</span>{' '}
             le contrat protège aussi contre les tiers : ceux-ci ne peuvent pas
             invoquer un manquement contractuel sans subir les mêmes limites que les
@@ -191,7 +192,7 @@ export default function BlogArticleTiersContrat() {
             adaptée.
           </p>
 
-          <div className="mt-6 space-y-1 text-xs text-slate-300">
+          <div className="mt-6 space-y-1 text-xs text-slate-600">
             <p>
               <span className="font-semibold">
                 Sarah Temple-Boyer
@@ -204,21 +205,23 @@ export default function BlogArticleTiersContrat() {
             </p>
           </div>
 
-          <div className="mt-6 space-y-1 border-t border-white/10 pt-4 text-[11px] text-slate-400">
-            <p>
-              [1] Cass., ass. plén., 6 oct. 2006, n° 05-13.255 (arrêt « Boot Shop
-              »)
-            </p>
-            <p>
-              [2] Com. 3 juillet 2024, n° 21-14.947 (arrêt « Clamageran »)
-            </p>
-          </div>
+          <div className="mt-6 border-t border-slate-800/70 pt-4 text-[11px] text-slate-500">
+            <div className="space-y-1 border-t border-slate-200 pt-4">
+              <p>
+                [1] Cass., ass. plén., 6 oct. 2006, n° 05-13.255 (arrêt « Boot Shop
+                »)
+              </p>
+              <p>
+                [2] Com. 3 juillet 2024, n° 21-14.947 (arrêt « Clamageran »)
+              </p>
+            </div>
 
-          <p className="mt-4 text-[11px] text-slate-400">Publié le 19/01/2026</p>
+            <p className="mt-4">Publié le 19/01/2026</p>
+          </div>
         </article>
 
         {/* Bas de page simplifié */}
-        <section className="border-t border-white/10 pt-6 text-[11px] text-slate-400">
+        <section className="border-t border-slate-800/70 pt-6 text-[11px] text-slate-400">
           <p>
             Maître Sarah Temple-Boyer – Avocat d&apos;affaires international, Paris –
             Cabinet Temple Boyer Legal, 10 avenue de Wagram, 75008 Paris –
@@ -229,6 +232,7 @@ export default function BlogArticleTiersContrat() {
             réservés.
           </p>
         </section>
+        </div>
       </main>
     </div>
   );

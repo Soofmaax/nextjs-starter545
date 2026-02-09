@@ -1,31 +1,32 @@
 export default function BlogArticleInexecutionContractuelle() {
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-50">
-      <main className="mx-auto flex max-w-3xl flex-col gap-10 px-6 pb-24 pt-16">
+    <div className="app-shell">
+      <main className="app-main">
+        <div className="mx-auto flex w-full max-w-3xl flex-col gap-10">
         {/* En-tête */}
-        <header className="space-y-3 border-b border-white/10 pb-6">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-sky-300">
+        <header className="app-panel space-y-4">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-slate-500">
             Temple Boyer Legal – Actualités
           </p>
-          <h1 className="text-balance text-2xl font-semibold tracking-tight sm:text-3xl">
+          <h1 className="text-balance text-2xl font-semibold tracking-tight text-slate-950 sm:text-3xl">
             Quels recours possibles en cas d&apos;inexécution contractuelle ? Quelques
             précisions utiles sur l&apos;exécution en nature et la réduction
             unilatérale du prix
           </h1>
-          <p className="text-xs text-slate-300">Actualités – janvier 2025</p>
+          <p className="text-xs text-slate-600">Actualités – janvier 2025</p>
         </header>
 
         {/* Coordonnées / retour */}
-        <section className="flex flex-col gap-4 rounded-3xl border border-white/10 bg-slate-950/70 p-4 text-xs text-slate-200 sm:flex-row sm:items-start sm:justify-between">
+        <section className="app-panel flex flex-col gap-4 text-xs text-slate-800 sm:flex-row sm:items-start sm:justify-between">
           <div className="space-y-1">
-            <p className="font-semibold text-slate-100">Cabinet Temple Boyer Legal</p>
+            <p className="font-semibold text-slate-900">Cabinet Temple Boyer Legal</p>
             <p>10, avenue de Wagram</p>
             <p>75008 Paris</p>
             <p>
               Email :
               <a
                 href="mailto:contact@templeboyer-legal.com"
-                className="ml-1 text-sky-300 underline-offset-4 hover:underline"
+                className="ml-1 text-amber-700 underline-offset-4 hover:underline"
               >
                 contact@templeboyer-legal.com
               </a>
@@ -34,7 +35,7 @@ export default function BlogArticleInexecutionContractuelle() {
           <div className="flex flex-col items-start gap-2 pt-2 sm:items-end sm:pt-0">
             <a
               href="/blog"
-              className="rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-[11px] font-medium text-slate-100 underline-offset-4 hover:bg-white/10 hover:underline"
+              className="rounded-full border border-slate-300 bg-transparent px-4 py-1.5 text-[11px] font-medium text-slate-900 transition-colors hover:bg-slate-100"
             >
               Retour aux actualités
             </a>
@@ -42,7 +43,7 @@ export default function BlogArticleInexecutionContractuelle() {
         </section>
 
         {/* Contenu de l'article */}
-        <article className="space-y-6 text-sm leading-relaxed text-slate-100">
+        <article className="app-panel space-y-6 text-sm leading-relaxed text-slate-800">
           <p>
             C&apos;est à l&apos;occasion de la sécheresse exceptionnelle à Mayotte et de
             son impact sur les contrats de distribution d&apos;eau potable que la Cour
@@ -234,7 +235,7 @@ export default function BlogArticleInexecutionContractuelle() {
             spécificités de chaque secteur.
           </p>
 
-          <div className="mt-6 space-y-1 text-xs text-slate-300">
+          <div className="mt-6 space-y-1 text-xs text-slate-600">
             <p>
               <span className="font-semibold">Sarah Temple-Boyer</span> – Avocat &amp;
               Médiateur certifié (France &amp; CEDR)
@@ -245,11 +246,11 @@ export default function BlogArticleInexecutionContractuelle() {
             </p>
           </div>
 
-          <p className="mt-4 text-[11px] text-slate-400">Publié le 28/01/2025</p>
+          <p className="mt-4 text-[11px] text-slate-500">Publié le 28/01/2025</p>
         </article>
 
         {/* Bas de page simplifié */}
-        <section className="border-t border-white/10 pt-6 text-[11px] text-slate-400">
+        <section className="border-t border-slate-800/70 pt-6 text-[11px] text-slate-400">
           <p>
             Maître Sarah Temple-Boyer – Avocat d&apos;affaires international, Paris –
             Cabinet Temple Boyer Legal, 10 avenue de Wagram, 75008 Paris –
@@ -260,6 +261,7 @@ export default function BlogArticleInexecutionContractuelle() {
             réservés.
           </p>
         </section>
+        </div>
       </main>
     </div>
   );

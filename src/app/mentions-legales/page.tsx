@@ -1,27 +1,28 @@
 export default function MentionsLegalesPage() {
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-50">
-      <main className="mx-auto flex max-w-3xl flex-col gap-10 px-6 pb-24 pt-16">
+    <div className="app-shell">
+      <main className="app-main">
+        <div className="mx-auto flex w-full max-w-3xl flex-col gap-10">
         {/* En-tête */}
-        <header className="space-y-3 border-b border-white/10 pb-6">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-sky-300">
+        <header className="app-panel space-y-4">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-slate-500">
             Temple Boyer Legal
           </p>
-          <h1 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl">
+          <h1 className="text-balance text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
             Mentions légales
           </h1>
         </header>
 
         {/* Identité de l'éditeur du site */}
-        <section className="space-y-3 text-sm leading-relaxed text-slate-200">
-          <h2 className="text-base font-semibold text-slate-50">
+        <section className="app-panel space-y-3 text-sm leading-relaxed text-slate-800">
+          <h2 className="text-base font-semibold text-slate-950">
             1. Éditeur du site
           </h2>
           <p>
             Le présent site est édité par Maître <span className="font-semibold">Sarah
             TEMPLE-BOYER</span>, avocat au Barreau de Paris.
           </p>
-          <ul className="list-disc space-y-1 pl-6 text-[13px]">
+          <ul className="list-disc space-y-1 pl-6 text-[13px] text-slate-700">
             <li>Forme juridique : entrepreneur individuel</li>
             <li>SIREN : 438 307 316</li>
             <li>SIRET (établissement principal) : 438 307 316 00069</li>
@@ -33,7 +34,7 @@ export default function MentionsLegalesPage() {
               Adresse e-mail :
               <a
                 href="mailto:contact@templeboyer-legal.com"
-                className="ml-1 text-sky-300 underline-offset-4 hover:underline"
+                className="ml-1 text-amber-700 underline-offset-4 hover:underline"
               >
                 contact@templeboyer-legal.com
               </a>
@@ -44,14 +45,14 @@ export default function MentionsLegalesPage() {
         </section>
 
         {/* Hébergeur */}
-        <section className="space-y-3 text-sm leading-relaxed text-slate-200">
-          <h2 className="text-base font-semibold text-slate-50">
+        <section className="app-panel space-y-3 text-sm leading-relaxed text-slate-800">
+          <h2 className="text-base font-semibold text-slate-950">
             2. Hébergeur du site
           </h2>
           <p>
             Le site est hébergé sur les serveurs de la société <span className="font-semibold">OVHcloud</span> :
           </p>
-          <ul className="list-disc space-y-1 pl-6 text-[13px]">
+          <ul className="list-disc space-y-1 pl-6 text-[13px] text-slate-700">
             <li>Raison sociale : OVHcloud</li>
             <li>Adresse : 2, rue Kellermann, 59100 Roubaix, France</li>
             <li>Téléphone : +33 (0)9 72 10 10 07</li>
@@ -60,8 +61,8 @@ export default function MentionsLegalesPage() {
         </section>
 
         {/* Propriété intellectuelle */}
-        <section className="space-y-3 text-sm leading-relaxed text-slate-200">
-          <h2 className="text-base font-semibold text-slate-50">
+        <section className="app-panel space-y-3 text-sm leading-relaxed text-slate-800">
+          <h2 className="text-base font-semibold text-slate-950">
             3. Propriété intellectuelle
           </h2>
           <p>
@@ -81,8 +82,8 @@ export default function MentionsLegalesPage() {
         </section>
 
         {/* Données personnelles */}
-        <section className="space-y-3 text-sm leading-relaxed text-slate-200">
-          <h2 className="text-base font-semibold text-slate-50">
+        <section className="app-panel space-y-3 text-sm leading-relaxed text-slate-800">
+          <h2 className="text-base font-semibold text-slate-950">
             4. Données personnelles
           </h2>
           <p>
@@ -105,7 +106,7 @@ export default function MentionsLegalesPage() {
         </section>
 
         {/* Responsabilité et contenu du site */}
-        <section className="space-y-3 text-sm leading-relaxed text-slate-200">
+        <section className="app-panel space-y-3 text-sm leading-relaxed text-slate-800">
           <h2 className="text-base font-semibold text-slate-50">
             5. Responsabilité et contenu du site
           </h2>
@@ -128,7 +129,7 @@ export default function MentionsLegalesPage() {
         </section>
 
         {/* Crédits techniques et visuels */}
-        <section className="space-y-3 text-sm leading-relaxed text-slate-200">
+        <section className="app-panel space-y-3 text-sm leading-relaxed text-slate-800">
           <h2 className="text-base font-semibold text-slate-50">
             6. Crédits techniques et visuels
           </h2>
@@ -145,7 +146,7 @@ export default function MentionsLegalesPage() {
         </section>
 
         {/* Bas de page simplifié */}
-        <section className="border-t border-white/10 pt-6 text-[11px] text-slate-400">
+        <section className="border-t border-slate-800/70 pt-6 text-[11px] text-slate-400">
           <p>
             Maître Sarah Temple-Boyer – Avocat d&apos;affaires international, Paris –
             Cabinet Temple Boyer Legal, 10 avenue de Wagram, 75008 Paris –
