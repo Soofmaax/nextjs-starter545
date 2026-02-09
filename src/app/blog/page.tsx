@@ -31,9 +31,15 @@ export default function BlogIndexPage() {
             Publications &amp; actualités
           </h1>
           <p className="max-w-2xl text-sm text-slate-200">
-            Sélection d&apos;analyses, d&apos;articles et de décryptages de l&apos;actualité
-            juridique en droit des affaires, rédigés par le Cabinet Temple Boyer
-            Legal.
+            Le Cabinet Temple Boyer Legal publie régulièrement, environ une fois
+            par mois depuis 2007, des articles d&apos;actualité et de fond dans ses
+            différents domaines de compétence (droit de la distribution, droit de
+            la concurrence, droit de la consommation, droit commercial, droit des
+            contrats, droit international, etc.).
+          </p>
+          <p className="max-w-2xl text-xs text-slate-400">
+            Les publications sont classées par thèmes afin de faciliter leur
+            consultation. Bonne lecture.
           </p>
         </header>
 
