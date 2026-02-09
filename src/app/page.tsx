@@ -384,13 +384,19 @@ export default function Home() {
           <div className="space-y-1 text-[10px] text-slate-500">
             <p>© 2015 – {new Date().getFullYear()} Sarah Temple-Boyer. Tous droits réservés.</p>
             <p className="flex flex-wrap gap-2">
-              <button className="underline-offset-4 hover:underline">
+              <a
+                href="/mentions-legales"
+                className="underline-offset-4 hover:underline"
+              >
                 Mentions légales
-              </button>
+              </a>
               <span>·</span>
-              <button className="underline-offset-4 hover:underline">
+              <a
+                href="/confidentialite"
+                className="underline-offset-4 hover:underline"
+              >
                 Confidentialité
-              </button>
+              </a>
               <span>·</span>
               <button className="underline-offset-4 hover:underline">
                 Accès administrateur
