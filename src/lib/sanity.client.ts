@@ -11,6 +11,46 @@ export const client = createClient({
   useCdn: true,
 });
 
+export type SiteSettings = {
+  title?: string;
+  contactEmail?: string;
+  phone?: string;
+  address?: string;
+};
+
+export const DEFAULT_SITE_SETTINGS: SiteSettings = {
+  title: "Temple Boyer Legal",
+  contactEmail: "contact@templeboyer-legal.com",
+  phone: "01 43 12 38 00",
+  // On utilise le format le plus fréquemment utilisé dans le texte
+  address: "10 avenue de Wagram, 75008 Paris",
+};
+
+const SITE_SETTINGS_QUERY = `*[_type == "siteSettings"][0]{
+  title,
+  contactEmail,
+  phone,
+  address
+}`;
+
+export async function getSiteSettings(): Promise<SiteSettings | null> {
+  if (!projectId || !dataset) {
+    return DEFAULT_SITE_SETTINGS;
+  }
+
+  try {
+    const settings = await client.fetch<SiteSettings | null>(SITE_SETTINGS_QUERY);
+    if (!settings) return DEFAULT_SITE_SETTINGS;
+
+    return {
+      ...DEFAULT_SITE_SETTINGS,
+      ...settings,
+    };
+  } catch {
+    return DEFAULT_SITE_SETTINGS;
+  }
+}
+
 export type SanityPost = {
   _id: string;
   title: string;

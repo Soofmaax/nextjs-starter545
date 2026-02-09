@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { BookOpenText, Globe2, Mail, Scale } from "lucide-react";
+import { getSiteSettings, DEFAULT_SITE_SETTINGS } from "../lib/sanity.client";
 
 const PRACTICE_AREAS = [
   "Contrats",
@@ -16,7 +17,20 @@ const PRACTICE_AREAS = [
   "Expertise sectorielle",
 ];
 
-export default function Home() {
+export default async function Home() {
+  const siteSettings = (await getSiteSettings()) ?? DEFAULT_SITE_SETTINGS;
+
+  const contactEmail = siteSettings.contactEmail ?? DEFAULT_SITE_SETTINGS.contactEmail;
+  const address = siteSettings.address ?? DEFAULT_SITE_SETTINGS.address;
+
+  // On découpe l'adresse en 2 lignes pour l'affichage
+  const addressParts = address.split(",").map((part) => part.trim());
+  const isDefaultAddress = address === DEFAULT_SITE_SETTINGS.address;
+  const addressLine1 = isDefaultAddress
+    ? "10, avenue de Wagram"
+    : addressParts[0] || "10, avenue de Wagram";
+  const addressLine2 = addressParts[1] || "75008 Paris";
+
   return (
     <div className="app-shell">
       {/* Top navigation */}
@@ -177,14 +191,14 @@ export default function Home() {
               </p>
             </div>
             <div className="mt-2 space-y-1 text-[11px] text-slate-600">
-              <p>10, avenue de Wagram</p>
-              <p>75008 Paris</p>
+              <p>{addressLine1}</p>
+              <p>{addressLine2}</p>
               <p>
                 <a
-                  href="mailto:contact@templeboyer-legal.com"
+                  href={`mailto:${contactEmail}`}
                   className="text-amber-700 underline-offset-4 hover:underline"
                 >
-                  contact@templeboyer-legal.com
+                  {contactEmail}
                 </a>
               </p>
             </div>
@@ -374,18 +388,18 @@ export default function Home() {
               <p className="font-semibold">Cabinet Temple Boyer Legal</p>
               <p className="flex items-center gap-2">
                 <Globe2 className="h-4 w-4 text-slate-500" aria-hidden="true" />
-                <span>10, avenue de Wagram</span>
+                <span>{addressLine1}</span>
               </p>
-              <p>75008 Paris</p>
+              <p>{addressLine2}</p>
               <p className="flex items-center gap-2">
                 <Mail className="h-4 w-4 text-slate-500" aria-hidden="true" />
                 <span>
                   Email :
                   <a
-                    href="mailto:contact@templeboyer-legal.com"
+                    href={`mailto:${contactEmail}`}
                     className="ml-1 text-amber-700 underline-offset-4 hover:underline"
                   >
-                    contact@templeboyer-legal.com
+                    {contactEmail}
                   </a>
                 </span>
               </p>
@@ -462,15 +476,15 @@ export default function Home() {
               Maître Sarah Temple-Boyer – Avocat d&apos;affaires international
             </p>
             <p className="text-slate-400">
-              Cabinet Temple Boyer Legal – 10, avenue de Wagram – 75008 Paris
+              Cabinet Temple Boyer Legal – {addressLine1} – {addressLine2}
             </p>
             <p>
               Email :
               <a
-                href="mailto:contact@templeboyer-legal.com"
+                href={`mailto:${contactEmail}`}
                 className="ml-1 text-amber-600 underline-offset-4 hover:underline"
               >
-                contact@templeboyer-legal.com
+                {contactEmail}
               </a>
             </p>
           </div>

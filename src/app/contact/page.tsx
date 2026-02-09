@@ -1,6 +1,20 @@
 import { Mail, Phone } from "lucide-react";
+import { getSiteSettings, DEFAULT_SITE_SETTINGS } from "../../lib/sanity.client";
 
-export default function ContactPage() {
+export default async function ContactPage() {
+  const siteSettings = (await getSiteSettings()) ?? DEFAULT_SITE_SETTINGS;
+
+  const contactEmail = siteSettings.contactEmail ?? DEFAULT_SITE_SETTINGS.contactEmail;
+  const address = siteSettings.address ?? DEFAULT_SITE_SETTINGS.address;
+
+  const addressParts = address.split(",").map((part) => part.trim());
+  const isDefaultAddress = address === DEFAULT_SITE_SETTINGS.address;
+  const addressLine1 = isDefaultAddress
+    ? "10, avenue de Wagram"
+    : addressParts[0] || "10, avenue de Wagram";
+  const addressLine2 = addressParts[1] || "75008 Paris";
+  const postalAddress = address || DEFAULT_SITE_SETTINGS.address!;
+
   return (
     <div className="app-shell">
       <main className="app-main">
@@ -23,17 +37,17 @@ export default function ContactPage() {
         {/* Coordonnées */}
         <section className="app-panel space-y-3 text-xs text-slate-800">
           <p className="font-semibold text-slate-900">Cabinet Temple Boyer Legal</p>
-          <p>10, avenue de Wagram</p>
-          <p>75008 Paris</p>
+          <p>{addressLine1}</p>
+          <p>{addressLine2}</p>
           <p className="flex items-center gap-2">
             <Mail className="h-4 w-4 text-slate-500" aria-hidden="true" />
             <span>
               Email :
               <a
-                href="mailto:contact@templeboyer-legal.com"
+                href={`mailto:${contactEmail}`}
                 className="ml-1 text-amber-700 underline-offset-4 hover:underline"
               >
-                contact@templeboyer-legal.com
+                {contactEmail}
               </a>
             </span>
           </p>
@@ -75,15 +89,15 @@ export default function ContactPage() {
             <li>
               par courriel à
               <a
-                href="mailto:contact@templeboyer-legal.com"
+                href={`mailto:${contactEmail}`}
                 className="ml-1 text-amber-700 underline-offset-4 hover:underline"
               >
-                contact@templeboyer-legal.com
+                {contactEmail}
               </a>
             </li>
             <li>
-              ou par courrier postal à l&apos;adresse : 10 avenue de Wagram, 75008
-              Paris, accompagné d&apos;une copie d&apos;un titre d&apos;identité signé.
+              ou par courrier postal à l&apos;adresse : {postalAddress}, accompagné
+              d&apos;une copie d&apos;un titre d&apos;identité signé.
             </li>
           </ul>
           <p>
@@ -174,8 +188,8 @@ export default function ContactPage() {
         <section className="border-t border-slate-800/70 pt-6 text-[11px] text-slate-400">
           <p>
             Maître Sarah Temple-Boyer – Avocat d&apos;affaires international, Paris –
-            Cabinet Temple Boyer Legal, 10 avenue de Wagram, 75008 Paris –
-            contact@templeboyer-legal.com
+            Cabinet Temple Boyer Legal, {postalAddress} –
+            {contactEmail}
           </p>
           <p className="mt-1">
             © 2015 – {new Date().getFullYear()} Sarah Temple-Boyer. Tous droits
