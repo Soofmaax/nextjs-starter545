@@ -13,6 +13,7 @@ export default async function ConfidentialitePage() {
     : addressParts[0] || "10, avenue de Wagram";
   const addressLine2 = addressParts[1] || "75008 Paris";
   const postalAddress = address || DEFAULT_SITE_SETTINGS.address!;
+  const phone = siteSettings.phone ?? DEFAULT_SITE_SETTINGS.phone;
   return (
     <div className="app-shell">
       <main className="app-main">
@@ -51,7 +52,7 @@ export default async function ConfidentialitePage() {
           </p>
           <p>
             Le destinataire des données est Me Sarah Temple-Boyer, Avocat exerçant
-            au 12, rue Tronchet, 75008 Paris. Téléphone : 01 43 12 38 00.
+            au 12, rue Tronchet, 75008 Paris. Téléphone : {phone}.
           </p>
           <p>
             Conformément aux articles 13 et 14 du Règlement (UE) 2016/679 (RGPD)
@@ -330,7 +331,7 @@ export default async function ConfidentialitePage() {
             <li>via le formulaire de contact disponible sur le Site ;</li>
             <li>
               ou par courrier à l&apos;adresse suivante : Me Sarah Temple-Boyer,
-              Avocat, 12, rue Tronchet, 75008 Paris. Téléphone : 01 43 12 38 00.
+              Avocat, 12, rue Tronchet, 75008 Paris. Téléphone : {phone}.
             </li>
           </ul>
         </section>
