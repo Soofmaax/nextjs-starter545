@@ -17,21 +17,21 @@ const PRACTICE_AREAS = [
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-50">
+    <div className="app-shell">
       {/* Top navigation */}
-      <header className="sticky top-0 z-30 border-b border-white/5 bg-black/60 backdrop-blur-xl">
-        <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+      <header className="sticky top-0 z-30 border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-md">
+        <nav className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-4">
           <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-tr from-sky-500 via-indigo-500 to-emerald-400 shadow-lg shadow-sky-500/40">
-              <span className="text-xs font-semibold leading-tight text-slate-950">
+            <div className="flex h-10 w-10 items-center justify-center rounded-2xl border border-slate-700/80 bg-slate-900/80 shadow-sm shadow-black/50">
+              <span className="text-xs font-semibold leading-tight text-slate-100">
                 TBL
               </span>
             </div>
             <div className="flex flex-col">
-              <span className="text-xs font-semibold uppercase tracking-[0.22em] text-sky-300">
+              <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-200">
                 Temple Boyer Legal
               </span>
-              <span className="text-[11px] text-slate-300">
+              <span className="text-[11px] text-slate-400">
                 Cabinet d&apos;avocat d&apos;affaires international
               </span>
             </div>
@@ -39,41 +39,35 @@ export default function Home() {
 
           <div className="hidden items-center gap-6 text-[11px] font-medium sm:flex">
             <div className="flex items-center gap-6 text-slate-300">
-              <a href="/" className="transition hover:text-white">
+              <a href="/" className="transition-colors hover:text-slate-50">
                 Accueil
               </a>
-              <a href="/cabinet" className="transition hover:text-white">
+              <a href="/cabinet" className="transition-colors hover:text-slate-50">
                 Le Cabinet
               </a>
-              <a href="/competences" className="transition hover:text-white">
+              <a href="/competences" className="transition-colors hover:text-slate-50">
                 Compétences
               </a>
-              <a href="/honoraires" className="transition hover:text-white">
+              <a href="/honoraires" className="transition-colors hover:text-slate-50">
                 Honoraires
               </a>
-              <a href="/blog" className="transition hover:text-white">
+              <a href="/blog" className="transition-colors hover:text-slate-50">
                 Publications / Actualités
               </a>
-              <a href="/partenariats" className="transition hover:text-white">
+              <a href="/partenariats" className="transition-colors hover:text-slate-50">
                 Partenariats
               </a>
-              <a href="/contact" className="transition hover:text-white">
+              <a href="/contact" className="transition-colors hover:text-slate-50">
                 Contact
               </a>
-              <a
-                href="#plan-acces"
-                className="transition hover:text-white"
-              >
+              <a href="#plan-acces" className="transition-colors hover:text-slate-50">
                 Plan d&apos;accès
               </a>
             </div>
             <div className="flex items-center text-[10px] font-normal text-slate-400">
               <span className="cursor-default text-slate-100">FR</span>
               <span className="mx-1 text-slate-600">|</span>
-              <a
-                href="/en"
-                className="transition hover:text-white"
-              >
+              <a href="/en" className="transition-colors hover:text-slate-50">
                 EN
               </a>
             </div>
@@ -81,27 +75,27 @@ export default function Home() {
         </nav>
       </header>
 
-      <main className="mx-auto flex max-w-6xl flex-col gap-20 px-6 pb-24 pt-12">
+      <main className="app-main">
         {/* Hero section */}
         <section
           id="cabinet"
-          className="grid gap-12 md:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)] md:items-center"
+          className="app-panel grid gap-12 md:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)] md:items-center"
         >
           <div className="space-y-8">
-            <div className="inline-flex items-center gap-2 rounded-full border border-sky-400/30 bg-sky-400/10 px-3 py-1 text-[11px] text-sky-100 shadow-sm shadow-sky-500/30">
-              <span className="inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
+            <div className="inline-flex items-center gap-2 rounded-full border border-amber-500/30 bg-amber-50/80 px-3 py-1 text-[11px] text-amber-900">
+              <span className="inline-flex h-1.5 w-1.5 rounded-full bg-amber-500" />
               <span>Conseil &amp; contentieux en droit des affaires</span>
             </div>
 
             <div className="space-y-4">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-sky-300">
+              <p className="text-[11px] font-medium uppercase tracking-[0.28em] text-slate-500">
                 Temple Boyer Legal – Paris
               </p>
-              <h1 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl">
+              <h1 className="text-balance text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl md:text-5xl">
                 Cabinet d&apos;avocat d&apos;affaires international dédié aux opérations
                 et litiges complexes
               </h1>
-              <p className="max-w-xl text-sm text-slate-200">
+              <p className="max-w-xl text-sm text-slate-700">
                 Temple Boyer Legal accompagne les groupes français et
                 internationaux, ETI, investisseurs et dirigeants dans la
                 structuration, la négociation et le suivi de leurs opérations
@@ -111,37 +105,37 @@ export default function Home() {
             </div>
 
             <div className="mt-4 grid gap-3 text-[11px] sm:grid-cols-3">
-              <div className="flex items-start gap-2 rounded-2xl border border-white/10 bg-white/5 px-3 py-2">
-                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-400" />
-                <p className="leading-snug text-slate-100">
+              <div className="flex items-start gap-2 rounded-2xl border border-slate-200 bg-white/80 px-3 py-2">
+                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-amber-500" />
+                <p className="leading-snug text-slate-800">
                   Contrats &amp; opérations internationales
                 </p>
               </div>
-              <div className="flex items-start gap-2 rounded-2xl border border-white/10 bg-white/5 px-3 py-2">
-                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-sky-400" />
-                <p className="leading-snug text-slate-100">
+              <div className="flex items-start gap-2 rounded-2xl border border-slate-200 bg-white/80 px-3 py-2">
+                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-amber-500" />
+                <p className="leading-snug text-slate-800">
                   Contentieux stratégiques &amp; précontentieux
                 </p>
               </div>
-              <div className="flex items-start gap-2 rounded-2xl border border-white/10 bg-white/5 px-3 py-2">
-                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-indigo-400" />
-                <p className="leading-snug text-slate-100">
+              <div className="flex items-start gap-2 rounded-2xl border border-slate-200 bg-white/80 px-3 py-2">
+                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-amber-500" />
+                <p className="leading-snug text-slate-800">
                   Accompagnement des directions juridique &amp; générale
                 </p>
               </div>
             </div>
 
             <div className="flex flex-wrap gap-4 text-[11px]">
-              <div className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1">
-                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+              <div className="flex items-center gap-2 rounded-full border border-slate-200 bg-white/80 px-3 py-1 text-slate-700">
+                <span className="h-1.5 w-1.5 rounded-full bg-amber-500" />
                 <span>Barreau de Paris</span>
               </div>
-              <div className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1">
-                <span className="h-1.5 w-1.5 rounded-full bg-sky-400" />
+              <div className="flex items-center gap-2 rounded-full border border-slate-200 bg-white/80 px-3 py-1 text-slate-700">
+                <span className="h-1.5 w-1.5 rounded-full bg-amber-500" />
                 <span>Conseil &amp; contentieux</span>
               </div>
-              <div className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1">
-                <span className="h-1.5 w-1.5 rounded-full bg-indigo-400" />
+              <div className="flex items-center gap-2 rounded-full border border-slate-200 bg-white/80 px-3 py-1 text-slate-700">
+                <span className="h-1.5 w-1.5 rounded-full bg-amber-500" />
                 <span>France &amp; international</span>
               </div>
             </div>
@@ -149,104 +143,103 @@ export default function Home() {
             <div className="flex flex-wrap gap-4 text-xs">
               <a
                 href="#contact"
-                className="inline-flex items-center justify-center rounded-full bg-sky-500 px-5 py-2 text-[11px] font-semibold text-slate-950 shadow-lg shadow-sky-500/40 transition hover:bg-sky-400"
+                className="inline-flex items-center justify-center rounded-full bg-amber-500 px-5 py-2 text-[11px] font-semibold text-slate-950 shadow-[0_18px_45px_rgba(180,83,9,0.45)] transition-colors hover:bg-amber-500/90"
               >
                 Contacter le Cabinet
               </a>
               <a
                 href="#competences"
-                className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 px-5 py-2 text-[11px] font-medium text-slate-100 transition hover:bg-white/10"
+                className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-transparent px-5 py-2 text-[11px] font-medium text-slate-900 transition-colors hover:bg-slate-100"
               >
                 Découvrir les domaines de compétence
               </a>
             </div>
           </div>
 
-          <div className="relative mx-auto flex max-w-xs flex-col items-center gap-4 rounded-3xl border border-white/10 bg-gradient-to-b from-slate-900/80 via-slate-900/40 to-slate-950/80 p-6 text-center shadow-2xl shadow-sky-900/50">
-            <div className="absolute inset-x-10 top-0 -z-10 h-40 rounded-full bg-sky-500/30 blur-3xl" />
-            <div className="relative mt-2 flex h-28 w-28 items-center justify-center overflow-hidden rounded-full border border-sky-400/40 bg-slate-900/60">
-              <span className="text-[11px] font-semibold text-slate-200">
+          <div className="relative mx-auto flex max-w-xs flex-col items-center gap-4 rounded-3xl border border-slate-200 bg-slate-50/90 p-6 text-center shadow-[0_18px_60px_rgba(15,23,42,0.18)]">
+            <div className="relative mt-2 flex h-28 w-28 items-center justify-center overflow-hidden rounded-full border border-slate-300 bg-slate-100">
+              <span className="text-[11px] font-semibold text-slate-600">
                 Photo
                 <br />
                 Sarah Temple-Boyer
               </span>
             </div>
             <div className="space-y-1">
-              <p className="text-xs font-semibold tracking-tight text-slate-50">
+              <p className="text-xs font-semibold tracking-tight text-slate-900">
                 Maître Sarah Temple-Boyer
               </p>
-              <p className="text-[11px] text-slate-300">
+              <p className="text-[11px] text-slate-600">
                 Avocat d&apos;affaires international - Paris
               </p>
             </div>
-            <div className="mt-2 space-y-1 text-[11px] text-slate-300">
+            <div className="mt-2 space-y-1 text-[11px] text-slate-600">
               <p>10, avenue de Wagram</p>
               <p>75008 Paris</p>
               <p>
                 <a
                   href="mailto:contact@templeboyer-legal.com"
-                  className="text-sky-300 underline-offset-4 hover:underline"
+                  className="text-amber-700 underline-offset-4 hover:underline"
                 >
                   contact@templeboyer-legal.com
                 </a>
               </p>
             </div>
             <div className="mt-4 flex w-full flex-col gap-2 text-[11px]">
-              <button className="rounded-full border border-sky-400/60 bg-sky-500/10 px-4 py-2 font-medium text-sky-100 transition hover:bg-sky-500/20">
+              <button className="rounded-full border border-slate-900 bg-slate-900 px-4 py-2 font-medium text-slate-50 transition-colors hover:bg-slate-800">
                 Prendre rendez-vous
               </button>
-              <button className="rounded-full border border-white/15 bg-transparent px-4 py-2 font-medium text-slate-100 transition hover:bg-white/5">
+              <button className="rounded-full border border-slate-300 bg-transparent px-4 py-2 font-medium text-slate-900 transition-colors hover:bg-slate-100">
                 Ajouter aux contacts
               </button>
             </div>
           </div>
         </section>
 
-        <section className="space-y-6" id="services">
-          <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
+        <section className="app-panel space-y-8" id="services">
+          <div className="app-section-heading">
             <div className="space-y-2">
-              <h2 className="text-lg font-semibold tracking-tight sm:text-xl">
+              <h2 className="text-lg font-semibold tracking-tight text-slate-950 sm:text-xl">
                 Ce que nous faisons pour vous
               </h2>
-              <p className="max-w-2xl text-xs text-slate-300">
+              <p className="max-w-2xl text-xs text-slate-600">
                 Le Cabinet assiste les directions générale, juridique et
                 financière dans la structuration de leurs projets, la gestion
                 de leurs risques et la résolution de leurs différends, en
                 France comme à l&apos;international.
               </p>
             </div>
-            <p className="text-[11px] uppercase tracking-[0.22em] text-slate-400">
+            <p className="app-section-label">
               Dirigeants &amp; Directions juridiques
             </p>
           </div>
 
-          <div className="grid gap-4 md:grid-cols-3">
-            <div className="flex flex-col gap-2 rounded-2xl border border-white/10 bg-slate-950/80 p-4 text-xs text-slate-100">
-              <h3 className="text-sm font-semibold text-slate-50">
+          <div className="grid gap-6 md:grid-cols-3">
+            <div className="flex flex-col gap-3 rounded-2xl border border-slate-200 bg-white/90 p-5 text-xs text-slate-800">
+              <h3 className="text-sm font-semibold text-slate-900">
                 Sécuriser vos opérations
               </h3>
-              <p className="leading-relaxed text-slate-300">
+              <p className="leading-relaxed text-slate-700">
                 Rédaction et négociation de contrats, analyse des risques,
                 structuration de partenariats et d&apos;opérations stratégiques,
                 afin de sécuriser vos engagements et préserver vos intérêts.
               </p>
             </div>
-            <div className="flex flex-col gap-2 rounded-2xl border border-white/10 bg-slate-950/80 p-4 text-xs text-slate-100">
-              <h3 className="text-sm font-semibold text-slate-50">
+            <div className="flex flex-col gap-3 rounded-2xl border border-slate-200 bg-white/90 p-5 text-xs text-slate-800">
+              <h3 className="text-sm font-semibold text-slate-900">
                 Gérer vos litiges à forts enjeux
               </h3>
-              <p className="leading-relaxed text-slate-300">
+              <p className="leading-relaxed text-slate-700">
                 Élaboration de stratégies contentieuses, assistance en
                 précontentieux, représentation devant les juridictions
                 étatiques et arbitrales pour les différends commerciaux
                 complexes.
               </p>
             </div>
-            <div className="flex flex-col gap-2 rounded-2xl border border-white/10 bg-slate-950/80 p-4 text-xs text-slate-100">
-              <h3 className="text-sm font-semibold text-slate-50">
+            <div className="flex flex-col gap-3 rounded-2xl border border-slate-200 bg-white/90 p-5 text-xs text-slate-800">
+              <h3 className="text-sm font-semibold text-slate-900">
                 Vous accompagner dans la durée
               </h3>
-              <p className="leading-relaxed text-slate-300">
+              <p className="leading-relaxed text-slate-700">
                 Accompagnement au long cours des équipes dirigeantes et
                 juridiques, suivi récurrent de vos dossiers et mise en place
                 d&apos;outils et réflexes juridiques adaptés à votre organisation.
@@ -256,30 +249,30 @@ export default function Home() {
         </section>
 
         {/* Practice areas */}
-        <section id="competences" className="space-y-6">
-          <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
+        <section id="competences" className="app-panel space-y-8">
+          <div className="app-section-heading">
             <div>
-              <h2 className="text-lg font-semibold tracking-tight sm:text-xl">
+              <h2 className="text-lg font-semibold tracking-tight text-slate-950 sm:text-xl">
                 Domaines de compétence
               </h2>
-              <p className="max-w-2xl text-xs text-slate-300">
+              <p className="max-w-2xl text-xs text-slate-600">
                 Le Cabinet intervient en conseil et en contentieux sur
                 l&apos;ensemble des problématiques de droit des affaires, avec une
                 forte dimension internationale.
               </p>
             </div>
-            <p className="text-[11px] uppercase tracking-[0.22em] text-slate-400">
+            <p className="app-section-label">
               Conseil &amp; Contentieux
             </p>
           </div>
 
-          <div className="grid gap-3 rounded-3xl border border-white/10 bg-slate-950/60 p-4 sm:grid-cols-2 md:grid-cols-3">
+          <div className="grid gap-3 rounded-2xl border border-slate-200 bg-white/80 p-4 sm:grid-cols-2 md:grid-cols-3">
             {PRACTICE_AREAS.map((area) => (
               <div
                 key={area}
-                className="flex items-center gap-3 rounded-2xl border border-white/5 bg-white/5 px-3 py-3 text-xs text-slate-100"
+                className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-white px-3 py-3 text-xs text-slate-800"
               >
-                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-sky-500/20 text-[10px] text-sky-200">
+                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-amber-500/10 text-[10px] text-amber-700">
                   •
                 </span>
                 <span>{area}</span>
@@ -289,25 +282,25 @@ export default function Home() {
         </section>
 
         {/* About / values */}
-        <section className="grid gap-10 md:grid-cols-2" id="about">
+        <section className="app-panel grid gap-10 md:grid-cols-2" id="about">
           <div className="space-y-4">
-            <h2 className="text-lg font-semibold tracking-tight sm:text-xl">
+            <h2 className="text-lg font-semibold tracking-tight text-slate-950 sm:text-xl">
               Présentation et valeurs du Cabinet
             </h2>
-            <p className="text-xs leading-relaxed text-slate-200">
+            <p className="text-xs leading-relaxed text-slate-700">
               Pour le cabinet d&apos;avocat d&apos;affaires international qu&apos;est Temple
               Boyer Legal, l&apos;avocat doit allier les valeurs traditionnelles du
               métier – sens de l&apos;écoute, empathie, disponibilité, réactivité et
               intégrité – à des qualités désormais indispensables : créativité,
               adaptabilité et pragmatisme.
             </p>
-            <p className="text-xs leading-relaxed text-slate-200">
+            <p className="text-xs leading-relaxed text-slate-700">
               Convaincu que le droit ne doit pas être un facteur d&apos;inertie mais
               un véritable levier de croissance, le Cabinet se positionne comme
               un « business partner » et un « juriste externalisé », au service
               des opérationnels et des enjeux du business.
             </p>
-            <p className="text-xs leading-relaxed text-slate-200">
+            <p className="text-xs leading-relaxed text-slate-700">
               Possédant à la fois une culture généraliste et européenne du droit
               et des compétences de spécialiste, nous répondons à vos besoins en
               droit des affaires, y compris les problématiques les plus
@@ -315,8 +308,8 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="space-y-4 rounded-3xl border border-sky-400/20 bg-gradient-to-b from-sky-500/10 via-slate-950 to-slate-950 px-5 py-6 text-xs text-slate-100">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-sky-300">
+          <div className="space-y-4 rounded-2xl border border-slate-200 bg-white/90 px-5 py-6 text-xs text-slate-800">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-slate-500">
               Une vision moderne de la profession
             </p>
             <p className="leading-relaxed">
@@ -335,23 +328,23 @@ export default function Home() {
         </section>
 
         {/* Blog / news */}
-        <section id="blog" className="space-y-4">
-          <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
+        <section id="blog" className="app-panel space-y-6">
+          <div className="app-section-heading">
             <div>
-              <h2 className="text-lg font-semibold tracking-tight sm:text-xl">
+              <h2 className="text-lg font-semibold tracking-tight text-slate-950 sm:text-xl">
                 Blog &amp; actualités
               </h2>
-              <p className="text-xs text-slate-300">
+              <p className="text-xs text-slate-600">
                 Retrouvez bientôt une sélection d&apos;analyses et de décryptages
                 de l&apos;actualité juridique en droit des affaires.
               </p>
             </div>
-            <button className="self-start rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-[11px] font-medium text-slate-100 transition hover:bg-white/10">
+            <button className="self-start rounded-full border border-slate-300 bg-transparent px-4 py-1.5 text-[11px] font-medium text-slate-900 transition-colors hover:bg-slate-100">
               S&apos;abonner au flux RSS
             </button>
           </div>
 
-          <div className="rounded-3xl border border-dashed border-white/20 bg-slate-950/60 px-5 py-8 text-center text-xs text-slate-400">
+          <div className="rounded-2xl border border-dashed border-slate-300 bg-white/80 px-5 py-8 text-center text-xs text-slate-500">
             Aucune publication n&apos;est encore disponible. Les actualités du
             Cabinet seront prochainement mises en ligne.
           </div>
@@ -360,19 +353,19 @@ export default function Home() {
         {/* Contact */}
         <section
           id="contact"
-          className="grid gap-8 rounded-3xl border border-white/10 bg-slate-950/80 p-6 md:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)]"
+          className="app-panel grid gap-10 md:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)]"
         >
           <div className="space-y-4">
-            <h2 className="text-lg font-semibold tracking-tight sm:text-xl">
+            <h2 className="text-lg font-semibold tracking-tight text-slate-950 sm:text-xl">
               Nous contacter
             </h2>
-            <p className="text-xs text-slate-300">
+            <p className="text-xs text-slate-600">
               Pour toute demande d&apos;information, prise de rendez-vous ou
               sollicitation de devis, vous pouvez nous contacter par e-mail ou
               via votre interlocuteur habituel.
             </p>
 
-            <div className="space-y-2 text-xs text-slate-200">
+            <div className="space-y-2 text-xs text-slate-700">
               <p className="font-semibold">Cabinet Temple Boyer Legal</p>
               <p>10, avenue de Wagram</p>
               <p>75008 Paris</p>
@@ -380,7 +373,7 @@ export default function Home() {
                 Email :
                 <a
                   href="mailto:contact@templeboyer-legal.com"
-                  className="ml-1 text-sky-300 underline-offset-4 hover:underline"
+                  className="ml-1 text-amber-700 underline-offset-4 hover:underline"
                 >
                   contact@templeboyer-legal.com
                 </a>
@@ -391,59 +384,59 @@ export default function Home() {
           <form className="space-y-3 text-xs">
             <div className="grid gap-3 sm:grid-cols-2">
               <div className="space-y-1.5">
-                <label htmlFor="nom" className="text-[11px] text-slate-200">
+                <label htmlFor="nom" className="text-[11px] text-slate-700">
                   Nom / Société
                 </label>
                 <input
                   id="nom"
                   name="nom"
-                  className="w-full rounded-xl border border-white/15 bg-black/40 px-3 py-2 text-xs text-slate-50 outline-none ring-sky-500/40 placeholder:text-slate-500 focus:border-sky-400 focus:ring-2"
+                  className="w-full rounded-xl border border-slate-300 bg-white/90 px-3 py-2 text-xs text-slate-900 outline-none ring-amber-500/20 placeholder:text-slate-400 focus:border-amber-500 focus:ring-2"
                   placeholder="Votre nom ou dénomination sociale"
                 />
               </div>
               <div className="space-y-1.5">
-                <label htmlFor="email" className="text-[11px] text-slate-200">
+                <label htmlFor="email" className="text-[11px] text-slate-700">
                   Email
                 </label>
                 <input
                   id="email"
                   name="email"
                   type="email"
-                  className="w-full rounded-xl border border-white/15 bg-black/40 px-3 py-2 text-xs text-slate-50 outline-none ring-sky-500/40 placeholder:text-slate-500 focus:border-sky-400 focus:ring-2"
+                  className="w-full rounded-xl border border-slate-300 bg-white/90 px-3 py-2 text-xs text-slate-900 outline-none ring-amber-500/20 placeholder:text-slate-400 focus:border-amber-500 focus:ring-2"
                   placeholder="vous@exemple.com"
                 />
               </div>
             </div>
             <div className="space-y-1.5">
-              <label htmlFor="objet" className="text-[11px] text-slate-200">
+              <label htmlFor="objet" className="text-[11px] text-slate-700">
                 Objet de la demande
               </label>
               <input
                 id="objet"
                 name="objet"
-                className="w-full rounded-xl border border-white/15 bg-black/40 px-3 py-2 text-xs text-slate-50 outline-none ring-sky-500/40 placeholder:text-slate-500 focus:border-sky-400 focus:ring-2"
+                className="w-full rounded-xl border border-slate-300 bg-white/90 px-3 py-2 text-xs text-slate-900 outline-none ring-amber-500/20 placeholder:text-slate-400 focus:border-amber-500 focus:ring-2"
                 placeholder="Conseil, contentieux, contrat..."
               />
             </div>
             <div className="space-y-1.5">
-              <label htmlFor="message" className="text-[11px] text-slate-200">
+              <label htmlFor="message" className="text-[11px] text-slate-700">
                 Message
               </label>
               <textarea
                 id="message"
                 name="message"
                 rows={4}
-                className="w-full rounded-xl border border-white/15 bg-black/40 px-3 py-2 text-xs text-slate-50 outline-none ring-sky-500/40 placeholder:text-slate-500 focus:border-sky-400 focus:ring-2"
+                className="w-full rounded-xl border border-slate-300 bg-white/90 px-3 py-2 text-xs text-slate-900 outline-none ring-amber-500/20 placeholder:text-slate-400 focus:border-amber-500 focus:ring-2"
                 placeholder="Décrivez brièvement votre demande"
               />
             </div>
-            <p className="text-[10px] text-slate-400">
+            <p className="text-[10px] text-slate-500">
               Ce formulaire est proposé à titre indicatif. Aucun envoi effectif
               n&apos;est réalisé depuis cette maquette.
             </p>
             <button
               type="button"
-              className="mt-1 inline-flex items-center justify-center rounded-full bg-sky-500 px-5 py-2 text-[11px] font-semibold text-slate-950 shadow-lg shadow-sky-500/40 transition hover:bg-sky-400"
+              className="mt-1 inline-flex items-center justify-center rounded-full bg-amber-500 px-5 py-2 text-[11px] font-semibold text-slate-950 shadow-[0_18px_45px_rgba(180,83,9,0.45)] transition-colors hover:bg-amber-500/90"
             >
               Envoyer la demande (démo)
             </button>
@@ -451,18 +444,20 @@ export default function Home() {
         </section>
       </main>
 
-      <footer className="border-t border-white/10 bg-black/80 py-6 text-[11px] text-slate-400">
+      <footer className="border-t border-slate-800 bg-slate-950/95 py-8 text-[11px] text-slate-400">
         <div className="mx-auto flex max-w-6xl flex-col gap-3 px-6 sm:flex-row sm:items-center sm:justify-between">
           <div className="space-y-1">
-            <p className="font-medium text-slate-300">
+            <p className="font-medium text-slate-200">
               Maître Sarah Temple-Boyer – Avocat d&apos;affaires international
             </p>
-            <p>Cabinet Temple Boyer Legal – 10, avenue de Wagram – 75008 Paris</p>
+            <p className="text-slate-400">
+              Cabinet Temple Boyer Legal – 10, avenue de Wagram – 75008 Paris
+            </p>
             <p>
               Email :
               <a
                 href="mailto:contact@templeboyer-legal.com"
-                className="ml-1 text-sky-300 underline-offset-4 hover:underline"
+                className="ml-1 text-amber-600 underline-offset-4 hover:underline"
               >
                 contact@templeboyer-legal.com
               </a>
@@ -474,19 +469,19 @@ export default function Home() {
             <p className="flex flex-wrap gap-2">
               <a
                 href="/mentions-legales"
-                className="underline-offset-4 hover:underline"
+                className="text-slate-400 underline-offset-4 hover:text-slate-200 hover:underline"
               >
                 Mentions légales
               </a>
-              <span>·</span>
+              <span className="text-slate-600">·</span>
               <a
                 href="/confidentialite"
-                className="underline-offset-4 hover:underline"
+                className="text-slate-400 underline-offset-4 hover:text-slate-200 hover:underline"
               >
                 Confidentialité
               </a>
-              <span>·</span>
-              <button className="underline-offset-4 hover:underline">
+              <span className="text-slate-600">·</span>
+              <button className="text-slate-400 underline-offset-4 hover:text-slate-200 hover:underline">
                 Accès administrateur
               </button>
             </p>
