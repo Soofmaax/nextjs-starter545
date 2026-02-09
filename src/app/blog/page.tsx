@@ -8,6 +8,15 @@ const ARTICLES = [
     summary:
       "Analyse de l'arrêt de la Cour de cassation du 17 décembre 2025 (n°24-20.154) sur les droits et limites du tiers à un contrat.",
   },
+  {
+    slug: "inexecution-contractuelle-janvier-2025",
+    title:
+      "Quels recours possibles en cas d'inexécution contractuelle ? Quelques précisions utiles sur l'exécution en nature et la réduction unilatérale du prix",
+    date: "28 janvier 2025",
+    category: "Actualités janvier 2025",
+    summary:
+      "Retour sur l'arrêt du 18 décembre 2024 relatif à la distribution d'eau à Mayotte : force majeure, impossibilité matérielle, exécution en nature et réduction unilatérale du prix.",
+  },
 ];
 
 export default function BlogIndexPage() {
