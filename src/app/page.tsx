@@ -56,7 +56,7 @@ export default function Home() {
             <a href="/partenariats" className="transition hover:text-white">
               Partenariats
             </a>
-            <a href="#contact" className="transition hover:text-white">
+            <a href="/contact" className="transition hover:text-white">
               Contact
             </a>
             <a
