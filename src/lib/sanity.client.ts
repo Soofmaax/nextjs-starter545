@@ -18,6 +18,7 @@ export type SanityPost = {
   publishedAt: string;
   excerpt?: string;
   categoryTitle?: string;
+  categorySlug?: string;
   authors?: { _id: string; name: string; role?: string }[];
 };
 
@@ -30,6 +31,7 @@ export type SanityPostWithBody = {
   body?: any;
   authors?: { _id: string; name: string; role?: string }[];
   categoryTitle?: string;
+  categorySlug?: string;
 };
 
 const POSTS_QUERY = `*[_type == "post" && defined(slug.current) && (status == "published" || !defined(status))]
@@ -40,6 +42,7 @@ const POSTS_QUERY = `*[_type == "post" && defined(slug.current) && (status == "p
     publishedAt,
     excerpt,
     "categoryTitle": category->title,
+    "categorySlug": category->slug.current,
     authors[]->{ _id, name, role }
   }`;
 
@@ -51,7 +54,8 @@ const POST_BY_SLUG_QUERY = `*[_type == "post" && slug.current == $slug && (statu
   excerpt,
   body,
   authors[]->{ _id, name, role },
-  "categoryTitle": category->title
+  "categoryTitle": category->title,
+  "categorySlug": category->slug.current
 }`;
 
 export async function getPosts(): Promise<SanityPost[]> {
@@ -81,5 +85,30 @@ export async function getPostBySlug(slug: string): Promise<SanityPostWithBody | 
     return post ?? null;
   } catch {
     return null;
+  }
+}
+
+export async function getPostsByCategorySlug(
+  categorySlug: string,
+): Promise<SanityPost[]> {
+  if (!projectId || !dataset) return [];
+  if (!categorySlug) return [];
+
+  const query = `*[_type == "post" && defined(slug.current) && category->slug.current == $categorySlug && (status == "published" || !defined(status))]
+    | order(publishedAt desc) {
+      _id,
+      title,
+      "slug": slug.current,
+      publishedAt,
+      excerpt,
+      "categoryTitle": category->title,
+      "categorySlug": category->slug.current,
+      authors[]->{ _id, name, role }
+    }`;
+
+  try {
+    return await client.fetch<SanityPost[]>(query, { categorySlug });
+  } catch {
+    return [];
   }
 }

@@ -46,6 +46,21 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             {post.excerpt ? (
               <p className="text-xs text-slate-600">{post.excerpt}</p>
             ) : null}
+            {post.categoryTitle ? (
+              <p className="text-[11px] text-slate-600">Thème : {post.categoryTitle}</p>
+            ) : null}
+            {post.authors && post.authors.length > 0 ? (
+              <p className="text-[11px] text-slate-600">
+                Auteurs :
+                {" "}
+                {post.authors
+                  .filter((author) => author.name && author.name.trim().length > 0)
+                  .map((author) =>
+                    author.role ? `${author.name} (${author.role})` : author.name,
+                  )
+                  .join(", ")}
+              </p>
+            ) : null}
           </header>
 
           {/* Coordonnées / retour */}

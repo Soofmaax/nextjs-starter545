@@ -2,7 +2,17 @@ import { getPosts, type SanityPost } from "../../lib/sanity.client";
 import { ArticleSelect } from "../../components/blog/ArticleSelect";
 import { ArticleFilters } from "../../components/blog/ArticleFilters";
 
-const ARTICLES = [
+type ArticleCard = {
+  slug: string;
+  title: string;
+  date: string;
+  category: string;
+  summary: string;
+  theme?: string;
+  authors?: { name: string; role?: string }[];
+};
+
+const ARTICLES: ArticleCard[] = [
   {
     slug: "tiers-au-contrat-janvier-2026",
     title:
@@ -33,7 +43,7 @@ export default async function BlogIndexPage({
   const themeFilter =
     typeof searchParams?.theme === "string" ? searchParams.theme : "";
 
-  let articles = ARTICLES;
+  let articles: ArticleCard[] = ARTICLES;
   let authorOptions: string[] = [];
   let themeOptions: string[] = [];
   let recentPosts: SanityPost[] = [];
@@ -57,7 +67,7 @@ export default async function BlogIndexPage({
         return matchesAuthor && matchesTheme;
       });
 
-      articles = filteredPosts.map((post) => ({
+      articles = filteredPosts.map<ArticleCard>((post) => ({
         slug: post.slug,
         title: post.title,
         date: new Intl.DateTimeFormat("fr-FR", {
@@ -67,6 +77,11 @@ export default async function BlogIndexPage({
         }).format(new Date(post.publishedAt)),
         category: "Publications",
         summary: post.excerpt ?? "",
+        theme: post.categoryTitle,
+        authors: (post.authors ?? []).map((author) => ({
+          name: author.name,
+          role: author.role,
+        })),
       }));
 
       const authorNames = new Set<string>();
@@ -166,6 +181,21 @@ export default async function BlogIndexPage({
                 </h2>
                 <p className="text-[11px] text-slate-500">Publié le {article.date}</p>
                 <p className="text-xs text-slate-700">{article.summary}</p>
+                {article.theme && (
+                  <p className="text-[11px] text-slate-500">Thème : {article.theme}</p>
+                )}
+                {article.authors && article.authors.length > 0 ? (
+                  <p className="text-[11px] text-slate-500">
+                    Auteurs :
+                    {" "}
+                    {article.authors
+                      .filter((author) => author.name && author.name.trim().length > 0)
+                      .map((author) =>
+                        author.role ? `${author.name} (${author.role})` : author.name,
+                      )
+                      .join(", ")}
+                  </p>
+                ) : null}
                 <div className="pt-3">
                   <a
                     href={`/blog/${article.slug}`}
