@@ -47,7 +47,20 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               <p className="text-xs text-slate-600">{post.excerpt}</p>
             ) : null}
             {post.categoryTitle ? (
-              <p className="text-[11px] text-slate-600">Thème : {post.categoryTitle}</p>
+              <p className="text-[11px] text-slate-600">
+                Thème :
+                {" "}
+                {post.categorySlug ? (
+                  <a
+                    href={`/blog/theme/${post.categorySlug}`}
+                    className="text-amber-700 underline-offset-4 hover:underline"
+                  >
+                    {post.categoryTitle}
+                  </a>
+                ) : (
+                  post.categoryTitle
+                )}
+              </p>
             ) : null}
             {post.authors && post.authors.length > 0 ? (
               <p className="text-[11px] text-slate-600">

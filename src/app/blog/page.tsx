@@ -9,6 +9,7 @@ type ArticleCard = {
   category: string;
   summary: string;
   theme?: string;
+  themeSlug?: string;
   authors?: { name: string; role?: string }[];
 };
 
@@ -78,6 +79,7 @@ export default async function BlogIndexPage({
         category: "Publications",
         summary: post.excerpt ?? "",
         theme: post.categoryTitle,
+        themeSlug: post.categorySlug,
         authors: (post.authors ?? []).map((author) => ({
           name: author.name,
           role: author.role,
@@ -137,13 +139,21 @@ export default async function BlogIndexPage({
                 <p className="font-semibold text-slate-700">Articles récents</p>
                 <ul className="mt-1 flex flex-wrap gap-2">
                   {recentPosts.map((post) => (
-                    <li key={post._id}>
+                    <li key={post._id} className="flex flex-col gap-0.5">
                       <a
                         href={`/blog/${post.slug}`}
                         className="inline-flex items-center rounded-full border border-slate-300 bg-white/90 px-3 py-1 text-[11px] text-slate-900 underline-offset-4 hover:bg-slate-100 hover:underline"
                       >
                         {post.title}
                       </a>
+                      {post.categoryTitle && post.categorySlug ? (
+                        <a
+                          href={`/blog/theme/${post.categorySlug}`}
+                          className="text-[10px] text-slate-500 underline-offset-4 hover:underline"
+                        >
+                          Thème : {post.categoryTitle}
+                        </a>
+                      ) : null}
                     </li>
                   ))}
                 </ul>
@@ -182,7 +192,20 @@ export default async function BlogIndexPage({
                 <p className="text-[11px] text-slate-500">Publié le {article.date}</p>
                 <p className="text-xs text-slate-700">{article.summary}</p>
                 {article.theme && (
-                  <p className="text-[11px] text-slate-500">Thème : {article.theme}</p>
+                  <p className="text-[11px] text-slate-500">
+                    Thème :
+                    {" "}
+                    {article.themeSlug ? (
+                      <a
+                        href={`/blog/theme/${article.themeSlug}`}
+                        className="text-amber-700 underline-offset-4 hover:underline"
+                      >
+                        {article.theme}
+                      </a>
+                    ) : (
+                      article.theme
+                    )}
+                  </p>
                 )}
                 {article.authors && article.authors.length > 0 ? (
                   <p className="text-[11px] text-slate-500">
