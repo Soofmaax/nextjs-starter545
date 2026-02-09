@@ -1,3 +1,5 @@
+import { Mail, Phone } from "lucide-react";
+
 export default function ContactPage() {
   return (
     <div className="app-shell">
@@ -23,14 +25,17 @@ export default function ContactPage() {
           <p className="font-semibold text-slate-900">Cabinet Temple Boyer Legal</p>
           <p>10, avenue de Wagram</p>
           <p>75008 Paris</p>
-          <p>
-            Email :
-            <a
-              href="mailto:contact@templeboyer-legal.com"
-              className="ml-1 text-amber-700 underline-offset-4 hover:underline"
-            >
-              contact@templeboyer-legal.com
-            </a>
+          <p className="flex items-center gap-2">
+            <Mail className="h-4 w-4 text-slate-500" aria-hidden="true" />
+            <span>
+              Email :
+              <a
+                href="mailto:contact@templeboyer-legal.com"
+                className="ml-1 text-amber-700 underline-offset-4 hover:underline"
+              >
+                contact@templeboyer-legal.com
+              </a>
+            </span>
           </p>
         </section>
 
@@ -114,8 +119,12 @@ export default function ContactPage() {
               />
             </div>
             <div className="space-y-1.5">
-              <label htmlFor="telephone" className="text-[11px] text-slate-700">
-                Votre numéro de téléphone
+              <label
+                htmlFor="telephone"
+                className="inline-flex items-center gap-1 text-[11px] text-slate-700"
+              >
+                <Phone className="h-3.5 w-3.5 text-slate-500" aria-hidden="true" />
+                <span>Votre numéro de téléphone</span>
               </label>
               <input
                 id="telephone"
@@ -155,7 +164,8 @@ export default function ContactPage() {
               type="button"
               className="mt-1 inline-flex items-center justify-center rounded-full bg-amber-500 px-5 py-2 text-[11px] font-semibold text-slate-950 shadow-[0_18px_45px_rgba(180,83,9,0.45)] transition-colors hover:bg-amber-500/90"
             >
-              Envoyer
+              <Mail className="mr-2 h-4 w-4 text-slate-900" aria-hidden="true" />
+              <span>Envoyer</span>
             </button>
           </form>
         </section>

@@ -1,3 +1,5 @@
+import { BookOpenText, Globe2, Mail, Scale } from "lucide-react";
+
 const PRACTICE_AREAS = [
   "Contracts",
   "Disputes",
@@ -20,10 +22,13 @@ export default function HomeEn() {
       <header className="sticky top-0 z-30 border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-md">
         <nav className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-4">
           <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-2xl border border-slate-700/80 bg-slate-900/80 shadow-sm shadow-black/50">
-              <span className="text-xs font-semibold leading-tight text-slate-100">
-                TBL
-              </span>
+            <div className="flex items-center gap-2">
+              <div className="flex h-10 w-10 items-center justify-center rounded-2xl border border-slate-700/80 bg-slate-900/80 shadow-sm shadow-black/50">
+                <span className="text-xs font-semibold leading-tight text-slate-100">
+                  TBL
+                </span>
+              </div>
+              <Scale className="h-4 w-4 text-amber-500" aria-hidden="true" />
             </div>
             <div className="flex flex-col">
               <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-200">
@@ -339,8 +344,9 @@ export default function HomeEn() {
         <section id="blog" className="app-panel space-y-6">
           <div className="app-section-heading">
             <div>
-              <h2 className="text-lg font-semibold tracking-tight text-slate-950 sm:text-xl">
-                Insights &amp; updates
+              <h2 className="flex items-center gap-2 text-lg font-semibold tracking-tight text-slate-950 sm:text-xl">
+                <BookOpenText className="h-4 w-4 text-amber-600" aria-hidden="true" />
+                <span>Insights &amp; updates</span>
               </h2>
               <p className="text-xs text-slate-600">
                 You will soon find a selection of commentary and analysis on
@@ -374,16 +380,22 @@ export default function HomeEn() {
 
             <div className="space-y-2 text-xs text-slate-700">
               <p className="font-semibold">Temple Boyer Legal</p>
-              <p>10, avenue de Wagram</p>
+              <p className="flex items-center gap-2">
+                <Globe2 className="h-4 w-4 text-slate-500" aria-hidden="true" />
+                <span>10, avenue de Wagram</span>
+              </p>
               <p>75008 Paris</p>
-              <p>
-                Email:
-                <a
-                  href="mailto:contact@templeboyer-legal.com"
-                  className="ml-1 text-amber-700 underline-offset-4 hover:underline"
-                >
-                  contact@templeboyer-legal.com
-                </a>
+              <p className="flex items-center gap-2">
+                <Mail className="h-4 w-4 text-slate-500" aria-hidden="true" />
+                <span>
+                  Email:
+                  <a
+                    href="mailto:contact@templeboyer-legal.com"
+                    className="ml-1 text-amber-700 underline-offset-4 hover:underline"
+                  >
+                    contact@templeboyer-legal.com
+                  </a>
+                </span>
               </p>
             </div>
           </div>

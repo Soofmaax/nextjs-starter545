@@ -1,3 +1,5 @@
+import { getPosts } from "../../lib/sanity.client";
+
 const ARTICLES = [
   {
     slug: "tiers-au-contrat-janvier-2026",
@@ -19,7 +21,29 @@ const ARTICLES = [
   },
 ];
 
-export default function BlogIndexPage() {
+export default async function BlogIndexPage() {
+  let articles = ARTICLES;
+
+  try {
+    const sanityPosts = await getPosts();
+
+    if (sanityPosts && sanityPosts.length > 0) {
+      articles = sanityPosts.map((post) => ({
+        slug: post.slug,
+        title: post.title,
+        date: new Intl.DateTimeFormat("fr-FR", {
+          day: "2-digit",
+          month: "long",
+          year: "numeric",
+        }).format(new Date(post.publishedAt)),
+        category: "Publications",
+        summary: post.excerpt ?? "",
+      }));
+    }
+  } catch {
+    // Silent fallback to static ARTICLES
+  }
+
   return (
     <div className="app-shell">
       <main className="app-main">
@@ -44,7 +68,7 @@ export default function BlogIndexPage() {
         </header>
 
         <section className="space-y-4">
-          {ARTICLES.map((article) => (
+          {articles.map((article) => (
             <article
               key={article.slug}
               className="space-y-2 rounded-2xl border border-slate-200 bg-white/90 p-5 text-sm text-slate-800"
