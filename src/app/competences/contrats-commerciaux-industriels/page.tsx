@@ -1,0 +1,150 @@
+const SKILLS_COMMERCIAUX = [
+  "Rédaction, revue et négociation (en français / anglais) de tous contrats commerciaux",
+  "En amont : accords de confidentialité, lettres d'intention, achat / fourniture, bail commercial, prestations de service, conditions générales d'achat…",
+  "En aval : conditions générales de vente, distribution (exclusive, sélective, franchise, agent commercial, commissionnaire…), logistique (transport, emballage), cession et/ou licence de marque / brevet…",
+];
+
+const SKILLS_INDUSTRIELS = [
+  "Rédaction, revue et négociation (en français / anglais) de tous contrats industriels",
+  "En amont : contrats EPC (engineering, procurement and construction), achat / fourniture (équipement industriel, articles de conditionnement), manufacturing, R&D, transferts de technologie, contrats d'évaluation et de développement, partenariats (sous-traitance, co-traitance)…",
+  "En aval : vente, distribution, logistique (transport, conditionnement)",
+  '"Contract management" : suivi des contrats en cours d'exécution pour veiller au respect des milestones, anticiper les avenants nécessaires et les renouvellements…',
+];
+
+const OPERATIONS = [
+  "Élaboration et négociation d'un contrat EPC pour un fabricant étranger de colles pour les besoins de l'extension de ses usines de production en France et à l'étranger",
+  "Élaboration du contrat-cadre de distribution exclusive d'un fabricant américain de dispositifs médicaux pour une implémentation à l'échelle mondiale",
+  "Élaboration et négociation d'un contrat-cadre de prestation de services pour la gestion et le traitement des déchets générés par un groupe industriel et l'ensemble de ses filiales européennes",
+  "Revue et négociation d'un contrat d'approvisionnement en composants stratégiques pour un industriel français avec un fournisseur leader européen dans son secteur",
+  "Assistance d'un client dans le textile de luxe dans la revue et la négociation contractuelle de l'acquisition d'un portefeuille de marques",
+];
+
+const PUBLICATIONS = [
+  "La révision du prix pour imprévision : faut-il toujours l'appréhender dans le contrat et si oui, comment ?",
+  "La sanction pour non-respect du plafonnement des délais de paiement est relevée à 2 millions d’euros",
+  "Le plafonnement légal des délais de paiement dans les contrats internationaux : l'exemple français",
+  "Parties à un contrat international : peut-on échapper à la compétence des juridictions françaises dans un litige lié à la rupture d'une relation commerciale infligée à une société française ?",
+  'Invalidation du "Safe Harbor" : que faire concernant les contrats en cours avec les entreprises US ?',
+  "La période d’essai fait échec à l’indemnité de fin de contrat de l’agent commercial",
+  "Joint-venture : l’accord-cadre est un préalable indispensable (Impulser, septembre 2006)",
+  "Joint-venture : PME-PMI, attention aux mariages sans précautions contractuelles (Le Moci, 19/10/06)",
+  "Quelle réparation en cas de rupture fautive des pourparlers (Option Finance, 11/12/06)",
+  "Sous-traitance industrielle : spécificités et points d’actualité (Cahiers juridiques – Journal du Vrac et Journal des Fluides, mai 2007)",
+  "Sous-traitance de marché : les obligations réciproques (Le Moniteur, juin 2007, en deux volets)",
+  "Partenariats industriels : savoir choisir le cadre juridique adapté (Cahiers juridiques du Journal du Vrac et du Journal des Fluides, mai-juin 2007)",
+  "Rupture de relations commerciales établies : de l’intérêt réaffirmé de la clause attributive de juridiction dans un contrat international",
+];
+
+export default function ContratsCommerciauxIndustrielsPage() {
+  return (
+    <div className="min-h-screen bg-slate-950 text-slate-50">
+      <main className="mx-auto flex max-w-6xl flex-col gap-16 px-6 pb-24 pt-16">
+        {/* En-tête */}
+        <header className="space-y-3 border-b border-white/10 pb-8">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-sky-300">
+            Temple Boyer Legal – Compétences
+          </p>
+          <h1 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl">
+            Spécialiste des contrats commerciaux et industriels
+          </h1>
+          <p className="max-w-2xl text-sm text-slate-200">
+            TEMPLE BOYER LEGAL – Cabinet d&apos;avocat d&apos;affaires international, conseil
+            &amp; contentieux, bénéficie d&apos;une expertise approfondie en matière de
+            contrats commerciaux et industriels, y compris de dimension
+            internationale.
+          </p>
+        </header>
+
+        {/* Intro */}
+        <section className="space-y-4 text-sm leading-relaxed text-slate-200">
+          <p>
+            Notre expertise approfondie, acquise au contact d&apos;une clientèle très
+            diversifiée et de schémas contractuels variés, nous confère une vision à
+            la fois panoramique et spécifique des besoins contractuels de nos
+            clients.
+          </p>
+          <p>
+            Spécialiste des contrats commerciaux, le Cabinet est en mesure
+            d&apos;anticiper et de suggérer des schémas contractuels complémentaires et
+            / ou alternatifs qui s&apos;avèrent nécessaires ou utiles pour protéger et
+            promouvoir l&apos;activité de ses clients.
+          </p>
+        </section>
+
+        {/* Compétences */}
+        <section className="grid gap-8 md:grid-cols-2">
+          <div className="space-y-4 rounded-3xl border border-white/10 bg-slate-950/80 p-5 text-xs text-slate-200">
+            <h2 className="text-sm font-semibold text-slate-50">
+              Contrats commerciaux
+            </h2>
+            <ul className="space-y-2">
+              {SKILLS_COMMERCIAUX.map((item) => (
+                <li key={item} className="flex gap-2">
+                  <span className="mt-[5px] h-1.5 w-1.5 rounded-full bg-sky-400" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="space-y-4 rounded-3xl border border-white/10 bg-slate-950/80 p-5 text-xs text-slate-200">
+            <h2 className="text-sm font-semibold text-slate-50">
+              Contrats industriels &amp; contract management
+            </h2>
+            <ul className="space-y-2">
+              {SKILLS_INDUSTRIELS.map((item) => (
+                <li key={item} className="flex gap-2">
+                  <span className="mt-[5px] h-1.5 w-1.5 rounded-full bg-emerald-400" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
+        {/* Exemples d'opérations */}
+        <section className="space-y-4">
+          <h2 className="text-lg font-semibold tracking-tight sm:text-xl">
+            Exemples d&apos;opérations
+          </h2>
+          <ul className="space-y-2 rounded-3xl border border-white/10 bg-slate-950/70 p-4 text-xs text-slate-200">
+            {OPERATIONS.map((op) => (
+              <li key={op} className="flex gap-2">
+                <span className="mt-[5px] h-1.5 w-1.5 rounded-full bg-sky-400" />
+                <span>{op}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        {/* Publications liées */}
+        <section className="space-y-4">
+          <h2 className="text-lg font-semibold tracking-tight sm:text-xl">
+            Publications liées
+          </h2>
+          <ul className="space-y-2 rounded-3xl border border-white/10 bg-slate-950/70 p-4 text-xs text-slate-200">
+            {PUBLICATIONS.map((pub) => (
+              <li key={pub} className="flex gap-2">
+                <span className="mt-[5px] h-1.5 w-1.5 rounded-full bg-indigo-400" />
+                <span>{pub} (voir la publication)</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        {/* Bas de page simplifié */}
+        <section className="border-t border-white/10 pt-6 text-[11px] text-slate-400">
+          <p>
+            Maître Sarah Temple-Boyer – Avocat d&apos;affaires international, Paris –
+            Cabinet Temple Boyer Legal, 10 avenue de Wagram, 75008 Paris –
+            contact@templeboyer-legal.com
+          </p>
+          <p className="mt-1">
+            © 2015 – {new Date().getFullYear()} Sarah Temple-Boyer. Tous droits
+            réservés.
+          </p>
+        </section>
+      </main>
+    </div>
+  );
+}
