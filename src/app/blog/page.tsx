@@ -1,5 +1,6 @@
-import { getPosts } from "../../lib/sanity.client";
+import { getPosts, type SanityPost } from "../../lib/sanity.client";
 import { ArticleSelect } from "../../components/blog/ArticleSelect";
+import { ArticleFilters } from "../../components/blog/ArticleFilters";
 
 const ARTICLES = [
   {
@@ -22,14 +23,41 @@ const ARTICLES = [
   },
 ];
 
-export default async function BlogIndexPage() {
+export default async function BlogIndexPage({
+  searchParams,
+}: {
+  searchParams?: { [key: string]: string | string[] | undefined };
+}) {
+  const authorFilter =
+    typeof searchParams?.author === "string" ? searchParams.author : "";
+  const themeFilter =
+    typeof searchParams?.theme === "string" ? searchParams.theme : "";
+
   let articles = ARTICLES;
+  let authorOptions: string[] = [];
+  let themeOptions: string[] = [];
+  let recentPosts: SanityPost[] = [];
 
   try {
     const sanityPosts = await getPosts();
 
     if (sanityPosts && sanityPosts.length > 0) {
-      articles = sanityPosts.map((post) => ({
+      recentPosts = sanityPosts.slice(0, 3);
+
+      const filteredPosts = sanityPosts.filter((post) => {
+        const matchesAuthor =
+          !authorFilter ||
+          (post.authors ?? []).some(
+            (author) => author.name && author.name === authorFilter,
+          );
+
+        const matchesTheme =
+          !themeFilter || post.categoryTitle === themeFilter;
+
+        return matchesAuthor && matchesTheme;
+      });
+
+      articles = filteredPosts.map((post) => ({
         slug: post.slug,
         title: post.title,
         date: new Intl.DateTimeFormat("fr-FR", {
@@ -40,6 +68,28 @@ export default async function BlogIndexPage() {
         category: "Publications",
         summary: post.excerpt ?? "",
       }));
+
+      const authorNames = new Set<string>();
+      sanityPosts.forEach((post) => {
+        (post.authors ?? []).forEach((author) => {
+          if (author?.name && author.name.trim().length > 0) {
+            authorNames.add(author.name);
+          }
+        });
+      });
+      authorOptions = Array.from(authorNames).sort((a, b) =>
+        a.localeCompare(b, "fr"),
+      );
+
+      const themeNames = new Set<string>();
+      sanityPosts.forEach((post) => {
+        if (post.categoryTitle && post.categoryTitle.trim().length > 0) {
+          themeNames.add(post.categoryTitle);
+        }
+      });
+      themeOptions = Array.from(themeNames).sort((a, b) =>
+        a.localeCompare(b, "fr"),
+      );
     }
   } catch {
     // Silent fallback to static ARTICLES
@@ -67,6 +117,23 @@ export default async function BlogIndexPage() {
               Les publications sont classées par thèmes afin de faciliter leur
               consultation. Bonne lecture.
             </p>
+            {recentPosts.length > 0 ? (
+              <div className="pt-2 text-xs text-slate-600">
+                <p className="font-semibold text-slate-700">Articles récents</p>
+                <ul className="mt-1 flex flex-wrap gap-2">
+                  {recentPosts.map((post) => (
+                    <li key={post._id}>
+                      <a
+                        href={`/blog/${post.slug}`}
+                        className="inline-flex items-center rounded-full border border-slate-300 bg-white/90 px-3 py-1 text-[11px] text-slate-900 underline-offset-4 hover:bg-slate-100 hover:underline"
+                      >
+                        {post.title}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
           </header>
 
           <ArticleSelect
@@ -75,6 +142,15 @@ export default async function BlogIndexPage() {
               title: article.title,
             }))}
           />
+
+          {authorOptions.length > 0 || themeOptions.length > 0 ? (
+            <ArticleFilters
+              authorOptions={authorOptions}
+              themeOptions={themeOptions}
+              currentAuthor={authorFilter}
+              currentTheme={themeFilter}
+            />
+          ) : null}
 
           <div className="space-y-4">
             {articles.map((article) => (

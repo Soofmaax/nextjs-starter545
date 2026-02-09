@@ -17,6 +17,8 @@ export type SanityPost = {
   slug: string;
   publishedAt: string;
   excerpt?: string;
+  categoryTitle?: string;
+  authors?: { _id: string; name: string; role?: string }[];
 };
 
 export type SanityPostWithBody = {
@@ -27,16 +29,19 @@ export type SanityPostWithBody = {
   excerpt?: string;
   body?: any;
   authors?: { _id: string; name: string; role?: string }[];
+  categoryTitle?: string;
 };
 
 const POSTS_QUERY = `*[_type == "post" && defined(slug.current) && (status == "published" || !defined(status))]
   | order(publishedAt desc) {
-  _id,
-  title,
-  "slug": slug.current,
-  publishedAt,
-  excerpt
-}`;
+    _id,
+    title,
+    "slug": slug.current,
+    publishedAt,
+    excerpt,
+    "categoryTitle": category->title,
+    authors[]->{ _id, name, role }
+  }`;
 
 const POST_BY_SLUG_QUERY = `*[_type == "post" && slug.current == $slug && (status == "published" || !defined(status))][0]{
   _id,
@@ -45,7 +50,8 @@ const POST_BY_SLUG_QUERY = `*[_type == "post" && slug.current == $slug && (statu
   publishedAt,
   excerpt,
   body,
-  authors[]->{ _id, name, role }
+  authors[]->{ _id, name, role },
+  "categoryTitle": category->title
 }`;
 
 export async function getPosts(): Promise<SanityPost[]> {

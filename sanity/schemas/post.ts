@@ -37,6 +37,12 @@ const post = defineType({
       initialValue: "published",
     }),
     defineField({
+      name: "category",
+      title: "Thème",
+      type: "reference",
+      to: [{ type: "category" }],
+    }),
+    defineField({
       name: "excerpt",
       title: "Excerpt",
       type: "text",
