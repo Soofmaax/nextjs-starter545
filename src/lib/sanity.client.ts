@@ -19,12 +19,33 @@ export type SanityPost = {
   excerpt?: string;
 };
 
-const POSTS_QUERY = `*[_type == "post"] | order(publishedAt desc) {
+export type SanityPostWithBody = {
+  _id: string;
+  title: string;
+  slug: string;
+  publishedAt: string;
+  excerpt?: string;
+  body?: any;
+  authors?: { _id: string; name: string; role?: string }[];
+};
+
+const POSTS_QUERY = `*[_type == "post" && defined(slug.current) && (status == "published" || !defined(status))]
+  | order(publishedAt desc) {
   _id,
   title,
   "slug": slug.current,
   publishedAt,
   excerpt
+}`;
+
+const POST_BY_SLUG_QUERY = `*[_type == "post" && slug.current == $slug && (status == "published" || !defined(status))][0]{
+  _id,
+  title,
+  "slug": slug.current,
+  publishedAt,
+  excerpt,
+  body,
+  authors[]->{ _id, name, role }
 }`;
 
 export async function getPosts(): Promise<SanityPost[]> {
@@ -37,5 +58,22 @@ export async function getPosts(): Promise<SanityPost[]> {
     return posts;
   } catch {
     return [];
+  }
+}
+
+export async function getPostBySlug(slug: string): Promise<SanityPostWithBody | null> {
+  if (!projectId || !dataset) {
+    return null;
+  }
+
+  if (!slug) {
+    return null;
+  }
+
+  try {
+    const post = await client.fetch<SanityPostWithBody | null>(POST_BY_SLUG_QUERY, { slug });
+    return post ?? null;
+  } catch {
+    return null;
   }
 }
