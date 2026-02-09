@@ -38,20 +38,32 @@ export default function Home() {
           </div>
 
           <div className="hidden items-center gap-6 text-[11px] font-medium text-slate-300 sm:flex">
-            <a href="#cabinet" className="transition hover:text-white">
+            <a href="/" className="transition hover:text-white">
+              Accueil
+            </a>
+            <a href="/cabinet" className="transition hover:text-white">
               Le Cabinet
             </a>
-            <a href="#competences" className="transition hover:text-white">
-              Domaines de compétence
+            <a href="/competences" className="transition hover:text-white">
+              Compétences
             </a>
-            <a href="#blog" className="transition hover:text-white">
-              Actualités
+            <a href="/honoraires" className="transition hover:text-white">
+              Honoraires
+            </a>
+            <a href="/blog" className="transition hover:text-white">
+              Publications / Actualités
+            </a>
+            <a href="/partenariats" className="transition hover:text-white">
+              Partenariats
+            </a>
+            <a href="#contact" className="transition hover:text-white">
+              Contact
             </a>
             <a
-              href="#contact"
-              className="rounded-full bg-sky-500 px-4 py-1.5 text-[11px] font-semibold text-slate-950 shadow-lg shadow-sky-500/40 transition hover:bg-sky-400"
+              href="#plan-acces"
+              className="transition hover:text-white"
             >
-              Prendre rendez-vous
+              Plan d&apos;accès
             </a>
           </div>
         </nav>
