@@ -1,3 +1,5 @@
+import { getSiteSettings, DEFAULT_SITE_SETTINGS } from "../../../lib/sanity.client";
+
 const SKILLS_CONTENTIEUX = [
   "Anticipation du risque en amont : identification des zones contractuelles à risque et rédaction de clauses pour éviter les contentieux",
   "Mise en place d'une stratégie préventive (conseil et contentieux) dès l'apparition d'un différend",
@@ -26,7 +28,19 @@ const PUBLICATIONS_CONTENTIEUX = [
   "Rupture des relations dans un contexte international : peut-on, et si oui comment, échapper à l'indemnité de l'article L. 442-6, I, 5° du code de commerce ?",
 ];
 
-export default function ContentieuxPrecontentieuxPage() {
+export default async function ContentieuxPrecontentieuxPage() {
+  const siteSettings = (await getSiteSettings()) ?? DEFAULT_SITE_SETTINGS;
+
+  const contactEmail = siteSettings.contactEmail ?? DEFAULT_SITE_SETTINGS.contactEmail;
+  const address = siteSettings.address ?? DEFAULT_SITE_SETTINGS.address;
+
+  const addressParts = address.split(",").map((part) => part.trim());
+  const isDefaultAddress = address === DEFAULT_SITE_SETTINGS.address;
+  const addressLine1 = isDefaultAddress
+    ? "10, avenue de Wagram"
+    : addressParts[0] || "10, avenue de Wagram";
+  const addressLine2 = addressParts[1] || "75008 Paris";
+  const postalAddress = address || DEFAULT_SITE_SETTINGS.address!;
   return (
     <div className="app-shell">
       <main className="app-main">
@@ -117,8 +131,8 @@ export default function ContentieuxPrecontentieuxPage() {
         <section className="border-t border-slate-800/70 pt-6 text-[11px] text-slate-400">
           <p>
             Maître Sarah Temple-Boyer – Avocat d&apos;affaires international, Paris –
-            Cabinet Temple Boyer Legal, 10 avenue de Wagram, 75008 Paris –
-            contact@templeboyer-legal.com
+            Cabinet Temple Boyer Legal, {postalAddress} –
+            {contactEmail}
           </p>
           <p className="mt-1">
             © 2015 – {new Date().getFullYear()} Sarah Temple-Boyer. Tous droits

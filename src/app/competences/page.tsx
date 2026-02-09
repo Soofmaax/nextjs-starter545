@@ -1,3 +1,5 @@
+import { getSiteSettings, DEFAULT_SITE_SETTINGS } from "../../lib/sanity.client";
+
 const EXPERTISE_JURIDIQUE = [
   "Contrats commerciaux et industriels (y compris de dimension internationale)",
   "Précontentieux et contentieux commercial",
@@ -19,7 +21,19 @@ const SECTORIEL = [
   "Entreprises opérant en B to B et B to C dans un contexte international",
 ];
 
-export default function CompetencesPage() {
+export default async function CompetencesPage() {
+  const siteSettings = (await getSiteSettings()) ?? DEFAULT_SITE_SETTINGS;
+
+  const contactEmail = siteSettings.contactEmail ?? DEFAULT_SITE_SETTINGS.contactEmail;
+  const address = siteSettings.address ?? DEFAULT_SITE_SETTINGS.address;
+
+  const addressParts = address.split(",").map((part) => part.trim());
+  const isDefaultAddress = address === DEFAULT_SITE_SETTINGS.address;
+  const addressLine1 = isDefaultAddress
+    ? "10, avenue de Wagram"
+    : addressParts[0] || "10, avenue de Wagram";
+  const addressLine2 = addressParts[1] || "75008 Paris";
+  const postalAddress = address || DEFAULT_SITE_SETTINGS.address!;
   return (
     <div className="app-shell">
       <main className="app-main">
@@ -62,15 +76,15 @@ export default function CompetencesPage() {
           <div className="space-y-3 rounded-2xl border border-slate-200 bg-white/90 p-4 text-xs text-slate-800">
             <p className="font-semibold text-slate-900">Coordonnées du Cabinet</p>
             <p>Cabinet Temple Boyer Legal</p>
-            <p>10, avenue de Wagram</p>
-            <p>75008 Paris</p>
+            <p>{addressLine1}</p>
+            <p>{addressLine2}</p>
             <p>
               Email :
               <a
-                href="mailto:contact@templeboyer-legal.com"
+                href={`mailto:${contactEmail}`}
                 className="ml-1 text-amber-700 underline-offset-4 hover:underline"
               >
-                contact@templeboyer-legal.com
+                {contactEmail}
               </a>
             </p>
           </div>

@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { PortableText } from "@portabletext/react";
 
-import { getPostBySlug, getRelatedPosts, type SanityPost } from "../../../lib/sanity.client";
+import { getSiteSettings, DEFAULT_SITE_SETTINGS, getPostBySlug, getRelatedPosts, type SanityPost } from "../../../lib/sanity.client";
 
 type BlogPostPageProps = {
   params: {
@@ -11,6 +11,19 @@ type BlogPostPageProps = {
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = params;
+
+  const siteSettings = (await getSiteSettings()) ?? DEFAULT_SITE_SETTINGS;
+
+  const contactEmail = siteSettings.contactEmail ?? DEFAULT_SITE_SETTINGS.contactEmail;
+  const address = siteSettings.address ?? DEFAULT_SITE_SETTINGS.address;
+
+  const addressParts = address.split(",").map((part) => part.trim());
+  const isDefaultAddress = address === DEFAULT_SITE_SETTINGS.address;
+  const addressLine1 = isDefaultAddress
+    ? "10, avenue de Wagram"
+    : addressParts[0] || "10, avenue de Wagram";
+  const addressLine2 = addressParts[1] || "75008 Paris";
+  const postalAddress = address || DEFAULT_SITE_SETTINGS.address!;
 
   const post = await getPostBySlug(slug);
 
@@ -82,15 +95,15 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           <section className="app-panel flex flex-col gap-4 text-xs text-slate-800 sm:flex-row sm:items-start sm:justify-between">
             <div className="space-y-1">
               <p className="font-semibold text-slate-900">Cabinet Temple Boyer Legal</p>
-              <p>10, avenue de Wagram</p>
-              <p>75008 Paris</p>
+              <p>{addressLine1}</p>
+              <p>{addressLine2}</p>
               <p>
                 Email :
                 <a
-                  href="mailto:contact@templeboyer-legal.com"
+                  href={`mailto:${contactEmail}`}
                   className="ml-1 text-amber-700 underline-offset-4 hover:underline"
                 >
-                  contact@templeboyer-legal.com
+                  {contactEmail}
                 </a>
               </p>
             </div>

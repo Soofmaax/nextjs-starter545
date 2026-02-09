@@ -1,4 +1,18 @@
-export default function ConfidentialitePage() {
+import { getSiteSettings, DEFAULT_SITE_SETTINGS } from "../../lib/sanity.client";
+
+export default async function ConfidentialitePage() {
+  const siteSettings = (await getSiteSettings()) ?? DEFAULT_SITE_SETTINGS;
+
+  const contactEmail = siteSettings.contactEmail ?? DEFAULT_SITE_SETTINGS.contactEmail;
+  const address = siteSettings.address ?? DEFAULT_SITE_SETTINGS.address;
+
+  const addressParts = address.split(",").map((part) => part.trim());
+  const isDefaultAddress = address === DEFAULT_SITE_SETTINGS.address;
+  const addressLine1 = isDefaultAddress
+    ? "10, avenue de Wagram"
+    : addressParts[0] || "10, avenue de Wagram";
+  const addressLine2 = addressParts[1] || "75008 Paris";
+  const postalAddress = address || DEFAULT_SITE_SETTINGS.address!;
   return (
     <div className="app-shell">
       <main className="app-main">
@@ -325,8 +339,8 @@ export default function ConfidentialitePage() {
         <section className="border-t border-slate-800/70 pt-6 text-[11px] text-slate-400">
           <p>
             Maître Sarah Temple-Boyer – Avocat d&apos;affaires international, Paris –
-            Cabinet Temple Boyer Legal, 10 avenue de Wagram, 75008 Paris –
-            contact@templeboyer-legal.com
+            Cabinet Temple Boyer Legal, {postalAddress} –
+            {contactEmail}
           </p>
           <p className="mt-1">
             © 2015 – {new Date().getFullYear()} Sarah Temple-Boyer. Tous droits
