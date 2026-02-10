@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getPosts, type SanityPost } from "../../lib/sanity.client";
+import { STATIC_ARTICLES } from "../../lib/static-articles";
 import { ArticleSelect } from "../../components/blog/ArticleSelect";
 import { ArticleFilters } from "../../components/blog/ArticleFilters";
 
@@ -19,27 +20,6 @@ type ThemeOption = {
   slug: string;
 };
 
-const ARTICLES: ArticleCard[] = [
-  {
-    slug: "tiers-au-contrat-janvier-2026",
-    title:
-      "Le tiers au contrat ne peut pas tout avoir : agir en responsabilité pour manquement contractuel sans subir les limites contractuelles prévues",
-    date: "19 janvier 2026",
-    category: "Actualités janvier 2026",
-    summary:
-      "Analyse de l'arrêt de la Cour de cassation du 17 décembre 2025 (n°24-20.154) sur les droits et limites du tiers à un contrat.",
-  },
-  {
-    slug: "inexecution-contractuelle-janvier-2025",
-    title:
-      "Quels recours possibles en cas d'inexécution contractuelle ? Quelques précisions utiles sur l'exécution en nature et la réduction unilatérale du prix",
-    date: "28 janvier 2025",
-    category: "Actualités janvier 2025",
-    summary:
-      "Retour sur l'arrêt du 18 décembre 2024 relatif à la distribution d'eau à Mayotte : force majeure, impossibilité matérielle, exécution en nature et réduction unilatérale du prix.",
-  },
-];
-
 type BlogIndexPageProps = {
   searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
 };
@@ -49,7 +29,20 @@ export default async function BlogIndexPage({ searchParams }: BlogIndexPageProps
   const authorFilter = typeof query.author === "string" ? query.author : "";
   const themeFilter = typeof query.theme === "string" ? query.theme : "";
 
-  let articles: ArticleCard[] = ARTICLES;
+  const formatDate = (iso: string) =>
+    new Intl.DateTimeFormat("fr-FR", {
+      day: "2-digit",
+      month: "long",
+      year: "numeric",
+    }).format(new Date(iso));
+
+  let articles: ArticleCard[] = STATIC_ARTICLES.map((article) => ({
+    slug: article.slug,
+    title: article.title,
+    date: formatDate(article.publishedAt),
+    category: article.category,
+    summary: article.summary,
+  }));
   let authorOptions: string[] = [];
   let themeOptions: string[] = [];
   let recentPosts: SanityPost[] = [];
@@ -77,11 +70,7 @@ export default async function BlogIndexPage({ searchParams }: BlogIndexPageProps
       articles = filteredPosts.map<ArticleCard>((post) => ({
         slug: post.slug,
         title: post.title,
-        date: new Intl.DateTimeFormat("fr-FR", {
-          day: "2-digit",
-          month: "long",
-          year: "numeric",
-        }).format(new Date(post.publishedAt)),
+        date: formatDate(post.publishedAt),
         category: "Publications",
         summary: post.excerpt ?? "",
         theme: post.categoryTitle,
@@ -153,6 +142,16 @@ export default async function BlogIndexPage({ searchParams }: BlogIndexPageProps
             <p className="max-w-2xl text-xs text-slate-500">
               Les publications sont classées par thèmes afin de faciliter leur
               consultation. Bonne lecture.
+            </p>
+            <p className="text-[11px] text-slate-500">
+              Flux RSS :
+              {" "}
+              <a
+                href="/rss.xml"
+                className="text-slate-900 underline-offset-4 hover:underline"
+              >
+                /rss.xml
+              </a>
             </p>
             {exploreThemes.length > 0 ? (
               <div className="pt-2 text-[11px] text-slate-600">

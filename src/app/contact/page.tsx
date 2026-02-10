@@ -1,7 +1,14 @@
 import { Mail, Phone } from "lucide-react";
 import { getSiteSettings, DEFAULT_SITE_SETTINGS } from "../../lib/sanity.client";
 
-export default async function ContactPage() {
+type ContactPageProps = {
+  searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
+};
+
+export default async function ContactPage({ searchParams }: ContactPageProps) {
+  const query = searchParams ? await searchParams : {};
+  const sent = query.sent === "1";
+  const hasError = typeof query.error === "string" && query.error.length > 0;
   const siteSettings = (await getSiteSettings()) ?? DEFAULT_SITE_SETTINGS;
 
   const contactEmail = siteSettings.contactEmail ?? DEFAULT_SITE_SETTINGS.contactEmail;
@@ -32,6 +39,15 @@ export default async function ContactPage() {
             sollicitation de devis, vous pouvez utiliser le formulaire ci-dessous
             ou contacter directement le Cabinet.
           </p>
+          {sent ? (
+            <p className="rounded-xl border border-emerald-300 bg-emerald-50 px-3 py-2 text-[11px] text-emerald-800">
+              Votre message a bien été envoyé. Le Cabinet vous répondra dans les meilleurs délais.
+            </p>
+          ) : hasError ? (
+            <p className="rounded-xl border border-red-300 bg-red-50 px-3 py-2 text-[11px] text-red-800">
+              Une erreur est survenue lors de l&apos;envoi de votre message. Vous pouvez réessayer ou utiliser directement l&apos;adresse email du Cabinet.
+            </p>
+          ) : null}
         </header>
 
         {/* Coordonnées */}
@@ -90,7 +106,7 @@ export default async function ContactPage() {
               par courriel à
               <a
                 href={`mailto:${contactEmail}`}
-                className="ml-1 text-amber-700 underline-offset-4 hover:underline"
+                className="ml-1 text-slate-900 underline-offset-4 hover:underline"
               >
                 {contactEmail}
               </a>
@@ -106,9 +122,9 @@ export default async function ContactPage() {
           </p>
         </section>
 
-        {/* Formulaire de contact (maquette) */}
+        {/* Formulaire de contact */}
         <section className="app-panel text-xs text-slate-800">
-          <form className="space-y-3">
+          <form className="space-y-3" method="post">
             <div className="space-y-1.5">
               <label htmlFor="nom" className="text-[11px] text-slate-700">
                 Votre nom*
@@ -116,7 +132,8 @@ export default async function ContactPage() {
               <input
                 id="nom"
                 name="nom"
-                className="w-full rounded-xl border border-slate-300 bg-white/90 px-3 py-2 text-xs text-slate-900 outline-none ring-amber-500/20 placeholder:text-slate-400 focus:border-amber-500 focus:ring-2"
+                required
+                className="w-full rounded-xl border border-slate-300 bg-white/90 px-3 py-2 text-xs text-slate-900 outline-none ring-slate-500/20 placeholder:text-slate-400 focus:border-slate-900 focus:ring-2"
                 placeholder="Votre nom complet"
               />
             </div>
@@ -128,7 +145,8 @@ export default async function ContactPage() {
                 id="email"
                 name="email"
                 type="email"
-                className="w-full rounded-xl border border-slate-300 bg-white/90 px-3 py-2 text-xs text-slate-900 outline-none ring-amber-500/20 placeholder:text-slate-400 focus:border-amber-500 focus:ring-2"
+                required
+                className="w-full rounded-xl border border-slate-300 bg-white/90 px-3 py-2 text-xs text-slate-900 outline-none ring-slate-500/20 placeholder:text-slate-400 focus:border-slate-900 focus:ring-2"
                 placeholder="vous@exemple.com"
               />
             </div>
@@ -143,7 +161,7 @@ export default async function ContactPage() {
               <input
                 id="telephone"
                 name="telephone"
-                className="w-full rounded-xl border border-slate-300 bg-white/90 px-3 py-2 text-xs text-slate-900 outline-none ring-amber-500/20 placeholder:text-slate-400 focus:border-amber-500 focus:ring-2"
+                className="w-full rounded-xl border border-slate-300 bg-white/90 px-3 py-2 text-xs text-slate-900 outline-none ring-slate-500/20 placeholder:text-slate-400 focus:border-slate-900 focus:ring-2"
                 placeholder="Numéro (facultatif)"
               />
             </div>
@@ -154,7 +172,7 @@ export default async function ContactPage() {
               <input
                 id="objet"
                 name="objet"
-                className="w-full rounded-xl border border-slate-300 bg-white/90 px-3 py-2 text-xs text-slate-900 outline-none ring-amber-500/20 placeholder:text-slate-400 focus:border-amber-500 focus:ring-2"
+                className="w-full rounded-xl border border-slate-300 bg-white/90 px-3 py-2 text-xs text-slate-900 outline-none ring-slate-500/20 placeholder:text-slate-400 focus:border-slate-900 focus:ring-2"
                 placeholder="Objet de votre demande"
               />
             </div>
@@ -166,19 +184,19 @@ export default async function ContactPage() {
                 id="message"
                 name="message"
                 rows={4}
-                className="w-full rounded-xl border border-slate-300 bg-white/90 px-3 py-2 text-xs text-slate-900 outline-none ring-amber-500/20 placeholder:text-slate-400 focus:border-amber-500 focus:ring-2"
+                className="w-full rounded-xl border border-slate-300 bg-white/90 px-3 py-2 text-xs text-slate-900 outline-none ring-slate-500/20 placeholder:text-slate-400 focus:border-slate-900 focus:ring-2"
                 placeholder="Décrivez brièvement votre demande"
               />
             </div>
             <p className="text-[10px] text-slate-500">
-              Ce formulaire est proposé à titre indicatif dans cette maquette.
-              Aucun envoi effectif n&apos;est réalisé depuis ce site de démonstration.
+              Les champs marqués d&apos;un astérisque (*) sont obligatoires. Votre message
+              sera transmis par courrier électronique au Cabinet.
             </p>
             <button
-              type="button"
-              className="mt-1 inline-flex items-center justify-center rounded-full bg-amber-500 px-5 py-2 text-[11px] font-semibold text-slate-950 shadow-[0_18px_45px_rgba(180,83,9,0.45)] transition-colors hover:bg-amber-500/90"
+              type="submit"
+              className="mt-1 inline-flex items-center justify-center rounded-full bg-slate-900 px-5 py-2 text-[11px] font-semibold text-white shadow-sm transition-colors hover:bg-slate-800"
             >
-              <Mail className="mr-2 h-4 w-4 text-slate-900" aria-hidden="true" />
+              <Mail className="mr-2 h-4 w-4 text-white" aria-hidden="true" />
               <span>Envoyer</span>
             </button>
           </form>
