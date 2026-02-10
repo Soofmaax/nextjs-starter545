@@ -22,6 +22,7 @@ npm install
 Lancer le serveur de développement :
 
 ```bash
+npm install
 npm run dev
 ```
 

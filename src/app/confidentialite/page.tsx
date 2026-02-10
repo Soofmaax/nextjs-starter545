@@ -10,7 +10,7 @@ export default async function ConfidentialitePage() {
   const phone = siteSettings.phone ?? DEFAULT_SITE_SETTINGS.phone;
   return (
     <div className="app-shell">
-      <main className="app-main">
+      <main id="main-content" className="app-main">
         <div className="mx-auto flex w-full max-w-3xl flex-col gap-10">
         {/* En-tête */}
         <header className="app-panel space-y-4">

@@ -307,7 +307,10 @@ export default async function Home() {
                 de l&apos;actualité juridique en droit des affaires.
               </p>
             </div>
-            <button className="self-start rounded-full border border-slate-300 bg-transparent px-4 py-1.5 text-[11px] font-medium text-slate-900 transition-colors hover:bg-slate-100">
+            <button
+              type="button"
+              className="self-start rounded-full border border-slate-300 bg-transparent px-4 py-1.5 text-[11px] font-medium text-slate-900 transition-colors hover:bg-slate-100"
+            >
               S&apos;abonner au flux RSS
             </button>
           </div>
