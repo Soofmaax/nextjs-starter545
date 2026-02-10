@@ -1,17 +1,14 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { PortableText } from "@portabletext/react";
+import type { PageProps } from "next";
 
 import { getSiteSettings, DEFAULT_SITE_SETTINGS, getPostBySlug, getRelatedPosts, type SanityPost } from "../../../lib/sanity.client";
 
-type BlogPostPageProps = {
-  params: {
-    slug: string;
-  };
-};
+type BlogPostPageProps = PageProps<{ slug: string }>;
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
-  const { slug } = params;
+  const { slug } = await params;
 
   const siteSettings = (await getSiteSettings()) ?? DEFAULT_SITE_SETTINGS;
 
