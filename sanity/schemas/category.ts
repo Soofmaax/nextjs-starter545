@@ -16,6 +16,7 @@ const category = defineType({
       title: "Slug",
       type: "slug",
       options: { source: "title", maxLength: 96 },
+      validation: (rule) => rule.required(),
     }),
   ],
 });

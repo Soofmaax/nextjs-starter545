@@ -15,7 +15,7 @@ export default async function HonorairesPage() {
   const postalAddress = address || DEFAULT_SITE_SETTINGS.address!;
   return (
     <div className="app-shell">
-      <main className="app-main">
+      <main id="main-content" className="app-main">
         <div className="mx-auto flex w-full max-w-3xl flex-col gap-12">
         {/* En-tête */}
         <header className="app-panel space-y-4">
@@ -41,7 +41,7 @@ export default async function HonorairesPage() {
             Email :
             <a
               href={`mailto:${contactEmail}`}
-              className="ml-1 text-amber-700 underline-offset-4 hover:underline"
+              className="ml-1 text-slate-900 underline-offset-4 hover:underline"
             >
               {contactEmail}
             </a>

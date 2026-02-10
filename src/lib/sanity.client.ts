@@ -74,6 +74,7 @@ export type SanityPost = {
 export type SanityPostWithBody = {
   _id: string;
   title: string;
+  seoTitle?: string;
   slug: string;
   publishedAt: string;
   excerpt?: string;
@@ -98,6 +99,7 @@ const POSTS_QUERY = `*[_type == "post" && defined(slug.current) && (status == "p
 const POST_BY_SLUG_QUERY = `*[_type == "post" && slug.current == $slug && (status == "published" || !defined(status))][0]{
   _id,
   title,
+  seoTitle,
   "slug": slug.current,
   publishedAt,
   excerpt,

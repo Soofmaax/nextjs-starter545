@@ -1,9 +1,50 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { PortableText } from "@portabletext/react";
 
 import { getSiteSettings, DEFAULT_SITE_SETTINGS, getPostBySlug, getRelatedPosts, type SanityPost } from "../../../lib/sanity.client";
 import type { Metadata } from "next";
+
+export type BlogPostRouteParams = {
+  params: { slug: string };
+};
+
+export async function generateMetadata(
+  { params }: BlogPostRouteParams,
+): Promise<Metadata> {
+  const { slug } = params;
+  const post = await getPostBySlug(slug);
+
+  if (!post) {
+    return {
+      title: "Publication introuvable",
+      description: "Cette publication n'existe pas ou n'est plus disponible.",
+    };
+  }
+
+  const title = post.seoTitle && post.seoTitle.trim().length > 0
+    ? post.seoTitle
+    : post.title;
+
+  const description = post.excerpt
+    ? post.excerpt
+    : "Publication du cabinet Temple Boyer Legal.";
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: `/blog/${slug}`,
+    },
+    openGraph: {
+      title,
+      description,
+      type: "article",
+      url: `/blog/${slug}`,
+    },
+  };
+}
 
 type BlogPostPageProps = {
   params: Promise<{ slug: string }>;
@@ -71,7 +112,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   return (
     <div className="app-shell">
-      <main className="app-main">
+      <main id="main-content" className="app-main">
         <div className="mx-auto flex w-full max-w-3xl flex-col gap-10">
           {/* En-tête */}
           <header className="app-panel space-y-4">
@@ -91,10 +132,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               <p className="text-[11px] text-slate-600">
                 Thème :
                 {" "}
-                {post.categorySlug ? (
+                {post.categorySlug && post.categoryTitle ? (
                   <Link
                     href={`/blog/theme/${post.categorySlug}`}
-                    className="text-amber-700 underline-offset-4 hover:underline"
+                    className="text-slate-900 underline-offset-4 hover:underline"
                   >
                     {post.categoryTitle}
                   </Link>
@@ -170,10 +211,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               </h2>
               <ul className="space-y-2 text-xs text-slate-700">
                 {relatedPosts.map((related) => (
-                  <li key={related._id} className="flex flex-col gap-0.5">
+                  <li key={related._id} className="space-y-1 rounded-2xl border border-slate-200 bg-white/90 p-4">
                     <Link
                       href={`/blog/${related.slug}`}
-                      className="text-amber-700 underline-offset-4 hover:underline"
+                      className="text-xs font-semibold text-slate-900 underline-offset-4 hover:underline"
                     >
                       {related.title}
                     </Link>
