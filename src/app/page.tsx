@@ -33,66 +33,6 @@ export default async function Home() {
 
   return (
     <div className="app-shell">
-      {/* Top navigation */}
-      <header className="sticky top-0 z-30 border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-md">
-        <nav className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-4">
-          <div className="flex items-center gap-3">
-            <div className="flex items-center gap-2">
-              <div className="flex h-10 w-10 items-center justify-center rounded-2xl border border-slate-700/80 bg-slate-900/80 shadow-sm shadow-black/50">
-                <span className="text-xs font-semibold leading-tight text-slate-100">
-                  TBL
-                </span>
-              </div>
-              <Scale className="h-4 w-4 text-amber-500" aria-hidden="true" />
-            </div>
-            <div className="flex flex-col">
-              <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-200">
-                Temple Boyer Legal
-              </span>
-              <span className="text-[11px] text-slate-400">
-                Cabinet d&apos;avocat d&apos;affaires international
-              </span>
-            </div>
-          </div>
-
-          <div className="hidden items-center gap-6 text-[11px] font-medium sm:flex">
-            <div className="flex items-center gap-6 text-slate-300">
-              <Link href="/" className="transition-colors hover:text-slate-50">
-                Accueil
-              </Link>
-              <Link href="/cabinet" className="transition-colors hover:text-slate-50">
-                Le Cabinet
-              </Link>
-              <Link href="/competences" className="transition-colors hover:text-slate-50">
-                Compétences
-              </Link>
-              <Link href="/honoraires" className="transition-colors hover:text-slate-50">
-                Honoraires
-              </Link>
-              <Link href="/blog" className="transition-colors hover:text-slate-50">
-                Publications / Actualités
-              </Link>
-              <a href="/partenariats" className="transition-colors hover:text-slate-50">
-                Partenariats
-              </a>
-              <Link href="/contact" className="transition-colors hover:text-slate-50">
-                Contact
-              </Link>
-              <a href="#plan-acces" className="transition-colors hover:text-slate-50">
-                Plan d&apos;accès
-              </a>
-            </div>
-            <div className="flex items-center text-[10px] font-normal text-slate-400">
-              <span className="cursor-default text-slate-100">FR</span>
-              <span className="mx-1 text-slate-600">|</span>
-              <Link href="/en" className="transition-colors hover:text-slate-50">
-                EN
-              </Link>
-            </div>
-          </div>
-        </nav>
-      </header>
-
       <main className="app-main">
         {/* Hero section */}
         <section
@@ -468,54 +408,6 @@ export default async function Home() {
           </form>
         </section>
       </main>
-
-      <footer className="border-t border-slate-800 bg-slate-950/95 py-8 text-[11px] text-slate-400">
-        <div className="mx-auto flex max-w-6xl flex-col gap-3 px-6 sm:flex-row sm:items-center sm:justify-between">
-          <div className="space-y-1">
-            <p className="font-medium text-slate-200">
-              Maître Sarah Temple-Boyer – Avocat d&apos;affaires international
-            </p>
-            <p className="text-slate-400">
-              Cabinet Temple Boyer Legal – {addressLine1} – {addressLine2}
-            </p>
-            <p>
-              Email :
-              <a
-                href={`mailto:${contactEmail}`}
-                className="ml-1 text-amber-600 underline-offset-4 hover:underline"
-              >
-                {contactEmail}
-              </a>
-            </p>
-          </div>
-
-          <div className="space-y-1 text-[10px] text-slate-500">
-            <p>© 2015 – {new Date().getFullYear()} Sarah Temple-Boyer. Tous droits réservés.</p>
-            <p className="flex flex-wrap gap-2">
-              <Link
-                href="/mentions-legales"
-                className="text-slate-400 underline-offset-4 hover:text-slate-200 hover:underline"
-              >
-                Mentions légales
-              </Link>
-              <span className="text-slate-600">·</span>
-              <Link
-                href="/confidentialite"
-                className="text-slate-400 underline-offset-4 hover:text-slate-200 hover:underline"
-              >
-                Confidentialité
-              </Link>
-              <span className="text-slate-600">·</span>
-              <button className="text-slate-400 underline-offset-4 hover:text-slate-200 hover:underline">
-                Accès administrateur
-              </button>
-            </p>
-            <p className="text-[9px] text-slate-600">
-              Design et intégration : maquette Next.js personnalisée.
-            </p>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }
