@@ -5,12 +5,18 @@ const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
 const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET;
 const apiVersion = process.env.NEXT_PUBLIC_SANITY_API_VERSION || "2025-01-01";
 
-export const client = createClient({
-  projectId: projectId || "",
-  dataset: dataset || "",
-  apiVersion,
-  useCdn: true,
-});
+function getSanityClient() {
+  if (!projectId || !dataset) {
+    throw new Error("Sanity client is not configured");
+  }
+
+  return createClient({
+    projectId,
+    dataset,
+    apiVersion,
+    useCdn: true,
+  });
+}
 
 export type SiteSettings = {
   title: string;
@@ -38,6 +44,8 @@ export async function getSiteSettings(): Promise<SiteSettings | null> {
   if (!projectId || !dataset) {
     return DEFAULT_SITE_SETTINGS;
   }
+
+  const client = getSanityClient();
 
   try {
     const settings = await client.fetch<SiteSettings | null>(SITE_SETTINGS_QUERY);
@@ -104,6 +112,8 @@ export async function getPosts(): Promise<SanityPost[]> {
     return [];
   }
 
+  const client = getSanityClient();
+
   try {
     const posts = await client.fetch<SanityPost[]>(POSTS_QUERY);
     return posts;
@@ -120,6 +130,8 @@ export async function getPostBySlug(slug: string): Promise<SanityPostWithBody | 
   if (!slug) {
     return null;
   }
+
+  const client = getSanityClient();
 
   try {
     const post = await client.fetch<SanityPostWithBody | null>(POST_BY_SLUG_QUERY, { slug });
@@ -147,6 +159,8 @@ export async function getPostsByCategorySlug(
       authors[]->{ _id, name, role }
     }`;
 
+  const client = getSanityClient();
+
   try {
     return await client.fetch<SanityPost[]>(query, { categorySlug });
   } catch {
@@ -162,6 +176,8 @@ export async function getRelatedPosts(slug: string): Promise<SanityPost[]> {
   if (!slug) {
     return [];
   }
+
+  const client = getSanityClient();
 
   try {
     const currentPost = await getPostBySlug(slug);
