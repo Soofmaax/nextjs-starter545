@@ -87,15 +87,9 @@ export default async function Home() {
               <Link href="/blog" className="transition-colors hover:text-slate-50">
                 Publications / Actualités
               </Link>
-              <a href="/partenariats" className="transition-colors hover:text-slate-50">
-                Partenariats
-              </a>
               <Link href="/contact" className="transition-colors hover:text-slate-50">
                 Contact
               </Link>
-              <a href="#plan-acces" className="transition-colors hover:text-slate-50">
-                Plan d&apos;accès
-              </a>
             </div>
             <div className="flex items-center text-[10px] font-normal text-slate-400">
               <span className="cursor-default text-slate-100">FR</span>
