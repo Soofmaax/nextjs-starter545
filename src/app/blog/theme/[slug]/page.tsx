@@ -1,10 +1,34 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getPostsByCategorySlug } from "../../../../lib/sanity.client";
+import type { Metadata } from "next";
 
 type BlogThemePageProps = {
   params: Promise<{ slug: string }>;
 };
+
+export async function generateMetadata(
+  { params }: BlogThemePageProps,
+): Promise<Metadata> {
+  const { slug } = await params;
+
+  const posts = await getPostsByCategorySlug(slug);
+
+  if (!posts || posts.length === 0) {
+    return {
+      title: "Thème non trouvé – Temple Boyer Legal",
+    };
+  }
+
+  const themeTitle = posts[0].categoryTitle || slug;
+
+  return {
+    title: `Thème : ${themeTitle}`,
+    alternates: {
+      canonical: `/blog/theme/${slug}`,
+    },
+  };
+}
 
 export default async function BlogThemePage({ params }: BlogThemePageProps) {
   const { slug } = await params;

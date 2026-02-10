@@ -1,5 +1,16 @@
 import Link from "next/link";
 import { getSiteSettings, DEFAULT_SITE_SETTINGS } from "../../../lib/sanity.client";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title:
+    "Le tiers au contrat ne peut pas tout avoir : agir en responsabilité pour manquement contractuel sans subir les limites contractuelles prévues",
+  description:
+    "Par un arrêt du 17 décembre 2025 (n°24-20.154), la Cour de cassation poursuit un courant jurisprudentiel désormais bien établi concernant les droits du tiers à un contrat.",
+  alternates: {
+    canonical: "/blog/tiers-au-contrat-janvier-2026",
+  },
+};
 
 export default async function BlogArticleTiersContrat() {
   const siteSettings = (await getSiteSettings()) ?? DEFAULT_SITE_SETTINGS;

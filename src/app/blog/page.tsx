@@ -2,6 +2,7 @@ import Link from "next/link";
 import { getPosts, type SanityPost } from "../../lib/sanity.client";
 import { ArticleSelect } from "../../components/blog/ArticleSelect";
 import { ArticleFilters } from "../../components/blog/ArticleFilters";
+import type { Metadata } from "next";
 
 type ArticleCard = {
   slug: string;
@@ -40,12 +41,21 @@ const ARTICLES: ArticleCard[] = [
   },
 ];
 
+export const metadata: Metadata = {
+  title: "Publications & actualités – Temple Boyer Legal",
+  description:
+    "Le Cabinet Temple Boyer Legal publie régulièrement, environ une fois par mois depuis 2007, des articles d'actualité et de fond dans ses différents domaines de compétence (droit de la distribution, droit de la concurrence, droit de la consommation, droit commercial, droit des contrats, droit international, etc.).",
+  alternates: {
+    canonical: "/blog",
+  },
+};
+
 type BlogIndexPageProps = {
-  searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 
 export default async function BlogIndexPage({ searchParams }: BlogIndexPageProps) {
-  const query = searchParams ? await searchParams : {};
+  const query = await searchParams;
   const authorFilter = typeof query.author === "string" ? query.author : "";
   const themeFilter = typeof query.theme === "string" ? query.theme : "";
 
@@ -243,7 +253,6 @@ export default async function BlogIndexPage({ searchParams }: BlogIndexPageProps
                     )}
                   </p>
                 )}
-@@
                 <div className="pt-3">
                   <Link
                     href={`/blog/${article.slug}`}

@@ -1,5 +1,16 @@
 import Link from "next/link";
 import { getSiteSettings, DEFAULT_SITE_SETTINGS } from "../../../lib/sanity.client";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title:
+    "Quels recours possibles en cas d'inexécution contractuelle ? Quelques précisions utiles sur l'exécution en nature et la réduction unilatérale du prix",
+  description:
+    "C'est à l'occasion de la sécheresse exceptionnelle à Mayotte et de son impact sur les contrats de distribution d'eau potable que la Cour de cassation a rendu, le 18 décembre 2024, un arrêt très intéressant sur l'interprétation à donner de certaines dispositions, de portée encore incertaine, du nouveau droit français des obligations.",
+  alternates: {
+    canonical: "/blog/inexecution-contractuelle-janvier-2025",
+  },
+};
 
 export default async function BlogArticleInexecutionContractuelle() {
   const siteSettings = (await getSiteSettings()) ?? DEFAULT_SITE_SETTINGS;
