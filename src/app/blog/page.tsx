@@ -217,7 +217,7 @@ export default async function BlogIndexPage({ searchParams }: BlogIndexPageProps
             {articles.map((article) => (
               <article
                 key={article.slug}
-                className="space-y-2 rounded-2xl border border-slate-200 bg-white/90 p-5 text-sm text-slate-800"
+                className="space-y-1 border-b border-slate-200 pb-6 pt-4 text-sm leading-relaxed text-slate-800 last:border-b-0"
               >
                 <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-amber-700">
                   {article.category}
