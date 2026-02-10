@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Temple Boyer Legal – Site Next.js (App Router)
 
-## Getting Started
+Ce projet est une application [Next.js](https://nextjs.org) utilisant l’**App Router** (`src/app`) pour le site du cabinet Temple Boyer Legal.
 
-First, run the development server:
+## Démarrage
+
+Lancer le serveur de développement :
 
 ```bash
 npm run dev
-# or
+# ou
 yarn dev
-# or
+# ou
 pnpm dev
-# or
+# ou
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Puis ouvrir [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Structure et i18n "light"
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Racine App Router** : `src/app/`
+  - `src/app/layout.tsx` : layout racine, HTML en `lang="fr"`, metadata SEO globales.
+  - `src/app/page.tsx` : page d’accueil **FR** (`/`).
+  - `src/app/en/page.tsx` : page d’accueil **EN** (`/en`).
+  - `src/app/en/layout.tsx` : layout spécifique à la section EN, avec `<html lang="en">`.
 
-## Learn More
+Il n’y a **pas** de configuration `i18n` dans `next.config.ts` (modèle Pages Router). L’i18n est gérée de façon légère via :
 
-To learn more about Next.js, take a look at the following resources:
+- des routes distinctes `/` (FR) et `/en` (EN),
+- des metadata `alternates.languages` pour relier home FR et EN,
+- des attributs `lang` adaptés dans les layouts.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## SEO technique
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Les principaux éléments SEO sont gérés via l’API `Metadata` de Next.js :
 
-## Deploy on Vercel
+- `src/app/layout.tsx` :
+  - `metadataBase` basé sur `NEXT_PUBLIC_SITE_URL` (fallback `http://localhost:3000`).
+  - Title/description globaux.
+  - Bloc `openGraph` (site web, locale `fr_FR`).
+  - Bloc `twitter` minimal (`summary_large_image`).
+- Pages avec metadata spécifiques :
+  - Home FR : `src/app/page.tsx`.
+  - Home EN : `src/app/en/page.tsx`.
+  - Blog index : `src/app/blog/page.tsx`.
+  - Articles dynamiques : `src/app/blog/[slug]/page.tsx` (via `generateMetadata`, exploite `post.seoTitle`).
+  - Articles statiques clés :
+    - `src/app/blog/inexecution-contractuelle-janvier-2025/page.tsx`
+    - `src/app/blog/tiers-au-contrat-janvier-2026/page.tsx`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Fichiers SEO globaux :
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `src/app/robots.ts` : expose un sitemap XML, autorise l’indexation (`allow: "/"`).
+- `src/app/sitemap.ts` : liste les principales routes FR/EN, le blog et les deux articles statiques.
+
+## Contenu et liens
+
+- Les contenus juridiques/marketing (textes de pages, articles) sont gérés dans les pages `src/app/...` et/ou via Sanity.
+- Les liens de navigation de la home FR ne pointent plus vers des routes inexistantes :
+  - le lien `/partenariats` a été retiré (route non encore implémentée),
+  - le lien d’ancre `#plan-acces` a été retiré (section non présente).
+
+## Notes techniques
+
+- Le projet utilise [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) et les polices Geist.
+- TypeScript est activé en mode strict (`tsconfig.json`).
+- Le routage est entièrement basé sur l’App Router (`src/app`), pas de Pages Router.
