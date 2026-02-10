@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { BookOpenText, Globe2, Mail, Scale } from "lucide-react";
 import { getSiteSettings, DEFAULT_SITE_SETTINGS } from "../lib/sanity.client";
@@ -115,12 +116,14 @@ export default async function Home() {
           </div>
 
           <div className="relative mx-auto flex max-w-xs flex-col items-center gap-4 rounded-3xl border border-slate-200 bg-slate-50/90 p-6 text-center shadow-[0_18px_60px_rgba(15,23,42,0.18)]">
-            <div className="relative mt-2 flex h-28 w-28 items-center justify-center overflow-hidden rounded-full border border-slate-300 bg-slate-100">
-              <span className="text-[11px] font-semibold text-slate-600">
-                Photo
-                <br />
-                Sarah Temple-Boyer
-              </span>
+            <div className="relative mt-2 flex h-32 w-32 items-center justify-center overflow-hidden rounded-full border border-slate-300 bg-slate-100">
+              <Image
+                src="/Sarah-Temple-Boyer.jpg"
+                alt="Portrait de Maître Sarah Temple-Boyer"
+                fill
+                sizes="128px"
+                className="object-cover"
+              />
             </div>
             <div className="space-y-1">
               <p className="text-xs font-semibold tracking-tight text-slate-900">
