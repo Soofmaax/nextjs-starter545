@@ -32,6 +32,7 @@ export default async function CabinetPage() {
     : addressParts[0] || "10, avenue de Wagram";
   const addressLine2 = addressParts[1] || "75008 Paris";
   const postalAddress = address || DEFAULT_SITE_SETTINGS.address!;
+  const phone = siteSettings.phone ?? DEFAULT_SITE_SETTINGS.phone;
 
   return (
     <div className="app-shell">
@@ -76,7 +77,7 @@ export default async function CabinetPage() {
                   {contactEmail}
                 </a>
               </p>
-              <p>Tél. : 01.77.72.66.35 ou via le formulaire de contact</p>
+              <p>Tél. : {phone} ou via le formulaire de contact</p>
               <p className="text-[11px] text-slate-500">
                 Le Cabinet accepte l&apos;aide juridictionnelle.
               </p>
@@ -201,10 +202,10 @@ export default async function CabinetPage() {
               implications pratiques des décisions à prendre.
             </p>
             <p className="leading-relaxed">
-              Le cabinet, situé 10 avenue de Wagram à Paris, est ouvert du lundi au
+              Le cabinet, situé {addressLine1} à Paris, est ouvert du lundi au
               vendredi de 9h à 12h30 et de 14h à 18h. Pour toute prise de
               rendez-vous, vous pouvez utiliser le formulaire de contact ou
-              appeler le 01.43.12.38.00.
+              appeler le {phone}.
             </p>
           </div>
         </section>
