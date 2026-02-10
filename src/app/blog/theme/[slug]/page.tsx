@@ -1,12 +1,12 @@
 import { notFound } from "next/navigation";
+import type { PageProps } from "next";
+import Link from "next/link";
 import { getPostsByCategorySlug } from "../../../../lib/sanity.client";
 
-export default async function BlogThemePage({
-  params,
-}: {
-  params: { slug: string };
-}) {
-  const { slug } = params;
+type BlogThemePageProps = PageProps<{ slug: string }>;
+
+export default async function BlogThemePage({ params }: BlogThemePageProps) {
+  const { slug } = await params;
 
   const posts = await getPostsByCategorySlug(slug);
 
@@ -75,12 +75,12 @@ export default async function BlogThemePage({
                   </p>
                 ) : null}
                 <div className="pt-3">
-                  <a
+                  <Link
                     href={`/blog/${article.slug}`}
                     className="inline-flex text-xs font-semibold text-amber-700 underline-offset-4 hover:underline"
                   >
                     Lire la publication
-                  </a>
+                  </Link>
                 </div>
               </article>
             ))}
