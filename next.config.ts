@@ -6,19 +6,21 @@ const securityHeaders = [
     value: "nosniff",
   },
   {
-    key: "X-Frame-Options",
-    value: "SAMEORIGIN",
-  },
-  {
     key: "Referrer-Policy",
     value: "strict-origin-when-cross-origin",
   },
   {
-    key: "Permissions-Policy",
-    value: "camera=(), microphone=(), geolocation=()",
+    // plus strict, aucun framing, ce qui est OK pour un site vitrine
+    key: "X-Frame-Options",
+    value: "DENY",
   },
   {
-    // À n'activer que si le site est servi exclusivement en HTTPS
+    // désactive aussi interest-cohort (FLoC)
+    key: "Permissions-Policy",
+    value: "camera=(), microphone=(), geolocation=(), interest-cohort=()",
+  },
+  {
+    // À n'activer que si le site est servi exclusivement en HTTPS (cas standard en prod)
     key: "Strict-Transport-Security",
     value: "max-age=63072000; includeSubDomains; preload",
   },

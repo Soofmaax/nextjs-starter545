@@ -1,7 +1,15 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { getPosts, type SanityPost } from "../../lib/sanity.client";
+import { STATIC_ARTICLES } from "../../lib/static-articles";
 import { ArticleSelect } from "../../components/blog/ArticleSelect";
 import { ArticleFilters } from "../../components/blog/ArticleFilters";
+
+export const metadata: Metadata = {
+  title: "Publications & actualités",
+  description:
+    "Publications et actualités du cabinet Temple Boyer Legal : articles de fond et d'actualité en droit de la distribution, concurrence, consommation, contrats, droit international, etc.",
+};
 
 type ArticleCard = {
   slug: string;
@@ -19,27 +27,6 @@ type ThemeOption = {
   slug: string;
 };
 
-const ARTICLES: ArticleCard[] = [
-  {
-    slug: "tiers-au-contrat-janvier-2026",
-    title:
-      "Le tiers au contrat ne peut pas tout avoir : agir en responsabilité pour manquement contractuel sans subir les limites contractuelles prévues",
-    date: "19 janvier 2026",
-    category: "Actualités janvier 2026",
-    summary:
-      "Analyse de l'arrêt de la Cour de cassation du 17 décembre 2025 (n°24-20.154) sur les droits et limites du tiers à un contrat.",
-  },
-  {
-    slug: "inexecution-contractuelle-janvier-2025",
-    title:
-      "Quels recours possibles en cas d'inexécution contractuelle ? Quelques précisions utiles sur l'exécution en nature et la réduction unilatérale du prix",
-    date: "28 janvier 2025",
-    category: "Actualités janvier 2025",
-    summary:
-      "Retour sur l'arrêt du 18 décembre 2024 relatif à la distribution d'eau à Mayotte : force majeure, impossibilité matérielle, exécution en nature et réduction unilatérale du prix.",
-  },
-];
-
 type BlogIndexPageProps = {
   searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
 };
@@ -49,7 +36,20 @@ export default async function BlogIndexPage({ searchParams }: BlogIndexPageProps
   const authorFilter = typeof query.author === "string" ? query.author : "";
   const themeFilter = typeof query.theme === "string" ? query.theme : "";
 
-  let articles: ArticleCard[] = ARTICLES;
+  const formatDate = (iso: string) =>
+    new Intl.DateTimeFormat("fr-FR", {
+      day: "2-digit",
+      month: "long",
+      year: "numeric",
+    }).format(new Date(iso));
+
+  let articles: ArticleCard[] = STATIC_ARTICLES.map((article) => ({
+    slug: article.slug,
+    title: article.title,
+    date: formatDate(article.publishedAt),
+    category: article.category,
+    summary: article.summary,
+  }));
   let authorOptions: string[] = [];
   let themeOptions: string[] = [];
   let recentPosts: SanityPost[] = [];
@@ -77,11 +77,7 @@ export default async function BlogIndexPage({ searchParams }: BlogIndexPageProps
       articles = filteredPosts.map<ArticleCard>((post) => ({
         slug: post.slug,
         title: post.title,
-        date: new Intl.DateTimeFormat("fr-FR", {
-          day: "2-digit",
-          month: "long",
-          year: "numeric",
-        }).format(new Date(post.publishedAt)),
+        date: formatDate(post.publishedAt),
         category: "Publications",
         summary: post.excerpt ?? "",
         theme: post.categoryTitle,
@@ -154,6 +150,16 @@ export default async function BlogIndexPage({ searchParams }: BlogIndexPageProps
               Les publications sont classées par thèmes afin de faciliter leur
               consultation. Bonne lecture.
             </p>
+            <p className="text-[11px] text-slate-500">
+              Flux RSS :
+              {" "}
+              <a
+                href="/rss.xml"
+                className="text-slate-900 underline-offset-4 hover:underline"
+              >
+                /rss.xml
+              </a>
+            </p>
             {exploreThemes.length > 0 ? (
               <div className="pt-2 text-[11px] text-slate-600">
                 <p className="font-semibold text-slate-700">Explorer par thème</p>
@@ -217,9 +223,9 @@ export default async function BlogIndexPage({ searchParams }: BlogIndexPageProps
             {articles.map((article) => (
               <article
                 key={article.slug}
-                className="space-y-2 rounded-2xl border border-slate-200 bg-white/90 p-5 text-sm text-slate-800"
+                className="space-y-1 border-b border-slate-200 pb-6 pt-4 text-sm leading-relaxed text-slate-800 last:border-b-0"
               >
-                <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-amber-700">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-500">
                   {article.category}
                 </p>
                 <h2 className="text-base font-semibold leading-snug text-slate-950">
@@ -234,7 +240,7 @@ export default async function BlogIndexPage({ searchParams }: BlogIndexPageProps
                     {article.themeSlug ? (
                       <Link
                         href={`/blog/theme/${article.themeSlug}`}
-                        className="text-amber-700 underline-offset-4 hover:underline"
+                        className="text-slate-900 underline-offset-4 hover:underline"
                       >
                         {article.theme}
                       </Link>
@@ -247,7 +253,7 @@ export default async function BlogIndexPage({ searchParams }: BlogIndexPageProps
                 <div className="pt-3">
                   <Link
                     href={`/blog/${article.slug}`}
-                    className="inline-flex text-xs font-semibold text-amber-700 underline-offset-4 hover:underline"
+                    className="inline-flex text-xs font-semibold text-slate-900 underline-offset-4 hover:underline"
                   >
                     Lire la publication
                   </Link>
