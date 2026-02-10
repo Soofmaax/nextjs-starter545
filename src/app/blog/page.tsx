@@ -1,3 +1,5 @@
+import type { PageProps } from "next";
+import Link from "next/link";
 import { getPosts, type SanityPost } from "../../lib/sanity.client";
 import { ArticleSelect } from "../../components/blog/ArticleSelect";
 import { ArticleFilters } from "../../components/blog/ArticleFilters";
@@ -39,15 +41,15 @@ const ARTICLES: ArticleCard[] = [
   },
 ];
 
-export default async function BlogIndexPage({
-  searchParams,
-}: {
-  searchParams?: { [key: string]: string | string[] | undefined };
-}) {
-  const authorFilter =
-    typeof searchParams?.author === "string" ? searchParams.author : "";
-  const themeFilter =
-    typeof searchParams?.theme === "string" ? searchParams.theme : "";
+type BlogIndexPageProps = PageProps<
+  {},
+  { [key: string]: string | string[] | undefined }
+>;
+
+export default async function BlogIndexPage({ searchParams }: BlogIndexPageProps) {
+  const query = searchParams ? await searchParams : {};
+  const authorFilter = typeof query.author === "string" ? query.author : "";
+  const themeFilter = typeof query.theme === "string" ? query.theme : "";
 
   let articles: ArticleCard[] = ARTICLES;
   let authorOptions: string[] = [];
@@ -159,13 +161,13 @@ export default async function BlogIndexPage({
                 <p className="font-semibold text-slate-700">Explorer par thème</p>
                 <div className="mt-1 flex flex-wrap gap-2">
                   {exploreThemes.map((theme) => (
-                    <a
+                    <Link
                       key={theme.slug}
                       href={`/blog/theme/${theme.slug}`}
                       className="inline-flex items-center rounded-full border border-slate-300 bg-white/90 px-3 py-1 text-[11px] text-slate-900 underline-offset-4 hover:bg-slate-100 hover:underline"
                     >
                       {theme.title}
-                    </a>
+                    </Link>
                   ))}
                 </div>
               </div>
@@ -176,19 +178,19 @@ export default async function BlogIndexPage({
                 <ul className="mt-1 flex flex-wrap gap-2">
                   {recentPosts.map((post) => (
                     <li key={post._id} className="flex flex-col gap-0.5">
-                      <a
+                      <Link
                         href={`/blog/${post.slug}`}
                         className="inline-flex items-center rounded-full border border-slate-300 bg-white/90 px-3 py-1 text-[11px] text-slate-900 underline-offset-4 hover:bg-slate-100 hover:underline"
                       >
                         {post.title}
-                      </a>
+                      </Link>
                       {post.categoryTitle && post.categorySlug ? (
-                        <a
+                        <Link
                           href={`/blog/theme/${post.categorySlug}`}
                           className="text-[10px] text-slate-500 underline-offset-4 hover:underline"
                         >
                           Thème : {post.categoryTitle}
-                        </a>
+                        </Link>
                       ) : null}
                     </li>
                   ))}
@@ -232,36 +234,25 @@ export default async function BlogIndexPage({
                     Thème :
                     {" "}
                     {article.themeSlug ? (
-                      <a
+                      <Link
                         href={`/blog/theme/${article.themeSlug}`}
                         className="text-amber-700 underline-offset-4 hover:underline"
                       >
                         {article.theme}
-                      </a>
+                      </Link>
                     ) : (
                       article.theme
                     )}
                   </p>
                 )}
-                {article.authors && article.authors.length > 0 ? (
-                  <p className="text-[11px] text-slate-500">
-                    Auteurs :
-                    {" "}
-                    {article.authors
-                      .filter((author) => author.name && author.name.trim().length > 0)
-                      .map((author) =>
-                        author.role ? `${author.name} (${author.role})` : author.name,
-                      )
-                      .join(", ")}
-                  </p>
-                ) : null}
+@@
                 <div className="pt-3">
-                  <a
+                  <Link
                     href={`/blog/${article.slug}`}
                     className="inline-flex text-xs font-semibold text-amber-700 underline-offset-4 hover:underline"
                   >
                     Lire la publication
-                  </a>
+                  </Link>
                 </div>
               </article>
             ))}
