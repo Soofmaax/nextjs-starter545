@@ -4,6 +4,7 @@ import Link from "next/link";
 import { PortableText } from "@portabletext/react";
 
 import { getSiteSettings, DEFAULT_SITE_SETTINGS, getPostBySlug, getRelatedPosts, type SanityPost } from "../../../lib/sanity.client";
+import type { Metadata } from "next";
 
 export type BlogPostRouteParams = {
   params: { slug: string };
@@ -48,6 +49,32 @@ export async function generateMetadata(
 type BlogPostPageProps = {
   params: Promise<{ slug: string }>;
 };
+
+export async function generateMetadata(
+  { params }: BlogPostPageProps,
+): Promise<Metadata> {
+  const { slug } = await params;
+
+  const post = await getPostBySlug(slug);
+
+  if (!post) {
+    return {
+      title: "Article non trouvé – Temple Boyer Legal",
+    };
+  }
+
+  const title = post.seoTitle ?? post.title;
+  const description = post.excerpt ?? "";
+  const canonicalSlug = post.slug || slug;
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: `/blog/${canonicalSlug}`,
+    },
+  };
+}
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = await params;

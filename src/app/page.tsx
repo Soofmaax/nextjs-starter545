@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { BookOpenText, Globe2, Mail, Scale } from "lucide-react";
 import { getSiteSettings, DEFAULT_SITE_SETTINGS } from "../lib/sanity.client";
+import type { Metadata } from "next";
 
 const PRACTICE_AREAS = [
   "Contrats",
@@ -17,6 +18,20 @@ const PRACTICE_AREAS = [
   "Droit du travail",
   "Expertise sectorielle",
 ];
+
+export const metadata: Metadata = {
+  title:
+    "Temple Boyer Legal – Cabinet d'avocat d'affaires international dédié aux opérations et litiges complexes",
+  description:
+    "Temple Boyer Legal accompagne les groupes français et internationaux, ETI, investisseurs et dirigeants dans la structuration, la négociation et le suivi de leurs opérations stratégiques, ainsi que dans la gestion de leurs différends à forts enjeux.",
+  alternates: {
+    canonical: "/",
+    languages: {
+      "fr-FR": "/",
+      en: "/en",
+    },
+  },
+};
 
 export default async function Home() {
   const siteSettings = (await getSiteSettings()) ?? DEFAULT_SITE_SETTINGS;

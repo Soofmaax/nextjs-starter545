@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { BookOpenText, Globe2, Mail, Scale } from "lucide-react";
+import type { Metadata } from "next";
 
 const PRACTICE_AREAS = [
   "Contracts",
@@ -16,6 +17,20 @@ const PRACTICE_AREAS = [
   "Employment law",
   "Sector-specific expertise",
 ];
+
+export const metadata: Metadata = {
+  title:
+    "Temple Boyer Legal – International business law boutique dedicated to complex transactions and disputes",
+  description:
+    "Temple Boyer Legal advises French and international groups, mid-cap companies, investors and executives on their strategic projects and day-to-day operations. The firm combines transactional and dispute resolution capabilities to secure your business and manage sensitive situations in France and abroad.",
+  alternates: {
+    canonical: "/en",
+    languages: {
+      "fr-FR": "/",
+      en: "/en",
+    },
+  },
+};
 
 export default function HomeEn() {
   return (
