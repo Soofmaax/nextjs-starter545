@@ -1,5 +1,4 @@
 import { defineField, defineType } from "sanity";
-import type { Rule } from "sanity";
 
 const category = defineType({
   name: "category",
@@ -10,7 +9,7 @@ const category = defineType({
       name: "title",
       title: "Titre",
       type: "string",
-      validation: (rule: Rule) => rule.required(),
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: "slug",
