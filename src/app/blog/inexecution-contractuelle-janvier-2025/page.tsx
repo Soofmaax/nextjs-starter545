@@ -41,7 +41,7 @@ export default async function BlogArticleInexecutionContractuelle() {
               Email :
               <a
                 href={`mailto:${contactEmail}`}
-                className="ml-1 text-amber-700 underline-offset-4 hover:underline"
+                className="ml-1 text-slate-900 underline-offset-4 hover:underline"
               >
                 {contactEmail}
               </a>

@@ -219,7 +219,7 @@ export default async function BlogIndexPage({ searchParams }: BlogIndexPageProps
                 key={article.slug}
                 className="space-y-1 border-b border-slate-200 pb-6 pt-4 text-sm leading-relaxed text-slate-800 last:border-b-0"
               >
-                <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-amber-700">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-500">
                   {article.category}
                 </p>
                 <h2 className="text-base font-semibold leading-snug text-slate-950">
@@ -234,7 +234,7 @@ export default async function BlogIndexPage({ searchParams }: BlogIndexPageProps
                     {article.themeSlug ? (
                       <Link
                         href={`/blog/theme/${article.themeSlug}`}
-                        className="text-amber-700 underline-offset-4 hover:underline"
+                        className="text-slate-900 underline-offset-4 hover:underline"
                       >
                         {article.theme}
                       </Link>
@@ -247,7 +247,7 @@ export default async function BlogIndexPage({ searchParams }: BlogIndexPageProps
                 <div className="pt-3">
                   <Link
                     href={`/blog/${article.slug}`}
-                    className="inline-flex text-xs font-semibold text-amber-700 underline-offset-4 hover:underline"
+                    className="inline-flex text-xs font-semibold text-slate-900 underline-offset-4 hover:underline"
                   >
                     Lire la publication
                   </Link>

@@ -64,10 +64,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               <p className="text-[11px] text-slate-600">
                 Thème :
                 {" "}
-                {post.categorySlug ? (
+                {post.categorySlug && post.categoryTitle ? (
                   <Link
                     href={`/blog/theme/${post.categorySlug}`}
-                    className="text-amber-700 underline-offset-4 hover:underline"
+                    className="text-slate-900 underline-offset-4 hover:underline"
                   >
                     {post.categoryTitle}
                   </Link>
@@ -143,10 +143,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               </h2>
               <ul className="space-y-2 text-xs text-slate-700">
                 {relatedPosts.map((related) => (
-                  <li key={related._id} className="flex flex-col gap-0.5">
+                  <li key={related._id} className="space-y-1 rounded-2xl border border-slate-200 bg-white/90 p-4">
                     <Link
                       href={`/blog/${related.slug}`}
-                      className="text-amber-700 underline-offset-4 hover:underline"
+                      className="text-xs font-semibold text-slate-900 underline-offset-4 hover:underline"
                     >
                       {related.title}
                     </Link>

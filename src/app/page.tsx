@@ -41,8 +41,8 @@ export default async function Home() {
           className="app-panel grid gap-12 md:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)] md:items-center"
         >
           <div className="space-y-8">
-            <div className="inline-flex items-center gap-2 rounded-full border border-amber-500/30 bg-amber-50/80 px-3 py-1 text-[11px] text-amber-900">
-              <span className="inline-flex h-1.5 w-1.5 rounded-full bg-amber-500" />
+            <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1 text-[11px] text-slate-700">
+              <span className="inline-flex h-1.5 w-1.5 rounded-full bg-slate-400" />
               <span>Conseil &amp; contentieux en droit des affaires</span>
             </div>
 
@@ -86,15 +86,15 @@ export default async function Home() {
 
             <div className="flex flex-wrap gap-4 text-[11px]">
               <div className="flex items-center gap-2 rounded-full border border-slate-200 bg-white/80 px-3 py-1 text-slate-700">
-                <span className="h-1.5 w-1.5 rounded-full bg-amber-500" />
+                <span className="h-1.5 w-1.5 rounded-full bg-slate-500" />
                 <span>Barreau de Paris</span>
               </div>
               <div className="flex items-center gap-2 rounded-full border border-slate-200 bg-white/80 px-3 py-1 text-slate-700">
-                <span className="h-1.5 w-1.5 rounded-full bg-amber-500" />
+                <span className="h-1.5 w-1.5 rounded-full bg-slate-500" />
                 <span>Conseil &amp; contentieux</span>
               </div>
               <div className="flex items-center gap-2 rounded-full border border-slate-200 bg-white/80 px-3 py-1 text-slate-700">
-                <span className="h-1.5 w-1.5 rounded-full bg-amber-500" />
+                <span className="h-1.5 w-1.5 rounded-full bg-slate-500" />
                 <span>France &amp; international</span>
               </div>
             </div>
@@ -102,7 +102,7 @@ export default async function Home() {
             <div className="flex flex-wrap gap-4 text-xs">
               <a
                 href="#contact"
-                className="inline-flex items-center justify-center rounded-full bg-amber-500 px-5 py-2 text-[11px] font-semibold text-slate-950 shadow-[0_18px_45px_rgba(180,83,9,0.45)] transition-colors hover:bg-amber-500/90"
+                className="inline-flex items-center justify-center rounded-full bg-slate-900 px-5 py-2 text-[11px] font-semibold text-slate-50 shadow-sm transition-colors hover:bg-slate-800"
               >
                 Contacter le Cabinet
               </a>
@@ -403,11 +403,11 @@ export default async function Home() {
               n&apos;est réalisé depuis cette maquette.
             </p>
             <button
-              type="button"
-              className="mt-1 inline-flex items-center justify-center rounded-full bg-amber-500 px-5 py-2 text-[11px] font-semibold text-slate-950 shadow-[0_18px_45px_rgba(180,83,9,0.45)] transition-colors hover:bg-amber-500/90"
-            >
-              Envoyer la demande (démo)
-            </button>
+                type="button"
+                className="mt-1 inline-flex items-center justify-center rounded-full bg-slate-900 px-5 py-2 text-[11px] font-semibold text-slate-50 shadow-sm transition-colors hover:bg-slate-800"
+              >
+                Envoyer la demande (démo)
+              </button>
           </form>
         </section>
       </main>

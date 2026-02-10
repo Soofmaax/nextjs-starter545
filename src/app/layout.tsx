@@ -48,12 +48,12 @@ export default async function RootLayout({
             <nav className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-4">
               <div className="flex items-center gap-3">
                 <div className="flex items-center gap-2">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-2xl border border-slate-200 bg-slate-50 shadow-sm">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-2xl border border-slate-300 bg-white shadow-sm">
                     <span className="text-xs font-semibold leading-tight text-slate-900">
                       TBL
                     </span>
                   </div>
-                  <Scale className="h-4 w-4 text-amber-600" aria-hidden="true" />
+                  <Scale className="h-4 w-4 text-slate-500" aria-hidden="true" />
                 </div>
                 <div className="flex flex-col">
                   <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-900">

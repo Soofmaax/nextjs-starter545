@@ -78,7 +78,7 @@ export default async function BlogThemePage({ params }: BlogThemePageProps) {
                 <div className="pt-3">
                   <Link
                     href={`/blog/${article.slug}`}
-                    className="inline-flex text-xs font-semibold text-amber-700 underline-offset-4 hover:underline"
+                    className="inline-flex text-xs font-semibold text-slate-900 underline-offset-4 hover:underline"
                   >
                     Lire la publication
                   </Link>

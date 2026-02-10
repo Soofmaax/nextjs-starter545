@@ -78,14 +78,14 @@ export default async function CompetencesPage() {
             <p>{addressLine1}</p>
             <p>{addressLine2}</p>
             <p>
-              Email :
-              <a
-                href={`mailto:${contactEmail}`}
-                className="ml-1 text-amber-700 underline-offset-4 hover:underline"
-              >
-                {contactEmail}
-              </a>
-            </p>
+                Email :
+                <a
+                  href={`mailto:${contactEmail}`}
+                  className="ml-1 text-slate-900 underline-offset-4 hover:underline"
+                >
+                  {contactEmail}
+                </a>
+              </p>
           </div>
         </section>
 
