@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { BookOpenText, Globe2, Mail, Scale } from "lucide-react";
+import { BookOpenText, Globe2, Mail } from "lucide-react";
 import { getSiteSettings, DEFAULT_SITE_SETTINGS } from "../lib/sanity.client";
 import type { Metadata } from "next";
 

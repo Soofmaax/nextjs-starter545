@@ -139,7 +139,7 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
 
         {/* Formulaire de contact */}
         <section className="app-panel text-xs text-slate-800">
-          <form className="space-y-3" method="post">
+          <form className="space-y-3" method="post" action="/api/contact">
             <input
               type="text"
               name="website"
