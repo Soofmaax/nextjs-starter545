@@ -115,7 +115,11 @@ export default async function CompetencesPage() {
                   ? "/competences/contrats-commerciaux-industriels"
                   : item === "Précontentieux et contentieux commercial"
                     ? "/competences/contentieux-precontentieux"
-                    : null;
+                    : item === "Droit commercial / droit des sociétés"
+                      ? "/competences/droit-commercial-affaires"
+                      : item === "Droit de la concurrence"
+                        ? "/competences/droit-concurrence-concurrence-deloyale"
+                        : null;
 
               const content = (
                 <>
