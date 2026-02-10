@@ -65,24 +65,39 @@ export default async function RootLayout({
                 </div>
               </div>
 
-              <div className="hidden items-center gap-6 text-[11px] font-medium sm:flex">
-                <div className="flex items-center gap-6 text-slate-600">
+              <div className="flex flex-wrap items-center gap-4 text-[11px] font-medium">
+                <div className="flex flex-wrap items-center gap-4 text-slate-600">
                   <Link href="/" className="transition-colors hover:text-slate-950">
                     Accueil
                   </Link>
-                  <Link href="/cabinet" className="transition-colors hover:text-slate-950">
+                  <Link
+                    href="/cabinet"
+                    className="transition-colors hover:text-slate-950"
+                  >
                     Le Cabinet
                   </Link>
-                  <Link href="/competences" className="transition-colors hover:text-slate-950">
+                  <Link
+                    href="/competences"
+                    className="transition-colors hover:text-slate-950"
+                  >
                     Compétences
                   </Link>
-                  <Link href="/honoraires" className="transition-colors hover:text-slate-950">
+                  <Link
+                    href="/honoraires"
+                    className="transition-colors hover:text-slate-950"
+                  >
                     Honoraires
                   </Link>
-                  <Link href="/blog" className="transition-colors hover:text-slate-950">
+                  <Link
+                    href="/blog"
+                    className="transition-colors hover:text-slate-950"
+                  >
                     Publications / Actualités
                   </Link>
-                  <Link href="/contact" className="transition-colors hover:text-slate-950">
+                  <Link
+                    href="/contact"
+                    className="transition-colors hover:text-slate-950"
+                  >
                     Contact
                   </Link>
                 </div>
