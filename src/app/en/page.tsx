@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { BookOpenText, Globe2, Mail, Scale } from "lucide-react";
 
@@ -95,9 +96,9 @@ export default function HomeEn() {
           className="app-panel grid gap-12 md:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)] md:items-center"
         >
           <div className="space-y-8">
-            <div className="inline-flex items-center gap-2 rounded-full border border-amber-500/30 bg-amber-50/80 px-3 py-1 text-[11px] text-amber-900">
-              <span className="inline-flex h-1.5 w-1.5 rounded-full bg-amber-500" />
-              <span>Business law - Advisory &amp; Disputes</span>
+            <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1 text-[11px] text-slate-700">
+              <span className="inline-flex h-1.5 w-1.5 rounded-full bg-slate-400" />
+              <span>Business &amp; litigation in business law</span>
             </div>
 
             <div className="space-y-4">
@@ -157,9 +158,9 @@ export default function HomeEn() {
             <div className="flex flex-wrap gap-4 text-xs">
               <a
                 href="#contact"
-                className="inline-flex items-center justify-center rounded-full bg-amber-500 px-5 py-2 text-[11px] font-semibold text-slate-950 shadow-[0_18px_45px_rgba(180,83,9,0.45)] transition-colors hover:bg-amber-500/90"
+                className="inline-flex items-center justify-center rounded-full bg-slate-900 px-5 py-2 text-[11px] font-semibold text-slate-50 shadow-sm transition-colors hover:bg-slate-800"
               >
-                Contact the firm
+                Contact the Firm
               </a>
               <a
                 href="#competences"
@@ -171,12 +172,14 @@ export default function HomeEn() {
           </div>
 
           <div className="relative mx-auto flex max-w-xs flex-col items-center gap-4 rounded-3xl border border-slate-200 bg-slate-50/90 p-6 text-center shadow-[0_18px_60px_rgba(15,23,42,0.18)]">
-            <div className="relative mt-2 flex h-28 w-28 items-center justify-center overflow-hidden rounded-full border border-slate-300 bg-slate-100">
-              <span className="text-[11px] font-semibold text-slate-600">
-                Photo
-                <br />
-                Sarah Temple-Boyer
-              </span>
+            <div className="relative mt-2 flex h-32 w-32 items-center justify-center overflow-hidden rounded-full border border-slate-300 bg-slate-100">
+              <Image
+                src="/Sarah-Temple-Boyer.jpg"
+                alt="Portrait of Maître Sarah Temple-Boyer"
+                fill
+                sizes="128px"
+                className="object-cover"
+              />
             </div>
             <div className="space-y-1">
               <p className="text-xs font-semibold tracking-tight text-slate-900">
