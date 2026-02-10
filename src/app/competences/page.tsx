@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { getSiteSettings, DEFAULT_SITE_SETTINGS } from "../../lib/sanity.client";
 
 const EXPERTISE_JURIDIQUE = [
@@ -107,17 +108,41 @@ export default async function CompetencesPage() {
           </div>
 
           <div className="grid gap-3 rounded-2xl border border-slate-200 bg-white/80 p-4 sm:grid-cols-2">
-            {EXPERTISE_JURIDIQUE.map((item) => (
-              <div
-                key={item}
-                className="flex items-start gap-3 rounded-2xl border border-slate-200 bg-white px-3 py-3 text-xs text-slate-800"
-              >
-                <span className="mt-[3px] flex h-6 w-6 items-center justify-center rounded-full bg-amber-500/10 text-[10px] text-amber-700">
-                  •
-                </span>
-                <span>{item}</span>
-              </div>
-            ))}
+            {EXPERTISE_JURIDIQUE.map((item) => {
+              const href =
+                item ===
+                "Contrats commerciaux et industriels (y compris de dimension internationale)"
+                  ? "/competences/contrats-commerciaux-industriels"
+                  : item === "Précontentieux et contentieux commercial"
+                    ? "/competences/contentieux-precontentieux"
+                    : null;
+
+              const content = (
+                <>
+                  <span className="mt-[3px] flex h-6 w-6 items-center justify-center rounded-full bg-amber-500/10 text-[10px] text-amber-700">
+                    •
+                  </span>
+                  <span>{item}</span>
+                </>
+              );
+
+              return href ? (
+                <Link
+                  key={item}
+                  href={href}
+                  className="flex items-start gap-3 rounded-2xl border border-slate-200 bg-white px-3 py-3 text-xs text-slate-800 transition-colors hover:bg-slate-50"
+                >
+                  {content}
+                </Link>
+              ) : (
+                <div
+                  key={item}
+                  className="flex items-start gap-3 rounded-2xl border border-slate-200 bg-white px-3 py-3 text-xs text-slate-800"
+                >
+                  {content}
+                </div>
+              );
+            })}
           </div>
         </section>
 
