@@ -47,11 +47,19 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
             ou contacter directement le Cabinet.
           </p>
           {sent ? (
-            <p className="rounded-xl border border-emerald-300 bg-emerald-50 px-3 py-2 text-[11px] text-emerald-800">
+            <p
+              className="rounded-xl border border-emerald-300 bg-emerald-50 px-3 py-2 text-[11px] text-emerald-800"
+              role="status"
+              aria-live="polite"
+            >
               Votre message a bien été envoyé. Le Cabinet vous répondra dans les meilleurs délais.
             </p>
           ) : hasError ? (
-            <p className="rounded-xl border border-red-300 bg-red-50 px-3 py-2 text-[11px] text-red-800">
+            <p
+              className="rounded-xl border border-red-300 bg-red-50 px-3 py-2 text-[11px] text-red-800"
+              role="status"
+              aria-live="polite"
+            >
               Une erreur est survenue lors de l&apos;envoi de votre message. Vous pouvez réessayer ou utiliser directement l&apos;adresse email du Cabinet.
             </p>
           ) : null}
@@ -132,6 +140,13 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
         {/* Formulaire de contact */}
         <section className="app-panel text-xs text-slate-800">
           <form className="space-y-3" method="post">
+            <input
+              type="text"
+              name="website"
+              tabIndex={-1}
+              autoComplete="off"
+              className="hidden"
+            />
             <div className="space-y-1.5">
               <label htmlFor="nom" className="text-[11px] text-slate-700">
                 Votre nom*

@@ -1,6 +1,17 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
+type RateLimitEntry = {
+  count: number;
+  windowStart: number;
+};
+
+const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
+const RATE_LIMIT_MAX_REQUESTS = 5;
+const rateLimitMap = new Map<string, RateLimitEntry>();
+
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 export async function POST(request: Request) {
   const formData = await request.formData();
 
@@ -9,8 +20,37 @@ export async function POST(request: Request) {
   const telephone = (formData.get("telephone") ?? "").toString().trim();
   const objet = (formData.get("objet") ?? "").toString().trim();
   const message = (formData.get("message") ?? "").toString().trim();
+  const website = (formData.get("website") ?? "").toString().trim();
 
-  if (!nom || !email) {
+  if (website) {
+    const url = new URL("/contact?sent=1", request.url);
+    return NextResponse.redirect(url);
+  }
+
+  const ip =
+    request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
+  const now = Date.now();
+  const entry = rateLimitMap.get(ip);
+
+  if (!entry || now - entry.windowStart > RATE_LIMIT_WINDOW_MS) {
+    rateLimitMap.set(ip, { count: 1, windowStart: now });
+  } else {
+    if (entry.count >= RATE_LIMIT_MAX_REQUESTS) {
+      const url = new URL("/contact?error=rate", request.url);
+      return NextResponse.redirect(url);
+    }
+
+    entry.count += 1;
+    rateLimitMap.set(ip, entry);
+  }
+
+  if (
+    !nom ||
+    nom.length > 200 ||
+    !email ||
+    !EMAIL_REGEX.test(email) ||
+    message.length > 5000
+  ) {
     const url = new URL("/contact?error=validation", request.url);
     return NextResponse.redirect(url);
   }
@@ -62,7 +102,8 @@ export async function POST(request: Request) {
 
     const url = new URL("/contact?sent=1", request.url);
     return NextResponse.redirect(url);
-  } catch {
+  } catch (error) {
+    console.error("[contact] error sending email", error);
     const url = new URL("/contact?error=envoi", request.url);
     return NextResponse.redirect(url);
   }

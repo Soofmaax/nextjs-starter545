@@ -35,6 +35,13 @@ export const metadata: Metadata = {
     type: "website",
   },
   alternates: {
+    canonical: "/",
+    languages: {
+      fr: "/",
+      "fr-FR": "/",
+      en: "/en",
+      "en-US": "/en",
+    },
     types: {
       "application/rss+xml": "/rss.xml",
     },
@@ -63,7 +70,13 @@ export default async function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-slate-50 text-slate-900`}
       >
-        <div className="flex min-h-screen flex-col">
+        <a
+          href="#contenu-principal"
+          className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:m-4 focus:rounded focus:bg-slate-900 focus:px-3 focus:py-2 focus:text-[11px] focus:text-slate-50"
+        >
+          Aller au contenu principal
+        </a>
+        <div className="flex min-h-screen flex-col" id="contenu-principal">
           <header className="sticky top-0 z-30 border-b border-slate-200/70 bg-white/90 backdrop-blur-md">
             <nav className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-4">
               <div className="flex items-center gap-3">

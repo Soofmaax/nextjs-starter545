@@ -146,12 +146,18 @@ export default async function Home() {
               </p>
             </div>
             <div className="mt-4 flex w-full flex-col gap-2 text-[11px]">
-              <button className="rounded-full border border-slate-900 bg-slate-900 px-4 py-2 font-medium text-slate-50 transition-colors hover:bg-slate-800">
+              <Link
+                href="/contact"
+                className="rounded-full border border-slate-900 bg-slate-900 px-4 py-2 font-medium text-slate-50 transition-colors hover:bg-slate-800"
+              >
                 Prendre rendez-vous
-              </button>
-              <button className="rounded-full border border-slate-300 bg-transparent px-4 py-2 font-medium text-slate-900 transition-colors hover:bg-slate-100">
+              </Link>
+              <a
+                href={`mailto:${contactEmail}`}
+                className="rounded-full border border-slate-300 bg-transparent px-4 py-2 font-medium text-slate-900 transition-colors hover:bg-slate-100"
+              >
                 Ajouter aux contacts
-              </button>
+              </a>
             </div>
           </div>
         </section>
