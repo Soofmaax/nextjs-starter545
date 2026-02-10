@@ -1,4 +1,11 @@
+import type { Metadata } from "next";
 import { getSiteSettings, DEFAULT_SITE_SETTINGS } from "../../../lib/sanity.client";
+
+export const metadata: Metadata = {
+  title: "Contentieux et précontentieux commercial",
+  description:
+    "Assistance en précontentieux et contentieux commercial : stratégies préventives, expertises, ruptures de relations commerciales, procédures devant les juridictions civiles, commerciales et autorités spécialisées.",
+};
 
 const SKILLS_CONTENTIEUX = [
   "anticipation du risque en amont: notre expertise en droit des contrats doublée de notre expérience contentieuse nous permet d'identifier, très amont, les zones contractuelles \"à risque\" et de rédiger les clauses contractuelles de manière à éviter les contentieux",
@@ -73,13 +80,13 @@ export default async function ContentieuxPrecontentieuxPage() {
           </h2>
           <ul className="space-y-2 text-xs text-slate-800">
             {SKILLS_CONTENTIEUX.map((item) => (
-             <<li
+              <li
                 key={item}
                 className="flex gap-2 rounded-2xl border border-slate-200 bg-white/90 px-3 py-3"
               >
-               <<span className="mt-[5px] h-1.5 w-1.5 rounded-full bg-slate-500" />
-               <<span>{it}</</span>
-            </</li>
+                <span className="mt-[5px] h-1.5 w-1.5 rounded-full bg-slate-500" />
+                <span>{item}</span>
+              </li>
             ))}
           </ul>
         </section>

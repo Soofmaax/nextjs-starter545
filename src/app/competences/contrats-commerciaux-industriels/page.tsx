@@ -1,4 +1,11 @@
+import type { Metadata } from "next";
 import { getSiteSettings, DEFAULT_SITE_SETTINGS } from "../../../lib/sanity.client";
+
+export const metadata: Metadata = {
+  title: "Contrats commerciaux et industriels",
+  description:
+    "Spécialiste des contrats commerciaux et industriels, y compris de dimension internationale : rédaction, revue et négociation de contrats, schémas contractuels complexes et contract management.",
+};
 
 const SKILLS_COMMERCIAUX = [
   "rédaction, revue et négociation (en français / anglais) de tous contrats commerciaux :",

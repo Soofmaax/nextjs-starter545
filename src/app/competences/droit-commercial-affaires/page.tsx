@@ -1,4 +1,11 @@
+import type { Metadata } from "next";
 import { getSiteSettings, DEFAULT_SITE_SETTINGS } from "../../../lib/sanity.client";
+
+export const metadata: Metadata = {
+  title: "Droit commercial / droit des affaires",
+  description:
+    "Droit commercial et droit des affaires : contrats commerciaux, recouvrement de créances, due diligence, garanties d'actif et de passif, consultations en droit commercial.",
+};
 
 const COMPETENCES_COMMERCIAL = [
   "rédaction et négociation de tous contrats commerciaux nécessaires à la création et la conduite d'une activité commerciale (avant-contrats, achat, vente, cession/licence de marque, bail commercial etc...)",

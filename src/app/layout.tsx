@@ -15,10 +15,30 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+
 export const metadata: Metadata = {
-  title: "Temple Boyer Legal",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "Temple Boyer Legal",
+    template: "%s | Temple Boyer Legal",
+  },
   description:
     "Cabinet d'avocat d'affaires international – conseil et contentieux, Paris.",
+  openGraph: {
+    title: "Temple Boyer Legal",
+    description:
+      "Cabinet d'avocat d'affaires international – conseil et contentieux, Paris.",
+    url: "/",
+    siteName: "Temple Boyer Legal",
+    locale: "fr_FR",
+    type: "website",
+  },
+  alternates: {
+    types: {
+      "application/rss+xml": "/rss.xml",
+    },
+  },
 };
 
 export default async function RootLayout({

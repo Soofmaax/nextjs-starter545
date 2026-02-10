@@ -1,8 +1,15 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { getPosts, type SanityPost } from "../../lib/sanity.client";
 import { STATIC_ARTICLES } from "../../lib/static-articles";
 import { ArticleSelect } from "../../components/blog/ArticleSelect";
 import { ArticleFilters } from "../../components/blog/ArticleFilters";
+
+export const metadata: Metadata = {
+  title: "Publications & actualités",
+  description:
+    "Publications et actualités du cabinet Temple Boyer Legal : articles de fond et d'actualité en droit de la distribution, concurrence, consommation, contrats, droit international, etc.",
+};
 
 type ArticleCard = {
   slug: string;

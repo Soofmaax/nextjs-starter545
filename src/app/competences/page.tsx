@@ -1,5 +1,12 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { getSiteSettings, DEFAULT_SITE_SETTINGS } from "../../lib/sanity.client";
+
+export const metadata: Metadata = {
+  title: "Compétences et spécialités",
+  description:
+    "Présentation des domaines de compétence du cabinet Temple Boyer Legal en droit des affaires : contrats, contentieux commercial, droit commercial, concurrence, distribution, consommation, propriété intellectuelle, nouvelles technologies, etc.",
+};
 
 const EXPERTISE_JURIDIQUE = [
   "Contrats commerciaux et industriels (y compris de dimension internationale)",

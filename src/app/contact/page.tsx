@@ -1,5 +1,12 @@
+import type { Metadata } from "next";
 import { Mail, Phone } from "lucide-react";
 import { getSiteSettings, DEFAULT_SITE_SETTINGS } from "../../lib/sanity.client";
+
+export const metadata: Metadata = {
+  title: "Contact",
+  description:
+    "Coordonnées du cabinet Temple Boyer Legal et formulaire de contact pour toute demande d'information, de rendez-vous ou de devis.",
+};
 
 type ContactPageProps = {
   searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;

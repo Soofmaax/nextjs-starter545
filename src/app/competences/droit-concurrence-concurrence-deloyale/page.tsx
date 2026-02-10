@@ -1,4 +1,11 @@
+import type { Metadata } from "next";
 import { getSiteSettings, DEFAULT_SITE_SETTINGS } from "../../../lib/sanity.client";
+
+export const metadata: Metadata = {
+  title: "Droit de la concurrence & concurrence déloyale",
+  description:
+    "Droit de la concurrence, concurrence déloyale et pratiques restrictives : audits, conformité, partenariats, contentieux devant les autorités de concurrence et juridictions nationales.",
+};
 
 const INTRO_POINTS = [
   "Le droit de la concurrence se décompose en trois volets distincts dans lesquels le Cabinet Temple Boyer Legal dispose de l'expertise requise pour vous conseiller et vous représenter devant les juridictions compétentes:",
