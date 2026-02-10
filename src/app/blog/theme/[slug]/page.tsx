@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getPostsByCategorySlug } from "../../../../lib/sanity.client";
@@ -5,6 +6,38 @@ import { getPostsByCategorySlug } from "../../../../lib/sanity.client";
 type BlogThemePageProps = {
   params: Promise<{ slug: string }>;
 };
+
+type BlogThemeRouteParams = {
+  params: {
+    slug: string;
+  };
+};
+
+export async function generateMetadata({ params }: BlogThemeRouteParams): Promise<Metadata> {
+  const { slug } = params;
+
+  const posts = await getPostsByCategorySlug(slug);
+
+  if (!posts || posts.length === 0) {
+    return {
+      title: "Publications par thème",
+      description: "Articles du cabinet Temple Boyer Legal classés par thème.",
+      alternates: {
+        canonical: `/blog/theme/${slug}`,
+      },
+    };
+  }
+
+  const themeTitle = posts[0].categoryTitle || slug;
+
+  return {
+    title: `Publications sur le thème ${themeTitle}`,
+    description: `Sélection d'articles et d'analyses du cabinet Temple Boyer Legal autour du thème ${themeTitle}.`,
+    alternates: {
+      canonical: `/blog/theme/${slug}`,
+    },
+  };
+}
 
 export default async function BlogThemePage({ params }: BlogThemePageProps) {
   const { slug } = await params;
@@ -78,7 +111,7 @@ export default async function BlogThemePage({ params }: BlogThemePageProps) {
                 <div className="pt-3">
                   <Link
                     href={`/blog/${article.slug}`}
-                    className="inline-flex text-xs font-semibold text-amber-700 underline-offset-4 hover:underline"
+                    className="inline-flex text-xs font-semibold text-slate-900 underline-offset-4 hover:underline"
                   >
                     Lire la publication
                   </Link>

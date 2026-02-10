@@ -1,124 +1,131 @@
-# Temple Boyer Legal – Site vitrine
+# Temple Boyer Legal – Site web
 
-Site vitrine d’un cabinet d’avocat, développé avec :
+Projet Next.js pour le site du cabinet d’avocat d’affaires **Temple Boyer Legal** (Paris, avenue de Wagram).
 
-- **Next.js 15** (App Router)
-- **React 19**
-- **TypeScript** (mode strict)
-- **Tailwind CSS 4**
-- **Sanity CMS** pour la gestion des contenus (articles, pages éditoriales)
+- Framework : Next.js 15 (App Router)
+- UI : Tailwind CSS v4, polices Geist
+- CMS : Sanity (Studio et contenus dynamiques pour le blog & paramètres du site)
+- Hébergement : Vercel
 
-Ce projet est issu d’un template `create-next-app`, puis adapté pour les besoins spécifiques du cabinet.
+Ce README sert de point d’entrée pour les développements. Les détails de design sont documentés dans `docs/design-system.md`.
 
 ---
 
-## Démarrage local
+## 1. Démarrage du projet
 
-Installe les dépendances, puis lance le serveur de développement :
+Installer les dépendances :
+
+```bash
+npm install
+```
+
+Lancer le serveur de développement :
 
 ```bash
 npm install
 npm run dev
 ```
 
-L’application est accessible sur : <http://localhost:3000>
+Puis ouvrir [http://localhost:3000](http://localhost:3000).
 
-Les pages principales sont :
-
-- `/` : accueil FR
-- `/cabinet` : présentation du cabinet
-- `/competences` (+ sous-pages) : domaines d’intervention
-- `/blog` : publications & actualités
-- `/contact` : formulaire de contact (maquette, pas d’envoi réel)
-- `/honoraires`, `/mentions-legales`, `/confidentialite`
-- `/en` : page d’accueil en anglais
-- `/studio` : interface Sanity Studio (si variables d’environnement configurées)
+Le layout global (nav + footer) se trouve dans `src/app/layout.tsx`. La page d’accueil française est dans `src/app/page.tsx`, la version anglaise dans `src/app/en/page.tsx`.
 
 ---
 
-## Scripts disponibles
+## 2. Commandes principales
 
-```bash
-npm run dev        # Développement (Next dev, App Router, Turbopack)
-npm run lint       # Lint avec ESLint (next/core-web-vitals + TypeScript)
-npm run typecheck  # Vérification de types TypeScript (tsc --noEmit)
-npm run build      # Build de production (inclut un typecheck interne)
-npm run start      # Démarrage en mode production (après build)
-```
+- `npm run dev` : démarrage en développement (Next dev avec Turbopack)
+- `npm run lint` : linting (ESLint + règles Next/TypeScript)
+- `npm run build` : build de production (inclut le type-check et la collecte des données de pages)
+- `npm start` : lancement du serveur en mode production après `npm run build`
 
 ---
 
-## Accessibilité (a11y) – points clés
+## 3. Design & CSS
 
-Le Lot 2 a introduit plusieurs améliorations a11y :
+Le design est **figé et documenté** pour garantir la stabilité visuelle du site.
 
-- **Structure sémantique** :
-  - Utilisation cohérente de `<header>`, `<main>`, `<section>`, `<article>`, `<footer>` sur les pages clés.
-  - Un seul `<h1>` par page, puis des `<h2>` / `<h3>` pour structurer le contenu.
-- **Lien « Aller au contenu principal »** :
-  - Un lien de type *skip link* est présent en tout début de `<body>`.
-  - Il devient visible au focus clavier et pointe vers `#main-content` sur chaque page.
-- **Focus visible** :
-  - Anneaux de focus globaux (via `globals.css`) sur les liens et boutons.
-  - Styles de focus explicites sur les champs de formulaire (inputs, textarea, select).
-- **Formulaires** :
-  - Labels correctement associés (`htmlFor`/`id`).
-  - Champs email en `type="email"`.
-  - Sur la page Contact, les champs marqués `*` sont déclarés `required`.
-- **Icônes décoratives** :
-  - Icônes lucide-react utilisées comme décorations sont marquées `aria-hidden="true"`.
+- Fichier principal : `src/app/globals.css`
+- Layout global : `src/app/layout.tsx`
+- Guide complet : `docs/design-system.md`
 
-Ces choix visent à rendre la navigation au clavier et l’usage des lecteurs d’écran plus confortables, tout en restant discrets visuellement.
+**Important :**
+
+- Ne pas modifier directement `globals.css` sauf décision explicite.
+- Pour toute nouvelle page ou section, réutiliser les classes et motifs décrits dans `docs/design-system.md` (`app-shell`, `app-main`, `app-panel`, boutons, formulaires, etc.).
+- La palette est volontairement sobre (gris, blanc, anthracite). Aucune couleur vive ne doit être ajoutée.
 
 ---
 
-## Sanity CMS & Studio
+## 4. Sanity (CMS)
 
-Le contenu éditorial (articles de blog, paramètres du site…) est géré via **Sanity** :
+Sanity est utilisé pour :
 
-- Configuration principale : `sanity.config.ts`
-- Schémas : `sanity/schemas/*.ts`
-- Client : `src/lib/sanity.client.ts`
+- Les paramètres du site (adresse, email, téléphone, titre).
+- Les articles du blog dynamiques (schéma `post`).
+- Les auteurs (`author`) et thèmes de publication (`category`).
 
-L’interface Studio est exposée sur `/studio` et utilise `next-sanity/studio`.
+Configuration :
 
-Pour l’activer, définis les variables d’environnement suivantes :
+- Fichier du Studio : `sanity.config.ts`
+- Schémas : `sanity/` (posts, auteurs, catégories, settings).
+- Client Sanity côté Next : `src/lib/sanity.client.ts`
 
-```bash
-NEXT_PUBLIC_SANITY_PROJECT_ID=...
-NEXT_PUBLIC_SANITY_DATASET=...
-# Optionnel, sinon valeur par défaut
-NEXT_PUBLIC_SANITY_API_VERSION=2025-01-01
-```
+Environnement (Vercel / local) :
 
-Si ces variables ne sont pas renseignées, la page `/studio` affiche une vue explicite « Studio Sanity non configuré ».
+- `NEXT_PUBLIC_SANITY_PROJECT_ID` : identifiant du projet Sanity.
+- `NEXT_PUBLIC_SANITY_DATASET` : dataset (souvent `production`).
+- `NEXT_PUBLIC_SANITY_API_VERSION` : optionnel (une date ISO, par défaut gérée dans le code).
 
----
+**Règle de contenu :**
 
-## Intégration continue (CI)
-
-Un workflow GitHub Actions est fourni dans `.github/workflows/ci.yml`.
-
-Pour chaque `push` / `pull_request` sur `main` ou `master`, la CI :
-
-1. Installe Node 20 avec cache npm.
-2. Installe les dépendances (`npm install`).
-3. Lance le lint : `npm run lint`.
-4. Lance un typecheck explicite : `npm run typecheck`.
-5. Lance le build de production : `npm run build`.
-
-L’objectif du Lot 2 était d’améliorer la fiabilité de la pipeline (lint + types + build) sans alourdir le projet.
+- Le contenu Sanity est purement **éditorial** (texte, titres, listes...).
+- Le style (couleurs, tailles, polices) est imposé par les composants React côté Next.
+- Ne pas injecter de HTML stylé ni de couleurs via Sanity.
 
 ---
 
-## Notes sur le contenu
+## 5. Structure des pages
 
-Les textes marketing et juridiques (présentation, mentions légales, politique de confidentialité, articles) sont considérés comme sensibles.
+- `src/app/page.tsx` : page d’accueil FR.
+- `src/app/en/page.tsx` : page d’accueil EN.
+- `src/app/cabinet/page.tsx` : présentation du cabinet.
+- `src/app/competences/...` : pages de compétences (générale + sous-pages spécialisées).
+- `src/app/honoraires/page.tsx` : politique d’honoraires.
+- `src/app/contact/page.tsx` : contact et formulaire (démo).
+- `src/app/confidentialite/page.tsx` : politique de confidentialité.
+- `src/app/mentions-legales/page.tsx` : mentions légales.
+- `src/app/blog/page.tsx` : liste des articles (statiques + Sanity).
+- `src/app/blog/[slug]/page.tsx` : article Sanity par slug.
+- `src/app/blog/tiers-au-contrat-janvier-2026/page.tsx` : article statique (tiers au contrat).
+- `src/app/blog/inexecution-contractuelle-janvier-2025/page.tsx` : article statique (inexécution contractuelle).
+- `src/app/studio/[[...index]]/page.tsx` : Studio Sanity intégré.
 
-Les modifications du Lot 2 se concentrent sur :
+Toute nouvelle page doit suivre la structure décrite dans `docs/design-system.md`.
 
-- l’accessibilité (structure, labels, focus, lang),
-- de petites micro-optimisations de rendu,
-- la DX/CI (scripts et workflow),
+---
 
-sans modifier le fond juridique ou le ton marketing. Toute évolution de ces contenus doit rester sous contrôle éditorial humain.
+## 6. Déploiement sur Vercel
+
+Le projet est conçu pour être déployé sur Vercel :
+
+- La CI vérifie :
+  - `npm install`
+  - `npm run lint`
+  - `npm run build`
+- Vercel refuse les versions vulnérables de Next.js (React2Shell). Le projet est configuré avec une version patchée de Next (`15.4.8`).
+
+Pour déployer :
+
+1. Pousser sur la branche utilisée par Vercel (ex. `master`).
+2. Vercel lance automatiquement un nouveau build.
+3. Les variables d’environnement Sanity doivent être configurées dans les Settings du projet Vercel.
+
+---
+
+## 7. Références externes
+
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Tailwind CSS](https://tailwindcss.com)
+- [Sanity.io](https://www.sanity.io)
+- [Vercel](https://vercel.com)

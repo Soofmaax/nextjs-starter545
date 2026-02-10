@@ -40,7 +40,7 @@ export default async function BlogArticleTiersContrat() {
               Email :
               <a
                 href={`mailto:${contactEmail}`}
-                className="ml-1 text-amber-700 underline-offset-4 hover:underline"
+                className="ml-1 text-slate-900 underline-offset-4 hover:underline"
               >
                 {contactEmail}
               </a>
@@ -166,11 +166,12 @@ export default async function BlogArticleTiersContrat() {
             <li>permettre au juge de remettre en cause la volonté des parties.</li>
           </ul>
 
-          <p className="mt-4 rounded-2xl bg-amber-50 p-4 text-sm text-slate-900">
-            <span className="font-semibold">À retenir en une phrase :</span>{' '}
-            le contrat protège aussi contre les tiers : ceux-ci ne peuvent pas
-            invoquer un manquement contractuel sans subir les mêmes limites que les
-            parties signataires.
+          <p className="mt-4 rounded-2xl bg-slate-100 p-4 text-sm text-slate-900">
+            Cette évolution confirme que le tiers au contrat ne peut pas tout
+            avoir : invoquer les avantages du contrat sans assumer les limites
+            que les parties ont expressément prévues. La pratique contractuelle
+            doit intégrer, en amont, cette articulation entre droits des
+            parties et droits des tiers.
           </p>
 
           <h2 className="mt-6 text-base font-semibold tracking-tight">

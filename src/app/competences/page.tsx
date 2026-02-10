@@ -1,4 +1,12 @@
+import type { Metadata } from "next";
+import Link from "next/link";
 import { getSiteSettings, DEFAULT_SITE_SETTINGS } from "../../lib/sanity.client";
+
+export const metadata: Metadata = {
+  title: "Compétences et spécialités",
+  description:
+    "Présentation des domaines de compétence du cabinet Temple Boyer Legal en droit des affaires : contrats, contentieux commercial, droit commercial, concurrence, distribution, consommation, propriété intellectuelle, nouvelles technologies, etc.",
+};
 
 const EXPERTISE_JURIDIQUE = [
   "Contrats commerciaux et industriels (y compris de dimension internationale)",
@@ -78,14 +86,14 @@ export default async function CompetencesPage() {
             <p>{addressLine1}</p>
             <p>{addressLine2}</p>
             <p>
-              Email :
-              <a
-                href={`mailto:${contactEmail}`}
-                className="ml-1 text-amber-700 underline-offset-4 hover:underline"
-              >
-                {contactEmail}
-              </a>
-            </p>
+                Email :
+                <a
+                  href={`mailto:${contactEmail}`}
+                  className="ml-1 text-slate-900 underline-offset-4 hover:underline"
+                >
+                  {contactEmail}
+                </a>
+              </p>
           </div>
         </section>
 
@@ -107,17 +115,45 @@ export default async function CompetencesPage() {
           </div>
 
           <div className="grid gap-3 rounded-2xl border border-slate-200 bg-white/80 p-4 sm:grid-cols-2">
-            {EXPERTISE_JURIDIQUE.map((item) => (
-              <div
-                key={item}
-                className="flex items-start gap-3 rounded-2xl border border-slate-200 bg-white px-3 py-3 text-xs text-slate-800"
-              >
-                <span className="mt-[3px] flex h-6 w-6 items-center justify-center rounded-full bg-amber-500/10 text-[10px] text-amber-700">
-                  •
-                </span>
-                <span>{item}</span>
-              </div>
-            ))}
+            {EXPERTISE_JURIDIQUE.map((item) => {
+              const href =
+                item ===
+                "Contrats commerciaux et industriels (y compris de dimension internationale)"
+                  ? "/competences/contrats-commerciaux-industriels"
+                  : item === "Précontentieux et contentieux commercial"
+                    ? "/competences/contentieux-precontentieux"
+                    : item === "Droit commercial / droit des sociétés"
+                      ? "/competences/droit-commercial-affaires"
+                      : item === "Droit de la concurrence"
+                        ? "/competences/droit-concurrence-concurrence-deloyale"
+                        : null;
+
+              const content = (
+                <>
+                  <span className="mt-[3px] flex h-6 w-6 items-center justify-center rounded-full bg-amber-500/10 text-[10px] text-amber-700">
+                    •
+                  </span>
+                  <span>{item}</span>
+                </>
+              );
+
+              return href ? (
+                <Link
+                  key={item}
+                  href={href}
+                  className="flex items-start gap-3 rounded-2xl border border-slate-200 bg-white px-3 py-3 text-xs text-slate-800 transition-colors hover:bg-slate-50"
+                >
+                  {content}
+                </Link>
+              ) : (
+                <div
+                  key={item}
+                  className="flex items-start gap-3 rounded-2xl border border-slate-200 bg-white px-3 py-3 text-xs text-slate-800"
+                >
+                  {content}
+                </div>
+              );
+            })}
           </div>
         </section>
 

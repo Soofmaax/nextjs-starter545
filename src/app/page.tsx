@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { BookOpenText, Globe2, Mail, Scale } from "lucide-react";
 import { getSiteSettings, DEFAULT_SITE_SETTINGS } from "../lib/sanity.client";
@@ -33,66 +34,6 @@ export default async function Home() {
 
   return (
     <div className="app-shell">
-      {/* Top navigation */}
-      <header className="sticky top-0 z-30 border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-md">
-        <nav className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-4">
-          <div className="flex items-center gap-3">
-            <div className="flex items-center gap-2">
-              <div className="flex h-10 w-10 items-center justify-center rounded-2xl border border-slate-700/80 bg-slate-900/80 shadow-sm shadow-black/50">
-                <span className="text-xs font-semibold leading-tight text-slate-100">
-                  TBL
-                </span>
-              </div>
-              <Scale className="h-4 w-4 text-amber-500" aria-hidden="true" />
-            </div>
-            <div className="flex flex-col">
-              <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-200">
-                Temple Boyer Legal
-              </span>
-              <span className="text-[11px] text-slate-400">
-                Cabinet d&apos;avocat d&apos;affaires international
-              </span>
-            </div>
-          </div>
-
-          <div className="hidden items-center gap-6 text-[11px] font-medium sm:flex">
-            <div className="flex items-center gap-6 text-slate-300">
-              <Link href="/" className="transition-colors hover:text-slate-50">
-                Accueil
-              </Link>
-              <Link href="/cabinet" className="transition-colors hover:text-slate-50">
-                Le Cabinet
-              </Link>
-              <Link href="/competences" className="transition-colors hover:text-slate-50">
-                Compétences
-              </Link>
-              <Link href="/honoraires" className="transition-colors hover:text-slate-50">
-                Honoraires
-              </Link>
-              <Link href="/blog" className="transition-colors hover:text-slate-50">
-                Publications / Actualités
-              </Link>
-              <a href="/partenariats" className="transition-colors hover:text-slate-50">
-                Partenariats
-              </a>
-              <Link href="/contact" className="transition-colors hover:text-slate-50">
-                Contact
-              </Link>
-              <a href="#plan-acces" className="transition-colors hover:text-slate-50">
-                Plan d&apos;accès
-              </a>
-            </div>
-            <div className="flex items-center text-[10px] font-normal text-slate-400">
-              <span className="cursor-default text-slate-100">FR</span>
-              <span className="mx-1 text-slate-600">|</span>
-              <Link href="/en" className="transition-colors hover:text-slate-50">
-                EN
-              </Link>
-            </div>
-          </div>
-        </nav>
-      </header>
-
       <main className="app-main">
         {/* Hero section */}
         <section
@@ -100,8 +41,8 @@ export default async function Home() {
           className="app-panel grid gap-12 md:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)] md:items-center"
         >
           <div className="space-y-8">
-            <div className="inline-flex items-center gap-2 rounded-full border border-amber-500/30 bg-amber-50/80 px-3 py-1 text-[11px] text-amber-900">
-              <span className="inline-flex h-1.5 w-1.5 rounded-full bg-amber-500" />
+            <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1 text-[11px] text-slate-700">
+              <span className="inline-flex h-1.5 w-1.5 rounded-full bg-slate-400" />
               <span>Conseil &amp; contentieux en droit des affaires</span>
             </div>
 
@@ -145,15 +86,15 @@ export default async function Home() {
 
             <div className="flex flex-wrap gap-4 text-[11px]">
               <div className="flex items-center gap-2 rounded-full border border-slate-200 bg-white/80 px-3 py-1 text-slate-700">
-                <span className="h-1.5 w-1.5 rounded-full bg-amber-500" />
+                <span className="h-1.5 w-1.5 rounded-full bg-slate-500" />
                 <span>Barreau de Paris</span>
               </div>
               <div className="flex items-center gap-2 rounded-full border border-slate-200 bg-white/80 px-3 py-1 text-slate-700">
-                <span className="h-1.5 w-1.5 rounded-full bg-amber-500" />
+                <span className="h-1.5 w-1.5 rounded-full bg-slate-500" />
                 <span>Conseil &amp; contentieux</span>
               </div>
               <div className="flex items-center gap-2 rounded-full border border-slate-200 bg-white/80 px-3 py-1 text-slate-700">
-                <span className="h-1.5 w-1.5 rounded-full bg-amber-500" />
+                <span className="h-1.5 w-1.5 rounded-full bg-slate-500" />
                 <span>France &amp; international</span>
               </div>
             </div>
@@ -161,7 +102,7 @@ export default async function Home() {
             <div className="flex flex-wrap gap-4 text-xs">
               <a
                 href="#contact"
-                className="inline-flex items-center justify-center rounded-full bg-amber-500 px-5 py-2 text-[11px] font-semibold text-slate-950 shadow-[0_18px_45px_rgba(180,83,9,0.45)] transition-colors hover:bg-amber-500/90"
+                className="inline-flex items-center justify-center rounded-full bg-slate-900 px-5 py-2 text-[11px] font-semibold text-slate-50 shadow-sm transition-colors hover:bg-slate-800"
               >
                 Contacter le Cabinet
               </a>
@@ -175,12 +116,14 @@ export default async function Home() {
           </div>
 
           <div className="relative mx-auto flex max-w-xs flex-col items-center gap-4 rounded-3xl border border-slate-200 bg-slate-50/90 p-6 text-center shadow-[0_18px_60px_rgba(15,23,42,0.18)]">
-            <div className="relative mt-2 flex h-28 w-28 items-center justify-center overflow-hidden rounded-full border border-slate-300 bg-slate-100">
-              <span className="text-[11px] font-semibold text-slate-600">
-                Photo
-                <br />
-                Sarah Temple-Boyer
-              </span>
+            <div className="relative mt-2 flex h-32 w-32 items-center justify-center overflow-hidden rounded-full border border-slate-300 bg-slate-100">
+              <Image
+                src="/Sarah-Temple-Boyer.jpg"
+                alt="Portrait de Maître Sarah Temple-Boyer"
+                fill
+                sizes="128px"
+                className="object-cover"
+              />
             </div>
             <div className="space-y-1">
               <p className="text-xs font-semibold tracking-tight text-slate-900">
@@ -203,12 +146,18 @@ export default async function Home() {
               </p>
             </div>
             <div className="mt-4 flex w-full flex-col gap-2 text-[11px]">
-              <button className="rounded-full border border-slate-900 bg-slate-900 px-4 py-2 font-medium text-slate-50 transition-colors hover:bg-slate-800">
+              <Link
+                href="/contact"
+                className="rounded-full border border-slate-900 bg-slate-900 px-4 py-2 font-medium text-slate-50 transition-colors hover:bg-slate-800"
+              >
                 Prendre rendez-vous
-              </button>
-              <button className="rounded-full border border-slate-300 bg-transparent px-4 py-2 font-medium text-slate-900 transition-colors hover:bg-slate-100">
+              </Link>
+              <a
+                href={`mailto:${contactEmail}`}
+                className="rounded-full border border-slate-300 bg-transparent px-4 py-2 font-medium text-slate-900 transition-colors hover:bg-slate-100"
+              >
                 Ajouter aux contacts
-              </button>
+              </a>
             </div>
           </div>
         </section>
@@ -463,65 +412,14 @@ export default async function Home() {
               n&apos;est réalisé depuis cette maquette.
             </p>
             <button
-              type="button"
-              className="mt-1 inline-flex items-center justify-center rounded-full bg-amber-500 px-5 py-2 text-[11px] font-semibold text-slate-950 shadow-[0_18px_45px_rgba(180,83,9,0.45)] transition-colors hover:bg-amber-500/90"
-            >
-              Envoyer la demande (démo)
-            </button>
+                type="button"
+                className="mt-1 inline-flex items-center justify-center rounded-full bg-slate-900 px-5 py-2 text-[11px] font-semibold text-slate-50 shadow-sm transition-colors hover:bg-slate-800"
+              >
+                Envoyer la demande (démo)
+              </button>
           </form>
         </section>
       </main>
-
-      <footer className="border-t border-slate-800 bg-slate-950/95 py-8 text-[11px] text-slate-400">
-        <div className="mx-auto flex max-w-6xl flex-col gap-3 px-6 sm:flex-row sm:items-center sm:justify-between">
-          <div className="space-y-1">
-            <p className="font-medium text-slate-200">
-              Maître Sarah Temple-Boyer – Avocat d&apos;affaires international
-            </p>
-            <p className="text-slate-400">
-              Cabinet Temple Boyer Legal – {addressLine1} – {addressLine2}
-            </p>
-            <p>
-              Email :
-              <a
-                href={`mailto:${contactEmail}`}
-                className="ml-1 text-amber-600 underline-offset-4 hover:underline"
-              >
-                {contactEmail}
-              </a>
-            </p>
-          </div>
-
-          <div className="space-y-1 text-[10px] text-slate-500">
-            <p>© 2015 – {new Date().getFullYear()} Sarah Temple-Boyer. Tous droits réservés.</p>
-            <p className="flex flex-wrap gap-2">
-              <Link
-                href="/mentions-legales"
-                className="text-slate-400 underline-offset-4 hover:text-slate-200 hover:underline"
-              >
-                Mentions légales
-              </Link>
-              <span className="text-slate-600">·</span>
-              <Link
-                href="/confidentialite"
-                className="text-slate-400 underline-offset-4 hover:text-slate-200 hover:underline"
-              >
-                Confidentialité
-              </Link>
-              <span className="text-slate-600">·</span>
-              <button
-                type="button"
-                className="text-slate-400 underline-offset-4 hover:text-slate-200 hover:underline"
-              >
-                Accès administrateur
-              </button>
-            </p>
-            <p className="text-[9px] text-slate-600">
-              Design et intégration : maquette Next.js personnalisée.
-            </p>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }
