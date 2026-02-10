@@ -13,10 +13,10 @@ export const client = createClient({
 });
 
 export type SiteSettings = {
-  title?: string;
-  contactEmail?: string;
-  phone?: string;
-  address?: string;
+  title: string;
+  contactEmail: string;
+  phone: string;
+  address: string;
 };
 
 export const DEFAULT_SITE_SETTINGS: SiteSettings = {

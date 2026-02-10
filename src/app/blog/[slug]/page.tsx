@@ -13,8 +13,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   const siteSettings = (await getSiteSettings()) ?? DEFAULT_SITE_SETTINGS;
 
-  const contactEmail = siteSettings.contactEmail ?? DEFAULT_SITE_SETTINGS.contactEmail;
-  const address = siteSettings.address ?? DEFAULT_SITE_SETTINGS.address;
+  const contactEmail = siteSettings.contactEmail;
+  const address = siteSettings.address;
 
   const addressParts = address.split(",").map((part) => part.trim());
   const isDefaultAddress = address === DEFAULT_SITE_SETTINGS.address;
@@ -22,7 +22,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     ? "10, avenue de Wagram"
     : addressParts[0] || "10, avenue de Wagram";
   const addressLine2 = addressParts[1] || "75008 Paris";
-  const postalAddress = address || DEFAULT_SITE_SETTINGS.address!;
+  const postalAddress = address;
 
   const post = await getPostBySlug(slug);
 
