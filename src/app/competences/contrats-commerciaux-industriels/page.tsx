@@ -17,7 +17,7 @@ const SKILLS_INDUSTRIELS = [
   "rédaction, revue et négociation (en français / en anglais) de tous contrats industriels:",
   "en amont: contrats EPC (engineering, procurement and construction), achat / fourniture (équipement industriel, articles de conditionnement), manufacturing, R&D, transferts de technologie, contrats d'évaluation et de développement, partenariats (sous-traitance, co-traitance)...",
   "en aval: vente, distribution, logistique (transport, conditionnement)",
-  '"contract management": suivi au plus près des opérationnels des contrats en cours d'exécution pour veiller au respect des milestones, anticiper les avenants nécessaires et les renouvellements...',
+  "\"contract management\": suivi au plus près des opérationnels des contrats en cours d'exécution pour veiller au respect des milestones, anticiper les avenants nécessaires et les renouvellements...",
 ];
 
 const OPERATIONS = [
