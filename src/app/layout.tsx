@@ -127,7 +127,7 @@ export default async function RootLayout({
                   Email :
                   <a
                     href={`mailto:${contactEmail}`}
-                    className="ml-1 text-amber-700 underline-offset-4 hover:underline"
+                    className="ml-1 text-slate-900 underline-offset-4 hover:underline"
                   >
                     {contactEmail}
                   </a>
@@ -151,6 +151,13 @@ export default async function RootLayout({
                     className="text-slate-500 underline-offset-4 hover:text-slate-900 hover:underline"
                   >
                     Confidentialité
+                  </Link>
+                  <span className="text-slate-400">·</span>
+                  <Link
+                    href="/studio"
+                    className="text-slate-500 underline-offset-4 hover:text-slate-900 hover:underline"
+                  >
+                    Accès administrateur
                   </Link>
                 </p>
               </div>
