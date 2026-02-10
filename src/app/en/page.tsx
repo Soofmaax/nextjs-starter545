@@ -88,7 +88,7 @@ export default function HomeEn() {
         </nav>
       </header>
 
-      <main className="app-main">
+      <main id="main-content" className="app-main">
         {/* Hero section */}
         <section
           id="cabinet"

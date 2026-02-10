@@ -10,10 +10,13 @@ export default function StudioPage() {
   if (!projectId || !dataset) {
     return (
       <div className="app-shell">
-        <main className="app-main">
+        <main id="main-content" className="app-main">
           <div className="app-panel">
-            <p className="text-sm text-slate-800">
-              Le Studio Sanity n&apos;est pas encore configuré. Veuillez définir les
+            <h1 className="text-lg font-semibold text-slate-900">
+              Studio Sanity non configuré
+            </h1>
+            <p className="mt-2 text-sm text-slate-600">
+              Le studio Sanity n&apos;est pas encore configuré. Veuillez définir les
               variables d&apos;environnement NEXT_PUBLIC_SANITY_PROJECT_ID et
               NEXT_PUBLIC_SANITY_DATASET, puis redémarrer l&apos;application.
             </p>

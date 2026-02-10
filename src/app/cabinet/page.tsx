@@ -35,7 +35,7 @@ export default async function CabinetPage() {
 
   return (
     <div className="app-shell">
-      <main className="app-main">
+      <main id="main-content" className="app-main">
         <header className="app-panel space-y-4">
           <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-slate-500">
             Temple Boyer Legal

@@ -134,7 +134,7 @@ export default async function BlogIndexPage({ searchParams }: BlogIndexPageProps
 
   return (
     <div className="app-shell">
-      <main className="app-main">
+      <main id="main-content" className="app-main">
         <section className="space-y-4">
           <header className="app-panel space-y-4">
             <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-slate-500">

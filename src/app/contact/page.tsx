@@ -17,7 +17,7 @@ export default async function ContactPage() {
 
   return (
     <div className="app-shell">
-      <main className="app-main">
+      <main id="main-content" className="app-main">
         <div className="mx-auto flex w-full max-w-3xl flex-col gap-10">
         {/* En-tête */}
         <header className="app-panel space-y-4">
@@ -114,10 +114,13 @@ export default async function ContactPage() {
                 Votre nom*
               </label>
               <input
-                id="nom"
-                name="nom"
-                className="w-full rounded-xl border border-slate-300 bg-white/90 px-3 py-2 text-xs text-slate-900 outline-none ring-amber-500/20 placeholder:text-slate-400 focus:border-amber-500 focus:ring-2"
-                placeholder="Votre nom complet"
+                id="name"
+                name="name"
+                type="text"
+                autoComplete="name"
+                required
+                className="block w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 shadow-sm outline-none transition focus:border-amber-500 focus:ring-2 focus:ring-amber-400/70"
+                placeholder="Votre nom et, le cas échéant, votre société"
               />
             </div>
             <div className="space-y-1.5">
@@ -128,8 +131,10 @@ export default async function ContactPage() {
                 id="email"
                 name="email"
                 type="email"
-                className="w-full rounded-xl border border-slate-300 bg-white/90 px-3 py-2 text-xs text-slate-900 outline-none ring-amber-500/20 placeholder:text-slate-400 focus:border-amber-500 focus:ring-2"
-                placeholder="vous@exemple.com"
+                autoComplete="email"
+                required
+                className="block w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 shadow-sm outline-none transition focus:border-amber-500 focus:ring-2 focus:ring-amber-400/70"
+                placeholder="nom@exemple.com"
               />
             </div>
             <div className="space-y-1.5">

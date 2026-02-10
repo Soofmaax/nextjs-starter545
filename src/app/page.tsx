@@ -358,7 +358,10 @@ export default async function Home() {
                 de l&apos;actualité juridique en droit des affaires.
               </p>
             </div>
-            <button className="self-start rounded-full border border-slate-300 bg-transparent px-4 py-1.5 text-[11px] font-medium text-slate-900 transition-colors hover:bg-slate-100">
+            <button
+              type="button"
+              className="self-start rounded-full border border-slate-300 bg-transparent px-4 py-1.5 text-[11px] font-medium text-slate-900 transition-colors hover:bg-slate-100"
+            >
               S&apos;abonner au flux RSS
             </button>
           </div>
@@ -506,7 +509,10 @@ export default async function Home() {
                 Confidentialité
               </Link>
               <span className="text-slate-600">·</span>
-              <button className="text-slate-400 underline-offset-4 hover:text-slate-200 hover:underline">
+              <button
+                type="button"
+                className="text-slate-400 underline-offset-4 hover:text-slate-200 hover:underline"
+              >
                 Accès administrateur
               </button>
             </p>
