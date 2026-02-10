@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { getSiteSettings, DEFAULT_SITE_SETTINGS } from "../../../lib/sanity.client";
 
 export default async function BlogArticleTiersContrat() {
@@ -46,12 +47,12 @@ export default async function BlogArticleTiersContrat() {
             </p>
           </div>
           <div className="flex flex-col items-start gap-2 pt-2 sm:items-end sm:pt-0">
-            <a
+            <Link
               href="/blog"
               className="rounded-full border border-slate-300 bg-transparent px-4 py-1.5 text-[11px] font-medium text-slate-900 transition-colors hover:bg-slate-100"
             >
               Retour aux actualités
-            </a>
+            </Link>
           </div>
         </section>
 

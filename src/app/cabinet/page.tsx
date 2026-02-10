@@ -31,7 +31,6 @@ export default async function CabinetPage() {
     ? "10, avenue de Wagram"
     : addressParts[0] || "10, avenue de Wagram";
   const addressLine2 = addressParts[1] || "75008 Paris";
-  const postalAddress = address || DEFAULT_SITE_SETTINGS.address!;
   const phone = siteSettings.phone ?? DEFAULT_SITE_SETTINGS.phone;
 
   return (

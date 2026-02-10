@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import Link from "next/link";
 import { PortableText } from "@portabletext/react";
 
 import { getSiteSettings, DEFAULT_SITE_SETTINGS, getPostBySlug, getRelatedPosts, type SanityPost } from "../../../lib/sanity.client";
@@ -66,12 +67,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 Thème :
                 {" "}
                 {post.categorySlug ? (
-                  <a
+                  <Link
                     href={`/blog/theme/${post.categorySlug}`}
                     className="text-amber-700 underline-offset-4 hover:underline"
                   >
                     {post.categoryTitle}
-                  </a>
+                  </Link>
                 ) : (
                   post.categoryTitle
                 )}
@@ -108,12 +109,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               </p>
             </div>
             <div className="flex flex-col items-start gap-2 pt-2 sm:items-end sm:pt-0">
-              <a
+              <Link
                 href="/blog"
                 className="rounded-full border border-slate-300 bg-transparent px-4 py-1.5 text-[11px] font-medium text-slate-900 transition-colors hover:bg-slate-100"
               >
                 Retour aux actualités
-              </a>
+              </Link>
             </div>
           </section>
 
@@ -145,20 +146,20 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               <ul className="space-y-2 text-xs text-slate-700">
                 {relatedPosts.map((related) => (
                   <li key={related._id} className="flex flex-col gap-0.5">
-                    <a
+                    <Link
                       href={`/blog/${related.slug}`}
                       className="text-amber-700 underline-offset-4 hover:underline"
                     >
                       {related.title}
-                    </a>
+                    </Link>
                     <div className="flex flex-wrap gap-2 text-[11px] text-slate-500">
                       {related.categoryTitle && related.categorySlug ? (
-                        <a
+                        <Link
                           href={`/blog/theme/${related.categorySlug}`}
                           className="hover:underline"
                         >
                           Thème : {related.categoryTitle}
-                        </a>
+                        </Link>
                       ) : related.categoryTitle ? (
                         <span>Thème : {related.categoryTitle}</span>
                       ) : null}

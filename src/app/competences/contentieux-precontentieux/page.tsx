@@ -34,12 +34,6 @@ export default async function ContentieuxPrecontentieuxPage() {
   const contactEmail = siteSettings.contactEmail ?? DEFAULT_SITE_SETTINGS.contactEmail;
   const address = siteSettings.address ?? DEFAULT_SITE_SETTINGS.address;
 
-  const addressParts = address.split(",").map((part) => part.trim());
-  const isDefaultAddress = address === DEFAULT_SITE_SETTINGS.address;
-  const addressLine1 = isDefaultAddress
-    ? "10, avenue de Wagram"
-    : addressParts[0] || "10, avenue de Wagram";
-  const addressLine2 = addressParts[1] || "75008 Paris";
   const postalAddress = address || DEFAULT_SITE_SETTINGS.address!;
   return (
     <div className="app-shell">

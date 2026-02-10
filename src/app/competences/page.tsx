@@ -33,7 +33,6 @@ export default async function CompetencesPage() {
     ? "10, avenue de Wagram"
     : addressParts[0] || "10, avenue de Wagram";
   const addressLine2 = addressParts[1] || "75008 Paris";
-  const postalAddress = address || DEFAULT_SITE_SETTINGS.address!;
   return (
     <div className="app-shell">
       <main className="app-main">

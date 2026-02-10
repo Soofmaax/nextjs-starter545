@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Link from "next/link";
 import { BookOpenText, Globe2, Mail, Scale } from "lucide-react";
 import { getSiteSettings, DEFAULT_SITE_SETTINGS } from "../lib/sanity.client";
 
@@ -57,27 +57,27 @@ export default async function Home() {
 
           <div className="hidden items-center gap-6 text-[11px] font-medium sm:flex">
             <div className="flex items-center gap-6 text-slate-300">
-              <a href="/" className="transition-colors hover:text-slate-50">
+              <Link href="/" className="transition-colors hover:text-slate-50">
                 Accueil
-              </a>
-              <a href="/cabinet" className="transition-colors hover:text-slate-50">
+              </Link>
+              <Link href="/cabinet" className="transition-colors hover:text-slate-50">
                 Le Cabinet
-              </a>
-              <a href="/competences" className="transition-colors hover:text-slate-50">
+              </Link>
+              <Link href="/competences" className="transition-colors hover:text-slate-50">
                 Compétences
-              </a>
-              <a href="/honoraires" className="transition-colors hover:text-slate-50">
+              </Link>
+              <Link href="/honoraires" className="transition-colors hover:text-slate-50">
                 Honoraires
-              </a>
-              <a href="/blog" className="transition-colors hover:text-slate-50">
+              </Link>
+              <Link href="/blog" className="transition-colors hover:text-slate-50">
                 Publications / Actualités
-              </a>
+              </Link>
               <a href="/partenariats" className="transition-colors hover:text-slate-50">
                 Partenariats
               </a>
-              <a href="/contact" className="transition-colors hover:text-slate-50">
+              <Link href="/contact" className="transition-colors hover:text-slate-50">
                 Contact
-              </a>
+              </Link>
               <a href="#plan-acces" className="transition-colors hover:text-slate-50">
                 Plan d&apos;accès
               </a>
@@ -85,9 +85,9 @@ export default async function Home() {
             <div className="flex items-center text-[10px] font-normal text-slate-400">
               <span className="cursor-default text-slate-100">FR</span>
               <span className="mx-1 text-slate-600">|</span>
-              <a href="/en" className="transition-colors hover:text-slate-50">
+              <Link href="/en" className="transition-colors hover:text-slate-50">
                 EN
-              </a>
+              </Link>
             </div>
           </div>
         </nav>
@@ -492,19 +492,19 @@ export default async function Home() {
           <div className="space-y-1 text-[10px] text-slate-500">
             <p>© 2015 – {new Date().getFullYear()} Sarah Temple-Boyer. Tous droits réservés.</p>
             <p className="flex flex-wrap gap-2">
-              <a
+              <Link
                 href="/mentions-legales"
                 className="text-slate-400 underline-offset-4 hover:text-slate-200 hover:underline"
               >
                 Mentions légales
-              </a>
+              </Link>
               <span className="text-slate-600">·</span>
-              <a
+              <Link
                 href="/confidentialite"
                 className="text-slate-400 underline-offset-4 hover:text-slate-200 hover:underline"
               >
                 Confidentialité
-              </a>
+              </Link>
               <span className="text-slate-600">·</span>
               <button className="text-slate-400 underline-offset-4 hover:text-slate-200 hover:underline">
                 Accès administrateur

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { BookOpenText, Globe2, Mail, Scale } from "lucide-react";
 
 const PRACTICE_AREAS = [
@@ -42,9 +43,9 @@ export default function HomeEn() {
 
           <div className="hidden items-center gap-6 text-[11px] font-medium sm:flex">
             <div className="flex items-center gap-6 text-slate-300">
-              <a href="/en" className="transition-colors hover:text-slate-50">
+              <Link href="/en" className="transition-colors hover:text-slate-50">
                 Home
-              </a>
+              </Link>
               <a
                 href="/en/cabinet"
                 className="transition-colors hover:text-slate-50"
@@ -77,9 +78,9 @@ export default function HomeEn() {
               </a>
             </div>
             <div className="flex items-center text-[10px] font-normal text-slate-400">
-              <a href="/" className="transition-colors hover:text-slate-50">
+              <Link href="/" className="transition-colors hover:text-slate-50">
                 FR
-              </a>
+              </Link>
               <span className="mx-1 text-slate-600">|</span>
               <span className="cursor-default text-slate-100">EN</span>
             </div>
@@ -489,19 +490,19 @@ export default function HomeEn() {
               rights reserved.
             </p>
             <p className="flex flex-wrap gap-2">
-              <a
+              <Link
                 href="/mentions-legales"
                 className="text-slate-400 underline-offset-4 hover:text-slate-200 hover:underline"
               >
                 Legal notice
-              </a>
+              </Link>
               <span className="text-slate-600">•</span>
-              <a
+              <Link
                 href="/confidentialite"
                 className="text-slate-400 underline-offset-4 hover:text-slate-200 hover:underline"
               >
                 Privacy
-              </a>
+              </Link>
               <span className="text-slate-600">•</span>
               <button className="text-slate-400 underline-offset-4 hover:text-slate-200 hover:underline">
                 Admin access
