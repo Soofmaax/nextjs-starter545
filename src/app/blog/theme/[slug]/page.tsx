@@ -1,9 +1,10 @@
 import { notFound } from "next/navigation";
-import type { PageProps } from "next";
 import Link from "next/link";
 import { getPostsByCategorySlug } from "../../../../lib/sanity.client";
 
-type BlogThemePageProps = PageProps<{ slug: string }>;
+type BlogThemePageProps = {
+  params: Promise<{ slug: string }>;
+};
 
 export default async function BlogThemePage({ params }: BlogThemePageProps) {
   const { slug } = await params;

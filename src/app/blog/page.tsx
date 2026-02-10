@@ -1,4 +1,3 @@
-import type { PageProps } from "next";
 import Link from "next/link";
 import { getPosts, type SanityPost } from "../../lib/sanity.client";
 import { ArticleSelect } from "../../components/blog/ArticleSelect";
@@ -41,10 +40,9 @@ const ARTICLES: ArticleCard[] = [
   },
 ];
 
-type BlogIndexPageProps = PageProps<
-  Record<string, never>,
-  { [key: string]: string | string[] | undefined }
->;
+type BlogIndexPageProps = {
+  searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
+};
 
 export default async function BlogIndexPage({ searchParams }: BlogIndexPageProps) {
   const query = searchParams ? await searchParams : {};
