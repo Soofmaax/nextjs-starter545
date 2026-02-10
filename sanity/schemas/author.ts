@@ -1,5 +1,4 @@
 import { defineField, defineType } from "sanity";
-import type { Rule } from "sanity";
 
 const author = defineType({
   name: "author",
@@ -10,7 +9,7 @@ const author = defineType({
       name: "name",
       title: "Nom",
       type: "string",
-      validation: (rule: Rule) => rule.required(),
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: "role",
