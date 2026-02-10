@@ -42,7 +42,7 @@ const ARTICLES: ArticleCard[] = [
 ];
 
 type BlogIndexPageProps = PageProps<
-  {},
+  Record<string, never>,
   { [key: string]: string | string[] | undefined }
 >;
 
