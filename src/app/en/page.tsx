@@ -1,36 +1,22 @@
 import Link from "next/link";
 import { BookOpenText, Globe2, Mail, Scale } from "lucide-react";
-import { getSiteSettings, DEFAULT_SITE_SETTINGS } from "../lib/sanity.client";
 
 const PRACTICE_AREAS = [
-  "Contrats",
-  "Contentieux",
-  "Commercial / Sociétés",
-  "Concurrence",
+  "Contracts",
+  "Disputes",
+  "Corporate / Commercial",
+  "Competition",
   "Distribution",
-  "Consommation",
-  "Propriété industrielle / intellectuelle",
-  "Nouvelles technologies",
-  "Droit international",
-  "Construction / Ingénierie",
-  "Droit du travail",
-  "Expertise sectorielle",
+  "Consumer law",
+  "Industrial / intellectual property",
+  "New technologies",
+  "International law",
+  "Construction / engineering",
+  "Employment law",
+  "Sector-specific expertise",
 ];
 
-export default async function Home() {
-  const siteSettings = (await getSiteSettings()) ?? DEFAULT_SITE_SETTINGS;
-
-  const contactEmail = siteSettings.contactEmail ?? DEFAULT_SITE_SETTINGS.contactEmail;
-  const address = siteSettings.address ?? DEFAULT_SITE_SETTINGS.address;
-
-  // On découpe l'adresse en 2 lignes pour l'affichage
-  const addressParts = address.split(",").map((part) => part.trim());
-  const isDefaultAddress = address === DEFAULT_SITE_SETTINGS.address;
-  const addressLine1 = isDefaultAddress
-    ? "10, avenue de Wagram"
-    : addressParts[0] || "10, avenue de Wagram";
-  const addressLine2 = addressParts[1] || "75008 Paris";
-
+export default function HomeEn() {
   return (
     <div className="app-shell">
       {/* Top navigation */}
@@ -50,44 +36,53 @@ export default async function Home() {
                 Temple Boyer Legal
               </span>
               <span className="text-[11px] text-slate-400">
-                Cabinet d&apos;avocat d&apos;affaires international
+                Independent international business law boutique
               </span>
             </div>
           </div>
 
           <div className="hidden items-center gap-6 text-[11px] font-medium sm:flex">
             <div className="flex items-center gap-6 text-slate-300">
-              <Link href="/" className="transition-colors hover:text-slate-50">
-                Accueil
+              <Link href="/en" className="transition-colors hover:text-slate-50">
+                Home
               </Link>
-              <Link href="/cabinet" className="transition-colors hover:text-slate-50">
-                Le Cabinet
-              </Link>
-              <Link href="/competences" className="transition-colors hover:text-slate-50">
-                Compétences
-              </Link>
-              <Link href="/honoraires" className="transition-colors hover:text-slate-50">
-                Honoraires
-              </Link>
-              <Link href="/blog" className="transition-colors hover:text-slate-50">
-                Publications / Actualités
-              </Link>
-              <a href="/partenariats" className="transition-colors hover:text-slate-50">
-                Partenariats
+              <a
+                href="/en/cabinet"
+                className="transition-colors hover:text-slate-50"
+              >
+                The Firm
               </a>
-              <Link href="/contact" className="transition-colors hover:text-slate-50">
+              <a
+                href="/en/competences"
+                className="transition-colors hover:text-slate-50"
+              >
+                Expertise
+              </a>
+              <a
+                href="/en/honoraires"
+                className="transition-colors hover:text-slate-50"
+              >
+                Fees
+              </a>
+              <a
+                href="/en/blog"
+                className="transition-colors hover:text-slate-50"
+              >
+                Insights
+              </a>
+              <a
+                href="/en/contact"
+                className="transition-colors hover:text-slate-50"
+              >
                 Contact
-              </Link>
-              <a href="#plan-acces" className="transition-colors hover:text-slate-50">
-                Plan d&apos;accès
               </a>
             </div>
             <div className="flex items-center text-[10px] font-normal text-slate-400">
-              <span className="cursor-default text-slate-100">FR</span>
-              <span className="mx-1 text-slate-600">|</span>
-              <Link href="/en" className="transition-colors hover:text-slate-50">
-                EN
+              <Link href="/" className="transition-colors hover:text-slate-50">
+                FR
               </Link>
+              <span className="mx-1 text-slate-600">|</span>
+              <span className="cursor-default text-slate-100">EN</span>
             </div>
           </div>
         </nav>
@@ -102,23 +97,24 @@ export default async function Home() {
           <div className="space-y-8">
             <div className="inline-flex items-center gap-2 rounded-full border border-amber-500/30 bg-amber-50/80 px-3 py-1 text-[11px] text-amber-900">
               <span className="inline-flex h-1.5 w-1.5 rounded-full bg-amber-500" />
-              <span>Conseil &amp; contentieux en droit des affaires</span>
+              <span>Business law - Advisory &amp; Disputes</span>
             </div>
 
             <div className="space-y-4">
               <p className="text-[11px] font-medium uppercase tracking-[0.28em] text-slate-500">
-                Temple Boyer Legal – Paris
+                Temple Boyer Legal - Paris
               </p>
               <h1 className="text-balance text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl md:text-5xl">
-                Cabinet d&apos;avocat d&apos;affaires international dédié aux opérations
-                et litiges complexes
+                Independent international business law boutique dedicated to
+                complex transactions and disputes
               </h1>
               <p className="max-w-xl text-sm text-slate-700">
-                Temple Boyer Legal accompagne les groupes français et
-                internationaux, ETI, investisseurs et dirigeants dans la
-                structuration, la négociation et le suivi de leurs opérations
-                stratégiques, ainsi que dans la gestion de leurs différends à
-                forts enjeux.
+                Temple Boyer Legal advises French and international groups,
+                mid-cap companies, investors and executives on their strategic
+                projects and day-to-day operations. The firm combines
+                transactional and dispute resolution capabilities to secure
+                your business and manage sensitive situations in France and
+                abroad.
               </p>
             </div>
 
@@ -126,19 +122,19 @@ export default async function Home() {
               <div className="flex items-start gap-2 rounded-2xl border border-slate-200 bg-white/80 px-3 py-2">
                 <span className="mt-1 h-1.5 w-1.5 rounded-full bg-amber-500" />
                 <p className="leading-snug text-slate-800">
-                  Contrats &amp; opérations internationales
+                  Cross-border contracts &amp; transactions
                 </p>
               </div>
               <div className="flex items-start gap-2 rounded-2xl border border-slate-200 bg-white/80 px-3 py-2">
                 <span className="mt-1 h-1.5 w-1.5 rounded-full bg-amber-500" />
                 <p className="leading-snug text-slate-800">
-                  Contentieux stratégiques &amp; précontentieux
+                  Strategic disputes &amp; pre-litigation
                 </p>
               </div>
               <div className="flex items-start gap-2 rounded-2xl border border-slate-200 bg-white/80 px-3 py-2">
                 <span className="mt-1 h-1.5 w-1.5 rounded-full bg-amber-500" />
                 <p className="leading-snug text-slate-800">
-                  Accompagnement des directions juridique &amp; générale
+                  Long-term support for in-house teams
                 </p>
               </div>
             </div>
@@ -146,11 +142,11 @@ export default async function Home() {
             <div className="flex flex-wrap gap-4 text-[11px]">
               <div className="flex items-center gap-2 rounded-full border border-slate-200 bg-white/80 px-3 py-1 text-slate-700">
                 <span className="h-1.5 w-1.5 rounded-full bg-amber-500" />
-                <span>Barreau de Paris</span>
+                <span>Paris Bar</span>
               </div>
               <div className="flex items-center gap-2 rounded-full border border-slate-200 bg-white/80 px-3 py-1 text-slate-700">
                 <span className="h-1.5 w-1.5 rounded-full bg-amber-500" />
-                <span>Conseil &amp; contentieux</span>
+                <span>Advisory &amp; disputes</span>
               </div>
               <div className="flex items-center gap-2 rounded-full border border-slate-200 bg-white/80 px-3 py-1 text-slate-700">
                 <span className="h-1.5 w-1.5 rounded-full bg-amber-500" />
@@ -163,13 +159,13 @@ export default async function Home() {
                 href="#contact"
                 className="inline-flex items-center justify-center rounded-full bg-amber-500 px-5 py-2 text-[11px] font-semibold text-slate-950 shadow-[0_18px_45px_rgba(180,83,9,0.45)] transition-colors hover:bg-amber-500/90"
               >
-                Contacter le Cabinet
+                Contact the firm
               </a>
               <a
                 href="#competences"
                 className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-transparent px-5 py-2 text-[11px] font-medium text-slate-900 transition-colors hover:bg-slate-100"
               >
-                Découvrir les domaines de compétence
+                Discover our areas of practice
               </a>
             </div>
           </div>
@@ -184,30 +180,30 @@ export default async function Home() {
             </div>
             <div className="space-y-1">
               <p className="text-xs font-semibold tracking-tight text-slate-900">
-                Maître Sarah Temple-Boyer
+                Sarah Temple-Boyer
               </p>
               <p className="text-[11px] text-slate-600">
-                Avocat d&apos;affaires international - Paris
+                International business lawyer - Paris
               </p>
             </div>
             <div className="mt-2 space-y-1 text-[11px] text-slate-600">
-              <p>{addressLine1}</p>
-              <p>{addressLine2}</p>
+              <p>10, avenue de Wagram</p>
+              <p>75008 Paris</p>
               <p>
                 <a
-                  href={`mailto:${contactEmail}`}
+                  href="mailto:contact@templeboyer-legal.com"
                   className="text-amber-700 underline-offset-4 hover:underline"
                 >
-                  {contactEmail}
+                  contact@templeboyer-legal.com
                 </a>
               </p>
             </div>
             <div className="mt-4 flex w-full flex-col gap-2 text-[11px]">
               <button className="rounded-full border border-slate-900 bg-slate-900 px-4 py-2 font-medium text-slate-50 transition-colors hover:bg-slate-800">
-                Prendre rendez-vous
+                Schedule a meeting
               </button>
               <button className="rounded-full border border-slate-300 bg-transparent px-4 py-2 font-medium text-slate-900 transition-colors hover:bg-slate-100">
-                Ajouter aux contacts
+                Save to contacts
               </button>
             </div>
           </div>
@@ -217,50 +213,52 @@ export default async function Home() {
           <div className="app-section-heading">
             <div className="space-y-2">
               <h2 className="text-lg font-semibold tracking-tight text-slate-950 sm:text-xl">
-                Ce que nous faisons pour vous
+                What we do for you
               </h2>
               <p className="max-w-2xl text-xs text-slate-600">
-                Le Cabinet assiste les directions générale, juridique et
-                financière dans la structuration de leurs projets, la gestion
-                de leurs risques et la résolution de leurs différends, en
-                France comme à l&apos;international.
+                We support general counsel, executive teams and financial
+                management in structuring projects, managing legal risks and
+                resolving disputes that can materially impact the business, in
+                France and internationally.
               </p>
             </div>
             <p className="app-section-label">
-              Dirigeants &amp; Directions juridiques
+              Executives &amp; in-house legal teams
             </p>
           </div>
 
           <div className="grid gap-6 md:grid-cols-3">
             <div className="flex flex-col gap-3 rounded-2xl border border-slate-200 bg-white/90 p-5 text-xs text-slate-800">
               <h3 className="text-sm font-semibold text-slate-900">
-                Sécuriser vos opérations
+                Securing your transactions
               </h3>
               <p className="leading-relaxed text-slate-700">
-                Rédaction et négociation de contrats, analyse des risques,
-                structuration de partenariats et d&apos;opérations stratégiques,
-                afin de sécuriser vos engagements et préserver vos intérêts.
+                Drafting and negotiating commercial contracts, assessing legal
+                risks and structuring partnerships and strategic deals so that
+                your transactions are clear, enforceable and aligned with your
+                risk appetite.
               </p>
             </div>
             <div className="flex flex-col gap-3 rounded-2xl border border-slate-200 bg-white/90 p-5 text-xs text-slate-800">
               <h3 className="text-sm font-semibold text-slate-900">
-                Gérer vos litiges à forts enjeux
+                Managing high-stakes disputes
               </h3>
               <p className="leading-relaxed text-slate-700">
-                Élaboration de stratégies contentieuses, assistance en
-                précontentieux, représentation devant les juridictions
-                étatiques et arbitrales pour les différends commerciaux
-                complexes.
+                Designing dispute strategies, assisting with pre-litigation
+                discussions and representing you before state courts and
+                arbitral tribunals in complex domestic and cross-border
+                disputes.
               </p>
             </div>
             <div className="flex flex-col gap-3 rounded-2xl border border-slate-200 bg-white/90 p-5 text-xs text-slate-800">
               <h3 className="text-sm font-semibold text-slate-900">
-                Vous accompagner dans la durée
+                Standing by your side over time
               </h3>
               <p className="leading-relaxed text-slate-700">
-                Accompagnement au long cours des équipes dirigeantes et
-                juridiques, suivi récurrent de vos dossiers et mise en place
-                d&apos;outils et réflexes juridiques adaptés à votre organisation.
+                Acting as an external general counsel for management and
+                in-house teams, following your matters over the long term and
+                implementing pragmatic tools and reflexes tailored to your
+                organisation.
               </p>
             </div>
           </div>
@@ -271,16 +269,16 @@ export default async function Home() {
           <div className="app-section-heading">
             <div>
               <h2 className="text-lg font-semibold tracking-tight text-slate-950 sm:text-xl">
-                Domaines de compétence
+                Areas of practice
               </h2>
               <p className="max-w-2xl text-xs text-slate-600">
-                Le Cabinet intervient en conseil et en contentieux sur
-                l&apos;ensemble des problématiques de droit des affaires, avec une
-                forte dimension internationale.
+                The firm acts in advisory and dispute resolution matters across
+                the full spectrum of business law issues, with a strong
+                international dimension.
               </p>
             </div>
             <p className="app-section-label">
-              Conseil &amp; Contentieux
+              Advisory &amp; Disputes
             </p>
           </div>
 
@@ -303,44 +301,42 @@ export default async function Home() {
         <section className="app-panel grid gap-10 md:grid-cols-2" id="about">
           <div className="space-y-4">
             <h2 className="text-lg font-semibold tracking-tight text-slate-950 sm:text-xl">
-              Présentation et valeurs du Cabinet
+              Firm profile &amp; values
             </h2>
             <p className="text-xs leading-relaxed text-slate-700">
-              Pour le cabinet d&apos;avocat d&apos;affaires international qu&apos;est Temple
-              Boyer Legal, l&apos;avocat doit allier les valeurs traditionnelles du
-              métier – sens de l&apos;écoute, empathie, disponibilité, réactivité et
-              intégrité – à des qualités désormais indispensables : créativité,
-              adaptabilité et pragmatisme.
+              At Temple Boyer Legal, an international business law boutique, we
+              believe that a lawyer must combine the profession&apos;s traditional
+              values - listening, empathy, availability, responsiveness and
+              integrity - with qualities that are now essential: creativity,
+              adaptability and pragmatism.
             </p>
             <p className="text-xs leading-relaxed text-slate-700">
-              Convaincu que le droit ne doit pas être un facteur d&apos;inertie mais
-              un véritable levier de croissance, le Cabinet se positionne comme
-              un « business partner » et un « juriste externalisé », au service
-              des opérationnels et des enjeux du business.
+              Convinced that the law should not be a factor of inertia but a
+              genuine driver of growth, the firm positions itself as both a
+              business partner and an external in-house counsel, serving
+              operational teams and business priorities.
             </p>
             <p className="text-xs leading-relaxed text-slate-700">
-              Possédant à la fois une culture généraliste et européenne du droit
-              et des compétences de spécialiste, nous répondons à vos besoins en
-              droit des affaires, y compris les problématiques les plus
-              complexes et tournées vers le commerce international.
+              Combining a broad European legal culture with specialist
+              expertise, we address your business law needs, including the most
+              complex and international matters.
             </p>
           </div>
 
           <div className="space-y-4 rounded-2xl border border-slate-200 bg-white/90 px-5 py-6 text-xs text-slate-800">
             <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-slate-500">
-              Une vision moderne de la profession
+              A modern view of the profession
             </p>
             <p className="leading-relaxed">
-              Le Cabinet intervient aussi bien en conseil qu&apos;en contentieux,
-              en France comme à l&apos;étranger, en s&apos;appuyant sur un réseau de
-              correspondants sélectionnés avec soin. Chaque dossier est traité
-              avec une approche personnalisée, en lien direct avec Maître Sarah
-              Temple-Boyer.
+              The firm acts in both advisory and contentious work, in France
+              and abroad, relying on a carefully selected network of
+              correspondents. Each matter is handled with a tailored approach
+              and direct involvement from Sarah Temple-Boyer.
             </p>
             <p className="leading-relaxed">
-              Notre priorité : proposer des solutions juridiques robustes mais
-              opérationnelles, adaptées à la réalité de vos contraintes
-              économiques et organisationnelles.
+              Our priority is to deliver robust yet practical legal solutions,
+              aligned with your economic constraints and organisational
+              reality.
             </p>
           </div>
         </section>
@@ -351,21 +347,21 @@ export default async function Home() {
             <div>
               <h2 className="flex items-center gap-2 text-lg font-semibold tracking-tight text-slate-950 sm:text-xl">
                 <BookOpenText className="h-4 w-4 text-amber-600" aria-hidden="true" />
-                <span>Blog &amp; actualités</span>
+                <span>Insights &amp; updates</span>
               </h2>
               <p className="text-xs text-slate-600">
-                Retrouvez bientôt une sélection d&apos;analyses et de décryptages
-                de l&apos;actualité juridique en droit des affaires.
+                You will soon find a selection of commentary and analysis on
+                developments in business law and practice.
               </p>
             </div>
             <button className="self-start rounded-full border border-slate-300 bg-transparent px-4 py-1.5 text-[11px] font-medium text-slate-900 transition-colors hover:bg-slate-100">
-              S&apos;abonner au flux RSS
+              Subscribe to RSS feed
             </button>
           </div>
 
           <div className="rounded-2xl border border-dashed border-slate-300 bg-white/80 px-5 py-8 text-center text-xs text-slate-500">
-            Aucune publication n&apos;est encore disponible. Les actualités du
-            Cabinet seront prochainement mises en ligne.
+            No publication is available yet. The firm&apos;s insights and updates
+            will be published shortly.
           </div>
         </section>
 
@@ -376,30 +372,29 @@ export default async function Home() {
         >
           <div className="space-y-4">
             <h2 className="text-lg font-semibold tracking-tight text-slate-950 sm:text-xl">
-              Nous contacter
+              Contact us
             </h2>
             <p className="text-xs text-slate-600">
-              Pour toute demande d&apos;information, prise de rendez-vous ou
-              sollicitation de devis, vous pouvez nous contacter par e-mail ou
-              via votre interlocuteur habituel.
+              For any enquiry, meeting request or fee quote, you can contact us
+              by email or through your usual contact within the firm.
             </p>
 
             <div className="space-y-2 text-xs text-slate-700">
-              <p className="font-semibold">Cabinet Temple Boyer Legal</p>
+              <p className="font-semibold">Temple Boyer Legal</p>
               <p className="flex items-center gap-2">
                 <Globe2 className="h-4 w-4 text-slate-500" aria-hidden="true" />
-                <span>{addressLine1}</span>
+                <span>10, avenue de Wagram</span>
               </p>
-              <p>{addressLine2}</p>
+              <p>75008 Paris</p>
               <p className="flex items-center gap-2">
                 <Mail className="h-4 w-4 text-slate-500" aria-hidden="true" />
                 <span>
-                  Email :
+                  Email:
                   <a
-                    href={`mailto:${contactEmail}`}
+                    href="mailto:contact@templeboyer-legal.com"
                     className="ml-1 text-amber-700 underline-offset-4 hover:underline"
                   >
-                    {contactEmail}
+                    contact@templeboyer-legal.com
                   </a>
                 </span>
               </p>
@@ -409,14 +404,14 @@ export default async function Home() {
           <form className="space-y-3 text-xs">
             <div className="grid gap-3 sm:grid-cols-2">
               <div className="space-y-1.5">
-                <label htmlFor="nom" className="text-[11px] text-slate-700">
-                  Nom / Société
+                <label htmlFor="name" className="text-[11px] text-slate-700">
+                  Name / Company
                 </label>
                 <input
-                  id="nom"
-                  name="nom"
+                  id="name"
+                  name="name"
                   className="w-full rounded-xl border border-slate-300 bg-white/90 px-3 py-2 text-xs text-slate-900 outline-none ring-amber-500/20 placeholder:text-slate-400 focus:border-amber-500 focus:ring-2"
-                  placeholder="Votre nom ou dénomination sociale"
+                  placeholder="Your name or company"
                 />
               </div>
               <div className="space-y-1.5">
@@ -428,19 +423,19 @@ export default async function Home() {
                   name="email"
                   type="email"
                   className="w-full rounded-xl border border-slate-300 bg-white/90 px-3 py-2 text-xs text-slate-900 outline-none ring-amber-500/20 placeholder:text-slate-400 focus:border-amber-500 focus:ring-2"
-                  placeholder="vous@exemple.com"
+                  placeholder="you@example.com"
                 />
               </div>
             </div>
             <div className="space-y-1.5">
-              <label htmlFor="objet" className="text-[11px] text-slate-700">
-                Objet de la demande
+              <label htmlFor="subject" className="text-[11px] text-slate-700">
+                Subject of your enquiry
               </label>
               <input
-                id="objet"
-                name="objet"
+                id="subject"
+                name="subject"
                 className="w-full rounded-xl border border-slate-300 bg-white/90 px-3 py-2 text-xs text-slate-900 outline-none ring-amber-500/20 placeholder:text-slate-400 focus:border-amber-500 focus:ring-2"
-                placeholder="Conseil, contentieux, contrat..."
+                placeholder="Advisory, dispute, contract..."
               />
             </div>
             <div className="space-y-1.5">
@@ -452,18 +447,18 @@ export default async function Home() {
                 name="message"
                 rows={4}
                 className="w-full rounded-xl border border-slate-300 bg-white/90 px-3 py-2 text-xs text-slate-900 outline-none ring-amber-500/20 placeholder:text-slate-400 focus:border-amber-500 focus:ring-2"
-                placeholder="Décrivez brièvement votre demande"
+                placeholder="Briefly describe your matter"
               />
             </div>
             <p className="text-[10px] text-slate-500">
-              Ce formulaire est proposé à titre indicatif. Aucun envoi effectif
-              n&apos;est réalisé depuis cette maquette.
+              This form is provided for illustration purposes only. No actual
+              message is sent from this demo.
             </p>
             <button
               type="button"
               className="mt-1 inline-flex items-center justify-center rounded-full bg-amber-500 px-5 py-2 text-[11px] font-semibold text-slate-950 shadow-[0_18px_45px_rgba(180,83,9,0.45)] transition-colors hover:bg-amber-500/90"
             >
-              Envoyer la demande (démo)
+              Send enquiry (demo)
             </button>
           </form>
         </section>
@@ -473,45 +468,48 @@ export default async function Home() {
         <div className="mx-auto flex max-w-6xl flex-col gap-3 px-6 sm:flex-row sm:items-center sm:justify-between">
           <div className="space-y-1">
             <p className="font-medium text-slate-200">
-              Maître Sarah Temple-Boyer – Avocat d&apos;affaires international
+              Sarah Temple-Boyer - International business lawyer
             </p>
             <p className="text-slate-400">
-              Cabinet Temple Boyer Legal – {addressLine1} – {addressLine2}
+              Temple Boyer Legal - 10, avenue de Wagram - 75008 Paris
             </p>
             <p>
-              Email :
+              Email:
               <a
-                href={`mailto:${contactEmail}`}
+                href="mailto:contact@templeboyer-legal.com"
                 className="ml-1 text-amber-600 underline-offset-4 hover:underline"
               >
-                {contactEmail}
+                contact@templeboyer-legal.com
               </a>
             </p>
           </div>
 
           <div className="space-y-1 text-[10px] text-slate-500">
-            <p>© 2015 – {new Date().getFullYear()} Sarah Temple-Boyer. Tous droits réservés.</p>
+            <p>
+              (c) 2015 - {new Date().getFullYear()} Sarah Temple-Boyer. All
+              rights reserved.
+            </p>
             <p className="flex flex-wrap gap-2">
               <Link
                 href="/mentions-legales"
                 className="text-slate-400 underline-offset-4 hover:text-slate-200 hover:underline"
               >
-                Mentions légales
+                Legal notice
               </Link>
-              <span className="text-slate-600">·</span>
+              <span className="text-slate-600">•</span>
               <Link
                 href="/confidentialite"
                 className="text-slate-400 underline-offset-4 hover:text-slate-200 hover:underline"
               >
-                Confidentialité
+                Privacy
               </Link>
-              <span className="text-slate-600">·</span>
+              <span className="text-slate-600">•</span>
               <button className="text-slate-400 underline-offset-4 hover:text-slate-200 hover:underline">
-                Accès administrateur
+                Admin access
               </button>
             </p>
             <p className="text-[9px] text-slate-600">
-              Design et intégration : maquette Next.js personnalisée.
+              Design and integration: custom Next.js mock-up.
             </p>
           </div>
         </div>
