@@ -26,7 +26,7 @@ jobs:
           cache: npm
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
       - name: Lint (ESLint + Next.js)
         run: npm run lint
@@ -100,7 +100,7 @@ jobs:
           cache: npm
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
       - name: Run Prettier (check only)
         run: npm run format:check
@@ -121,7 +121,7 @@ jobs:
           cache: npm
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
       - name: npm audit (all dependencies)
         run: npm audit --audit-level=high
@@ -145,7 +145,7 @@ jobs:
           cache: npm
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
       - name: Build Next.js app
         run: npm run build
@@ -175,7 +175,7 @@ jobs:
           cache: npm
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
       - name: Build Next.js app
         run: npm run build
@@ -209,7 +209,7 @@ jobs:
           cache: npm
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
       - name: Build Next.js app
         run: npm run build
@@ -242,7 +242,7 @@ jobs:
           cache: npm
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
       - name: Validate Sanity schema
         run: npx sanity check --root=./sanity
