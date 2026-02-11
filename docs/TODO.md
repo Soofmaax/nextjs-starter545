@@ -97,6 +97,11 @@ Dernière mise à jour : 2026-02-11
 - Vercel Analytics, alertes 500/404, Sentry
 - **Estimation :** 2h
 
+### Sitemap dynamique Sanity
+- Ajouter les routes dynamiques Sanity (posts, thèmes) dans `src/app/sitemap.ts` en les hydratant via l'API.
+- Ajuster les priorités / fréquences de crawl si nécessaire.
+- **Estimation :** 1-2h
+
 ---
 
 ## ✅ COMPLÉTÉ

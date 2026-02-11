@@ -25,7 +25,3 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${siteUrl}/blog/tiers-au-contrat-janvier-2026` },
   ];
 }
-
-// TODO LOT 2 :
-// - Ajouter les routes dynamiques Sanity (posts, thèmes) en les hydratant via l'API.
-// - Ajuster éventuellement les priorités / fréquences de crawl.
