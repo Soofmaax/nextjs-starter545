@@ -4,7 +4,13 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Scale } from "lucide-react";
 
-export function SiteHeader() {
+export function SiteHeader({
+  brandTitle,
+  brandSubtitle,
+}: {
+  brandTitle: string;
+  brandSubtitle: string;
+}) {
   const pathname = usePathname();
   const isEnglish = pathname?.startsWith("/en");
 
@@ -22,10 +28,10 @@ export function SiteHeader() {
           </div>
           <div className="flex flex-col">
             <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-900">
-              Temple Boyer Legal
+              {brandTitle}
             </span>
             <span className="text-[11px] text-slate-500">
-              Cabinet d&apos;avocat d&apos;affaires international
+              {brandSubtitle}
             </span>
           </div>
         </div>

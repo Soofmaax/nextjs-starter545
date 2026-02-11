@@ -55,6 +55,9 @@ export default async function RootLayout({
 }>) {
   const siteSettings = (await getSiteSettings()) ?? DEFAULT_SITE_SETTINGS;
 
+  const brandTitle = siteSettings.brandTitle ?? DEFAULT_SITE_SETTINGS.brandTitle;
+  const brandSubtitle =
+    siteSettings.brandSubtitle ?? DEFAULT_SITE_SETTINGS.brandSubtitle;
   const contactEmail = siteSettings.contactEmail ?? DEFAULT_SITE_SETTINGS.contactEmail;
   const address = siteSettings.address ?? DEFAULT_SITE_SETTINGS.address;
 
@@ -77,7 +80,7 @@ export default async function RootLayout({
           Aller au contenu principal
         </a>
         <div className="flex min-h-screen flex-col" id="contenu-principal">
-          <SiteHeader />
+          <SiteHeader brandTitle={brandTitle} brandSubtitle={brandSubtitle} />
 
           <main className="flex-1">{children}</main>
 

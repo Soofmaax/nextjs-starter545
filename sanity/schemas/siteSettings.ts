@@ -12,6 +12,18 @@ const siteSettings = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: "brandTitle",
+      title: "Nom du cabinet (affiché dans le header)",
+      type: "string",
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: "brandSubtitle",
+      title: "Sous-titre (ligne sous le nom du cabinet)",
+      type: "string",
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
       name: "contactEmail",
       title: "Contact email",
       type: "string",

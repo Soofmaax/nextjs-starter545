@@ -20,6 +20,8 @@ function getSanityClient() {
 
 export type SiteSettings = {
   title: string;
+  brandTitle: string;
+  brandSubtitle: string;
   contactEmail: string;
   phone: string;
   address: string;
@@ -27,6 +29,8 @@ export type SiteSettings = {
 
 export const DEFAULT_SITE_SETTINGS: SiteSettings = {
   title: "Temple Boyer Legal",
+  brandTitle: "Temple Boyer Legal",
+  brandSubtitle: "Cabinet d'avocat d'affaires international",
   contactEmail: "contact@templeboyer-legal.com",
   phone: "01 43 12 38 00",
   // On utilise le format le plus fréquemment utilisé dans le texte
@@ -35,6 +39,8 @@ export const DEFAULT_SITE_SETTINGS: SiteSettings = {
 
 const SITE_SETTINGS_QUERY = `*[_type == "siteSettings"][0]{
   title,
+  brandTitle,
+  brandSubtitle,
   contactEmail,
   phone,
   address
