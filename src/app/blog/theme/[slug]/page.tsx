@@ -2,20 +2,14 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getPostsByCategorySlug } from "../../../../lib/sanity.client";
-import type { Metadata } from "next";
 
 type BlogThemePageProps = {
   params: Promise<{ slug: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 
-type BlogThemeRouteParams = {
-  params: {
-    slug: string;
-  };
-};
-
-export async function generateMetadata({ params }: BlogThemeRouteParams): Promise<Metadata> {
-  const { slug } = params;
+export async function generateMetadata({ params }: BlogThemePageProps): Promise<Metadata> {
+  const { slug } = await params;
 
   const posts = await getPostsByCategorySlug(slug);
 

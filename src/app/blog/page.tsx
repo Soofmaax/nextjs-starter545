@@ -4,7 +4,6 @@ import { getPosts, type SanityPost } from "../../lib/sanity.client";
 import { STATIC_ARTICLES } from "../../lib/static-articles";
 import { ArticleSelect } from "../../components/blog/ArticleSelect";
 import { ArticleFilters } from "../../components/blog/ArticleFilters";
-import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Publications & actualités",
