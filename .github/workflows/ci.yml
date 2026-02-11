@@ -273,26 +273,31 @@ jobs:
           echo "a11y: ${{ needs.a11y.result }}"
           echo "sanity-schema: ${{ needs.sanity-schema.result }}"
 
-      - name: Comment on PR
+      - name: Comment on PR (best-effort)
         if: github.event_name == 'pull_request'
         uses: actions/github-script@v7
         with:
           script: |
-            const body = `
-            ## CI Summary
+            try {
+              const body = `
+              ## CI Summary
 
-            - code-quality: **${{ needs.code-quality.result }}**
-            - code-consistency: **${{ needs.code-consistency.result }}**
-            - format-check: **${{ needs.format-check.result }}**
-            - security-audit: **${{ needs.security-audit.result }}**
-            - build: **${{ needs.build.result }}**
-            - seo-links: **${{ needs.seo-links.result }}**
-            - a11y: **${{ needs.a11y.result }}**
-            - sanity-schema: **${{ needs.sanity-schema.result }}**
-            `;
-            github.rest.issues.createComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: context.issue.number,
-              body,
-            });
+              - code-quality: **${{ needs.code-quality.result }}**
+              - code-consistency: **${{ needs.code-consistency.result }}**
+              - format-check: **${{ needs.format-check.result }}**
+              - security-audit: **${{ needs.security-audit.result }}**
+              - build: **${{ needs.build.result }}**
+              - seo-links: **${{ needs.seo-links.result }}**
+              - a11y: **${{ needs.a11y.result }}**
+              - sanity-schema: **${{ needs.sanity-schema.result }}**
+              `;
+
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body,
+              });
+            } catch (error) {
+              core.warning(`Unable to create CI summary comment: ${error.message}`);
+            }
