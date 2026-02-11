@@ -4,16 +4,16 @@ import Link from "next/link";
 import { PortableText } from "@portabletext/react";
 
 import { getSiteSettings, DEFAULT_SITE_SETTINGS, getPostBySlug, getRelatedPosts, type SanityPost } from "../../../lib/sanity.client";
-import type { Metadata } from "next";
 
-export type BlogPostRouteParams = {
-  params: { slug: string };
+type BlogPostPageProps = {
+  params: Promise<{ slug: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 
 export async function generateMetadata(
-  { params }: BlogPostRouteParams,
+  { params }: BlogPostPageProps,
 ): Promise<Metadata> {
-  const { slug } = params;
+  const { slug } = await params;
   const post = await getPostBySlug(slug);
 
   if (!post) {
@@ -23,55 +23,30 @@ export async function generateMetadata(
     };
   }
 
-  const title = post.seoTitle && post.seoTitle.trim().length > 0
-    ? post.seoTitle
-    : post.title;
+  const title =
+    post.seoTitle && post.seoTitle.trim().length > 0
+      ? post.seoTitle
+      : post.title;
 
-  const description = post.excerpt
-    ? post.excerpt
-    : "Publication du cabinet Temple Boyer Legal.";
+  const description =
+    post.excerpt && post.excerpt.trim().length > 0
+      ? post.excerpt
+      : "Publication du cabinet Temple Boyer Legal.";
 
-  return {
-    title,
-    description,
-    alternates: {
-      canonical: `/blog/${slug}`,
-    },
-    openGraph: {
-      title,
-      description,
-      type: "article",
-      url: `/blog/${slug}`,
-    },
-  };
-}
-
-type BlogPostPageProps = {
-  params: Promise<{ slug: string }>;
-};
-
-export async function generateMetadata(
-  { params }: BlogPostPageProps,
-): Promise<Metadata> {
-  const { slug } = await params;
-
-  const post = await getPostBySlug(slug);
-
-  if (!post) {
-    return {
-      title: "Article non trouvé – Temple Boyer Legal",
-    };
-  }
-
-  const title = post.seoTitle ?? post.title;
-  const description = post.excerpt ?? "";
-  const canonicalSlug = post.slug || slug;
+  const canonicalSlug =
+    post.slug && post.slug.trim().length > 0 ? post.slug : slug;
 
   return {
     title,
     description,
     alternates: {
       canonical: `/blog/${canonicalSlug}`,
+    },
+    openGraph: {
+      title,
+      description,
+      type: "article",
+      url: `/blog/${canonicalSlug}`,
     },
   };
 }
