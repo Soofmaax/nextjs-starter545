@@ -194,14 +194,6 @@ export default async function CompetencesPage() {
             stratégiques des entreprises.
           </p>
         </section>
-
-        {/* Footer note */}
-        <section className="border-t border-slate-800/70 pt-6 text-[11px] text-slate-400">
-          <p>
-            © 2015 – {new Date().getFullYear()} Sarah Temple-Boyer. Tous droits
-            réservés.
-          </p>
-        </section>
       </main>
     </div>
   );

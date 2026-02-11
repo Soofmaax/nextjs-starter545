@@ -225,18 +225,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             </section>
           ) : null}
 
-          {/* Bas de page simplifié */}
-          <section className="border-t border-slate-800/70 pt-6 text-[11px] text-slate-400">
-            <p>
-              Maître Sarah Temple-Boyer – Avocat d&apos;affaires international, Paris –
-              Cabinet Temple Boyer Legal, {postalAddress} –
-              {contactEmail}
-            </p>
-            <p className="mt-1">
-              © 2015 – {new Date().getFullYear()} Sarah Temple-Boyer. Tous droits
-              réservés.
-            </p>
-          </section>
+          
         </div>
       </main>
     </div>
