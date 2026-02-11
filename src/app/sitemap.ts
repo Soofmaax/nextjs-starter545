@@ -17,13 +17,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${siteUrl}/mentions-legales` },
     { url: `${siteUrl}/confidentialite` },
 
-    // Pages EN principales
-    { url: `${siteUrl}/en/cabinet` },
-    { url: `${siteUrl}/en/competences` },
-    { url: `${siteUrl}/en/honoraires` },
-    { url: `${siteUrl}/en/contact` },
-    { url: `${siteUrl}/en/blog` },
-
     // Blog index FR
     { url: `${siteUrl}/blog` },
 

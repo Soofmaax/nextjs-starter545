@@ -90,7 +90,7 @@ export default async function CabinetPage() {
             <ul className="space-y-1.5">
               {TRAINING_ITEMS.map((item) => (
                 <li key={item} className="flex gap-2">
-                  <span className="mt-[3px] h-1.5 w-1.5 rounded-full bg-amber-500" />
+                  <span className="mt-[3px] h-1.5 w-1.5 rounded-full bg-slate-700" />
                   <span>{item}</span>
                 </li>
               ))}
@@ -114,7 +114,7 @@ export default async function CabinetPage() {
             <ul className="space-y-1.5">
               {LANGUAGES.map((lang) => (
                 <li key={lang} className="flex gap-2">
-                  <span className="mt-[3px] h-1.5 w-1.5 rounded-full bg-amber-500" />
+                  <span className="mt-[3px] h-1.5 w-1.5 rounded-full bg-slate-700" />
                   <span>{lang}</span>
                 </li>
               ))}
@@ -185,7 +185,7 @@ export default async function CabinetPage() {
             </p>
           </div>
 
-          <div className="space-y-4 rounded-2xl border border-amber-100 bg-amber-50/90 p-5 text-xs text-slate-900">
+          <div className="space-y-4 rounded-2xl border border-slate-200 bg-slate-50/90 p-5 text-xs text-slate-900">
             <h3 className="text-sm font-semibold text-slate-900">
               Valeurs et relation client
             </h3>
@@ -220,7 +220,7 @@ export default async function CabinetPage() {
                 key={activity}
                 className="flex gap-2 rounded-2xl border border-slate-200 bg-white/90 px-3 py-3 text-xs text-slate-800"
               >
-                <span className="mt-[5px] h-1.5 w-1.5 rounded-full bg-amber-500" />
+                <span className="mt-[5px] h-1.5 w-1.5 rounded-full bg-slate-700" />
                 <span>{activity}</span>
               </li>
             ))}

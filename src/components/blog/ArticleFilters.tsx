@@ -56,7 +56,7 @@ export function ArticleFilters({
           <select
             id="author-filter"
             aria-label="Filtrer par auteur"
-            className="rounded-full border border-slate-300 bg-white/90 px-3 py-1.5 text-xs text-slate-900 shadow-sm focus:border-amber-700 focus:outline-none focus:ring-2 focus:ring-amber-700/20"
+            className="rounded-full border border-slate-300 bg-white/90 px-3 py-1.5 text-xs text-slate-900 shadow-sm focus:border-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-700/20"
             value={currentAuthor}
             onChange={handleAuthorChange}
           >
@@ -78,7 +78,7 @@ export function ArticleFilters({
           <select
             id="theme-filter"
             aria-label="Filtrer par thème"
-            className="rounded-full border border-slate-300 bg-white/90 px-3 py-1.5 text-xs text-slate-900 shadow-sm focus:border-amber-700 focus:outline-none focus:ring-2 focus:ring-amber-700/20"
+            className="rounded-full border border-slate-300 bg-white/90 px-3 py-1.5 text-xs text-slate-900 shadow-sm focus:border-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-700/20"
             value={currentTheme}
             onChange={handleThemeChange}
           >

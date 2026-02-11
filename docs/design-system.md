@@ -275,7 +275,7 @@ import Image from "next/image";
 
 <div className="relative mt-2 flex h-32 w-32 items-center justify-center overflow-hidden rounded-full border border-slate-300 bg-slate-100">
   <Image
-    src="/Sarah-Temple-Boyer.jpg"
+    src="/sarah-temple-boyer.jpg"
     alt="Portrait de Maître Sarah Temple-Boyer"
     fill
     sizes="128px"

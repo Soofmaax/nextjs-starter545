@@ -1,6 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
-import { BookOpenText, Globe2, Mail, Scale } from "lucide-react";
+import { BookOpenText, Globe2, Mail } from "lucide-react";
 import type { Metadata } from "next";
 
 const PRACTICE_AREAS = [
@@ -35,75 +34,6 @@ export const metadata: Metadata = {
 export default function HomeEn() {
   return (
     <div className="app-shell">
-      {/* Top navigation */}
-      <header className="sticky top-0 z-30 border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-md">
-        <nav className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-4">
-          <div className="flex items-center gap-3">
-            <div className="flex items-center gap-2">
-              <div className="flex h-10 w-10 items-center justify-center rounded-2xl border border-slate-700/80 bg-slate-900/80 shadow-sm shadow-black/50">
-                <span className="text-xs font-semibold leading-tight text-slate-100">
-                  TBL
-                </span>
-              </div>
-              <Scale className="h-4 w-4 text-amber-500" aria-hidden="true" />
-            </div>
-            <div className="flex flex-col">
-              <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-200">
-                Temple Boyer Legal
-              </span>
-              <span className="text-[11px] text-slate-400">
-                Independent international business law boutique
-              </span>
-            </div>
-          </div>
-
-          <div className="hidden items-center gap-6 text-[11px] font-medium sm:flex">
-            <div className="flex items-center gap-6 text-slate-300">
-              <Link href="/en" className="transition-colors hover:text-slate-50">
-                Home
-              </Link>
-              <a
-                href="/en/cabinet"
-                className="transition-colors hover:text-slate-50"
-              >
-                The Firm
-              </a>
-              <a
-                href="/en/competences"
-                className="transition-colors hover:text-slate-50"
-              >
-                Expertise
-              </a>
-              <a
-                href="/en/honoraires"
-                className="transition-colors hover:text-slate-50"
-              >
-                Fees
-              </a>
-              <a
-                href="/en/blog"
-                className="transition-colors hover:text-slate-50"
-              >
-                Insights
-              </a>
-              <a
-                href="/en/contact"
-                className="transition-colors hover:text-slate-50"
-              >
-                Contact
-              </a>
-            </div>
-            <div className="flex items-center text-[10px] font-normal text-slate-400">
-              <Link href="/" className="transition-colors hover:text-slate-50">
-                FR
-              </Link>
-              <span className="mx-1 text-slate-600">|</span>
-              <span className="cursor-default text-slate-100">EN</span>
-            </div>
-          </div>
-        </nav>
-      </header>
-
       <main id="main-content" className="app-main">
         {/* Hero section */}
         <section
@@ -136,19 +66,19 @@ export default function HomeEn() {
 
             <div className="mt-4 grid gap-3 text-[11px] sm:grid-cols-3">
               <div className="flex items-start gap-2 rounded-2xl border border-slate-200 bg-white/80 px-3 py-2">
-                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-amber-500" />
+                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-slate-700" />
                 <p className="leading-snug text-slate-800">
                   Cross-border contracts &amp; transactions
                 </p>
               </div>
               <div className="flex items-start gap-2 rounded-2xl border border-slate-200 bg-white/80 px-3 py-2">
-                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-amber-500" />
+                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-slate-700" />
                 <p className="leading-snug text-slate-800">
                   Strategic disputes &amp; pre-litigation
                 </p>
               </div>
               <div className="flex items-start gap-2 rounded-2xl border border-slate-200 bg-white/80 px-3 py-2">
-                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-amber-500" />
+                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-slate-700" />
                 <p className="leading-snug text-slate-800">
                   Long-term support for in-house teams
                 </p>
@@ -157,15 +87,15 @@ export default function HomeEn() {
 
             <div className="flex flex-wrap gap-4 text-[11px]">
               <div className="flex items-center gap-2 rounded-full border border-slate-200 bg-white/80 px-3 py-1 text-slate-700">
-                <span className="h-1.5 w-1.5 rounded-full bg-amber-500" />
+                <span className="h-1.5 w-1.5 rounded-full bg-slate-700" />
                 <span>Paris Bar</span>
               </div>
               <div className="flex items-center gap-2 rounded-full border border-slate-200 bg-white/80 px-3 py-1 text-slate-700">
-                <span className="h-1.5 w-1.5 rounded-full bg-amber-500" />
+                <span className="h-1.5 w-1.5 rounded-full bg-slate-700" />
                 <span>Advisory &amp; disputes</span>
               </div>
               <div className="flex items-center gap-2 rounded-full border border-slate-200 bg-white/80 px-3 py-1 text-slate-700">
-                <span className="h-1.5 w-1.5 rounded-full bg-amber-500" />
+                <span className="h-1.5 w-1.5 rounded-full bg-slate-700" />
                 <span>France &amp; international</span>
               </div>
             </div>
@@ -189,7 +119,7 @@ export default function HomeEn() {
           <div className="relative mx-auto flex max-w-xs flex-col items-center gap-4 rounded-3xl border border-slate-200 bg-slate-50/90 p-6 text-center shadow-[0_18px_60px_rgba(15,23,42,0.18)]">
             <div className="relative mt-2 flex h-32 w-32 items-center justify-center overflow-hidden rounded-full border border-slate-300 bg-slate-100">
               <Image
-                src="/Sarah-Temple-Boyer.jpg"
+                src="/sarah-temple-boyer.jpg"
                 alt="Portrait of Maître Sarah Temple-Boyer"
                 fill
                 sizes="128px"
@@ -210,7 +140,7 @@ export default function HomeEn() {
               <p>
                 <a
                   href="mailto:contact@templeboyer-legal.com"
-                  className="text-amber-700 underline-offset-4 hover:underline"
+                  className="text-slate-700 underline-offset-4 hover:underline"
                 >
                   contact@templeboyer-legal.com
                 </a>
@@ -306,7 +236,7 @@ export default function HomeEn() {
                 key={area}
                 className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-white px-3 py-3 text-xs text-slate-800"
               >
-                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-amber-500/10 text-[10px] text-amber-700">
+                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-slate-700/10 text-[10px] text-slate-700">
                   •
                 </span>
                 <span>{area}</span>
@@ -364,7 +294,7 @@ export default function HomeEn() {
           <div className="app-section-heading">
             <div>
               <h2 className="flex items-center gap-2 text-lg font-semibold tracking-tight text-slate-950 sm:text-xl">
-                <BookOpenText className="h-4 w-4 text-amber-600" aria-hidden="true" />
+                <BookOpenText className="h-4 w-4 text-slate-600" aria-hidden="true" />
                 <span>Insights &amp; updates</span>
               </h2>
               <p className="text-xs text-slate-600">
@@ -410,7 +340,7 @@ export default function HomeEn() {
                   Email:
                   <a
                     href="mailto:contact@templeboyer-legal.com"
-                    className="ml-1 text-amber-700 underline-offset-4 hover:underline"
+                    className="ml-1 text-slate-700 underline-offset-4 hover:underline"
                   >
                     contact@templeboyer-legal.com
                   </a>
@@ -428,7 +358,7 @@ export default function HomeEn() {
                 <input
                   id="name"
                   name="name"
-                  className="w-full rounded-xl border border-slate-300 bg-white/90 px-3 py-2 text-xs text-slate-900 outline-none ring-amber-500/20 placeholder:text-slate-400 focus:border-amber-500 focus:ring-2"
+                  className="w-full rounded-xl border border-slate-300 bg-white/90 px-3 py-2 text-xs text-slate-900 outline-none ring-slate-500/20 placeholder:text-slate-400 focus:border-slate-900 focus:ring-2"
                   placeholder="Your name or company"
                 />
               </div>
@@ -440,7 +370,7 @@ export default function HomeEn() {
                   id="email"
                   name="email"
                   type="email"
-                  className="w-full rounded-xl border border-slate-300 bg-white/90 px-3 py-2 text-xs text-slate-900 outline-none ring-amber-500/20 placeholder:text-slate-400 focus:border-amber-500 focus:ring-2"
+                  className="w-full rounded-xl border border-slate-300 bg-white/90 px-3 py-2 text-xs text-slate-900 outline-none ring-slate-500/20 placeholder:text-slate-400 focus:border-slate-900 focus:ring-2"
                   placeholder="you@example.com"
                 />
               </div>
@@ -452,7 +382,7 @@ export default function HomeEn() {
               <input
                 id="subject"
                 name="subject"
-                className="w-full rounded-xl border border-slate-300 bg-white/90 px-3 py-2 text-xs text-slate-900 outline-none ring-amber-500/20 placeholder:text-slate-400 focus:border-amber-500 focus:ring-2"
+                className="w-full rounded-xl border border-slate-300 bg-white/90 px-3 py-2 text-xs text-slate-900 outline-none ring-slate-500/20 placeholder:text-slate-400 focus:border-slate-900 focus:ring-2"
                 placeholder="Advisory, dispute, contract..."
               />
             </div>
@@ -464,7 +394,7 @@ export default function HomeEn() {
                 id="message"
                 name="message"
                 rows={4}
-                className="w-full rounded-xl border border-slate-300 bg-white/90 px-3 py-2 text-xs text-slate-900 outline-none ring-amber-500/20 placeholder:text-slate-400 focus:border-amber-500 focus:ring-2"
+                className="w-full rounded-xl border border-slate-300 bg-white/90 px-3 py-2 text-xs text-slate-900 outline-none ring-slate-500/20 placeholder:text-slate-400 focus:border-slate-900 focus:ring-2"
                 placeholder="Briefly describe your matter"
               />
             </div>
@@ -474,64 +404,13 @@ export default function HomeEn() {
             </p>
             <button
               type="button"
-              className="mt-1 inline-flex items-center justify-center rounded-full bg-amber-500 px-5 py-2 text-[11px] font-semibold text-slate-950 shadow-[0_18px_45px_rgba(180,83,9,0.45)] transition-colors hover:bg-amber-500/90"
+              className="mt-1 inline-flex items-center justify-center rounded-full bg-slate-700 px-5 py-2 text-[11px] font-semibold text-slate-50 shadow-[0_18px_45px_rgba(180,83,9,0.45)] transition-colors hover:bg-slate-700/90"
             >
               Send enquiry (demo)
             </button>
           </form>
         </section>
       </main>
-
-      <footer className="border-t border-slate-800 bg-slate-950/95 py-8 text-[11px] text-slate-400">
-        <div className="mx-auto flex max-w-6xl flex-col gap-3 px-6 sm:flex-row sm:items-center sm:justify-between">
-          <div className="space-y-1">
-            <p className="font-medium text-slate-200">
-              Sarah Temple-Boyer - International business lawyer
-            </p>
-            <p className="text-slate-400">
-              Temple Boyer Legal - 10, avenue de Wagram - 75008 Paris
-            </p>
-            <p>
-              Email:
-              <a
-                href="mailto:contact@templeboyer-legal.com"
-                className="ml-1 text-amber-600 underline-offset-4 hover:underline"
-              >
-                contact@templeboyer-legal.com
-              </a>
-            </p>
-          </div>
-
-          <div className="space-y-1 text-[10px] text-slate-500">
-            <p>
-              (c) 2015 - {new Date().getFullYear()} Sarah Temple-Boyer. All
-              rights reserved.
-            </p>
-            <p className="flex flex-wrap gap-2">
-              <Link
-                href="/mentions-legales"
-                className="text-slate-400 underline-offset-4 hover:text-slate-200 hover:underline"
-              >
-                Legal notice
-              </Link>
-              <span className="text-slate-600">•</span>
-              <Link
-                href="/confidentialite"
-                className="text-slate-400 underline-offset-4 hover:text-slate-200 hover:underline"
-              >
-                Privacy
-              </Link>
-              <span className="text-slate-600">•</span>
-              <button className="text-slate-400 underline-offset-4 hover:text-slate-200 hover:underline">
-                Admin access
-              </button>
-            </p>
-            <p className="text-[9px] text-slate-600">
-              Design and integration: custom Next.js mock-up.
-            </p>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }
