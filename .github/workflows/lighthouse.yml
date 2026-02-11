@@ -1,0 +1,43 @@
+name: Lighthouse CI
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+jobs:
+  lighthouse:
+    name: Lighthouse Audit
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Next.js
+        run: npm run build
+
+      - name: Start Next.js in background
+        run: |
+          npm run start -- --port 3000 &>/dev/null &
+          sleep 30
+
+      - name: Run Lighthouse CI
+        run: |
+          npx @lhci/cli autorun \
+            --collect.url=http://localhost:3000/ \
+            --collect.url=http://localhost:3000/en \
+            --collect.url=http://localhost:3000/blog \
+            --collect.url=http://localhost:3000/contact \
+            --assert.assertions."categories:performance".minScore=0.9 \
+            --assert.assertions."categories:accessibility".minScore=0.95 \
+            --assert.assertions."categories:seo".minScore=0.95
