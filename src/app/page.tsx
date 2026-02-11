@@ -80,19 +80,19 @@ export default async function Home() {
 
             <div className="mt-4 grid gap-3 text-[11px] sm:grid-cols-3">
               <div className="flex items-start gap-2 rounded-2xl border border-slate-200 bg-white/80 px-3 py-2">
-                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-amber-500" />
+                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-slate-700" />
                 <p className="leading-snug text-slate-800">
                   Contrats &amp; opérations internationales
                 </p>
               </div>
               <div className="flex items-start gap-2 rounded-2xl border border-slate-200 bg-white/80 px-3 py-2">
-                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-amber-500" />
+                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-slate-700" />
                 <p className="leading-snug text-slate-800">
                   Contentieux stratégiques &amp; précontentieux
                 </p>
               </div>
               <div className="flex items-start gap-2 rounded-2xl border border-slate-200 bg-white/80 px-3 py-2">
-                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-amber-500" />
+                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-slate-700" />
                 <p className="leading-snug text-slate-800">
                   Accompagnement des directions juridique &amp; générale
                 </p>
@@ -133,7 +133,7 @@ export default async function Home() {
           <div className="relative mx-auto flex max-w-xs flex-col items-center gap-4 rounded-3xl border border-slate-200 bg-slate-50/90 p-6 text-center shadow-[0_18px_60px_rgba(15,23,42,0.18)]">
             <div className="relative mt-2 flex h-32 w-32 items-center justify-center overflow-hidden rounded-full border border-slate-300 bg-slate-100">
               <Image
-                src="/Sarah-Temple-Boyer.jpg"
+                src="/sarah-temple-boyer.jpg"
                 alt="Portrait de Maître Sarah Temple-Boyer"
                 fill
                 sizes="128px"
@@ -154,7 +154,7 @@ export default async function Home() {
               <p>
                 <a
                   href={`mailto:${contactEmail}`}
-                  className="text-amber-700 underline-offset-4 hover:underline"
+                  className="text-slate-700 underline-offset-4 hover:underline"
                 >
                   {contactEmail}
                 </a>
@@ -254,7 +254,7 @@ export default async function Home() {
                 key={area}
                 className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-white px-3 py-3 text-xs text-slate-800"
               >
-                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-amber-500/10 text-[10px] text-amber-700">
+                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-slate-700/10 text-[10px] text-slate-700">
                   •
                 </span>
                 <span>{area}</span>
@@ -314,7 +314,7 @@ export default async function Home() {
           <div className="app-section-heading">
             <div>
               <h2 className="flex items-center gap-2 text-lg font-semibold tracking-tight text-slate-950 sm:text-xl">
-                <BookOpenText className="h-4 w-4 text-amber-600" aria-hidden="true" />
+                <BookOpenText className="h-4 w-4 text-slate-600" aria-hidden="true" />
                 <span>Blog &amp; actualités</span>
               </h2>
               <p className="text-xs text-slate-600">
@@ -364,7 +364,7 @@ export default async function Home() {
                   Email :
                   <a
                     href={`mailto:${contactEmail}`}
-                    className="ml-1 text-amber-700 underline-offset-4 hover:underline"
+                    className="ml-1 text-slate-700 underline-offset-4 hover:underline"
                   >
                     {contactEmail}
                   </a>
@@ -382,7 +382,7 @@ export default async function Home() {
                 <input
                   id="nom"
                   name="nom"
-                  className="w-full rounded-xl border border-slate-300 bg-white/90 px-3 py-2 text-xs text-slate-900 outline-none ring-amber-500/20 placeholder:text-slate-400 focus:border-amber-500 focus:ring-2"
+                  className="w-full rounded-xl border border-slate-300 bg-white/90 px-3 py-2 text-xs text-slate-900 outline-none ring-slate-500/20 placeholder:text-slate-400 focus:border-slate-900 focus:ring-2"
                   placeholder="Votre nom ou dénomination sociale"
                 />
               </div>
@@ -394,7 +394,7 @@ export default async function Home() {
                   id="email"
                   name="email"
                   type="email"
-                  className="w-full rounded-xl border border-slate-300 bg-white/90 px-3 py-2 text-xs text-slate-900 outline-none ring-amber-500/20 placeholder:text-slate-400 focus:border-amber-500 focus:ring-2"
+                  className="w-full rounded-xl border border-slate-300 bg-white/90 px-3 py-2 text-xs text-slate-900 outline-none ring-slate-500/20 placeholder:text-slate-400 focus:border-slate-900 focus:ring-2"
                   placeholder="vous@exemple.com"
                 />
               </div>
@@ -406,7 +406,7 @@ export default async function Home() {
               <input
                 id="objet"
                 name="objet"
-                className="w-full rounded-xl border border-slate-300 bg-white/90 px-3 py-2 text-xs text-slate-900 outline-none ring-amber-500/20 placeholder:text-slate-400 focus:border-amber-500 focus:ring-2"
+                className="w-full rounded-xl border border-slate-300 bg-white/90 px-3 py-2 text-xs text-slate-900 outline-none ring-slate-500/20 placeholder:text-slate-400 focus:border-slate-900 focus:ring-2"
                 placeholder="Conseil, contentieux, contrat..."
               />
             </div>
@@ -418,7 +418,7 @@ export default async function Home() {
                 id="message"
                 name="message"
                 rows={4}
-                className="w-full rounded-xl border border-slate-300 bg-white/90 px-3 py-2 text-xs text-slate-900 outline-none ring-amber-500/20 placeholder:text-slate-400 focus:border-amber-500 focus:ring-2"
+                className="w-full rounded-xl border border-slate-300 bg-white/90 px-3 py-2 text-xs text-slate-900 outline-none ring-slate-500/20 placeholder:text-slate-400 focus:border-slate-900 focus:ring-2"
                 placeholder="Décrivez brièvement votre demande"
               />
             </div>

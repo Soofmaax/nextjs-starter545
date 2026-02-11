@@ -87,7 +87,7 @@ export default async function ContratsCommerciauxIndustrielsPage() {
             <ul className="space-y-2">
               {SKILLS_COMMERCIAUX.map((item) => (
                 <li key={item} className="flex gap-2">
-                  <span className="mt-[5px] flex h-5 w-5 items-center justify-center rounded-full bg-amber-500/10 text-[10px] text-amber-700">
+                  <span className="mt-[5px] flex h-5 w-5 items-center justify-center rounded-full bg-slate-700/10 text-[10px] text-slate-700">
                     •
                   </span>
                   <span>{item}</span>
@@ -103,7 +103,7 @@ export default async function ContratsCommerciauxIndustrielsPage() {
             <ul className="space-y-2">
               {SKILLS_INDUSTRIELS.map((item) => (
                 <li key={item} className="flex gap-2">
-                  <span className="mt-[5px] flex h-5 w-5 items-center justify-center rounded-full bg-amber-500/10 text-[10px] text-amber-700">
+                  <span className="mt-[5px] flex h-5 w-5 items-center justify-center rounded-full bg-slate-700/10 text-[10px] text-slate-700">
                     •
                   </span>
                   <span>{item}</span>
@@ -124,7 +124,7 @@ export default async function ContratsCommerciauxIndustrielsPage() {
                 key={op}
                 className="flex gap-2 rounded-2xl border border-slate-200 bg-white/90 px-3 py-3"
               >
-                <span className="mt-[5px] h-1.5 w-1.5 rounded-full bg-amber-500" />
+                <span className="mt-[5px] h-1.5 w-1.5 rounded-full bg-slate-700" />
                 <span>{op}</span>
               </li>
             ))}
@@ -142,7 +142,7 @@ export default async function ContratsCommerciauxIndustrielsPage() {
                 key={pub}
                 className="flex gap-2 rounded-2xl border border-slate-200 bg-white/90 px-3 py-3"
               >
-                <span className="mt-[5px] h-1.5 w-1.5 rounded-full bg-amber-500" />
+                <span className="mt-[5px] h-1.5 w-1.5 rounded-full bg-slate-700" />
                 <span>{pub} (voir la publication)</span>
               </li>
             ))}

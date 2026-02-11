@@ -1,0 +1,48 @@
+name: Dependency Audit
+
+on:
+  schedule:
+    - cron: "0 5 * * 1" # every Monday at 05:00 UTC
+  workflow_dispatch:
+
+jobs:
+  dependency-audit:
+    name: Dependency Audit (npm outdated + audit)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+          cache: npm
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Collect npm outdated
+        run: npm outdated || true
+
+      - name: Run npm audit
+        run: npm audit --audit-level=high || true
+
+      - name: Generate report
+        run: |
+          echo "# Dependency Audit Report" > dependency-audit-report.md
+          echo "Generated on $(date -u)" >> dependency-audit-report.md
+          echo "" >> dependency-audit-report.md
+          echo "## Outdated" >> dependency-audit-report.md
+          npm outdated >> dependency-audit-report.md || echo "npm outdated failed" >> dependency-audit-report.md
+          echo "" >> dependency-audit-report.md
+          echo "## npm audit (high+)" >> dependency-audit-report.md
+          npm audit --audit-level=high >> dependency-audit-report.md || echo "npm audit failed" >> dependency-audit-report.md
+
+      - name: Create or update GitHub issue
+        uses: peter-evans/create-issue-from-file@v5
+        with:
+          title: "Dependency audit report"
+          content-filepath: dependency-audit-report.md
+          labels: "dependencies, audit"

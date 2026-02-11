@@ -130,7 +130,7 @@ export default async function CompetencesPage() {
 
               const content = (
                 <>
-                  <span className="mt-[3px] flex h-6 w-6 items-center justify-center rounded-full bg-amber-500/10 text-[10px] text-amber-700">
+                  <span className="mt-[3px] flex h-6 w-6 items-center justify-center rounded-full bg-slate-700/10 text-[10px] text-slate-700">
                     •
                   </span>
                   <span>{item}</span>
@@ -177,7 +177,7 @@ export default async function CompetencesPage() {
                 key={item}
                 className="flex items-start gap-3 rounded-2xl border border-slate-200 bg-white px-3 py-3 text-xs text-slate-800"
               >
-                <span className="mt-[3px] flex h-6 w-6 items-center justify-center rounded-full bg-amber-500/10 text-[10px] text-amber-700">
+                <span className="mt-[3px] flex h-6 w-6 items-center justify-center rounded-full bg-slate-700/10 text-[10px] text-slate-700">
                   •
                 </span>
                 <span>{item}</span>

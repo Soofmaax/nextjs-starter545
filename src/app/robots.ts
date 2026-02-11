@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+const rawSiteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+const siteUrl = rawSiteUrl.replace(/\/+$/, "");
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -11,6 +12,3 @@ export default function robots(): MetadataRoute.Robots {
     sitemap: `${siteUrl}/sitemap.xml`,
   };
 }
-
-// TODO LOT 2 : normaliser le trailing slash de NEXT_PUBLIC_SITE_URL
-// (ex. supprimer la barre de fin avant de concaténer /sitemap.xml).

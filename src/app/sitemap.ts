@@ -17,13 +17,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${siteUrl}/mentions-legales` },
     { url: `${siteUrl}/confidentialite` },
 
-    // Pages EN principales
-    { url: `${siteUrl}/en/cabinet` },
-    { url: `${siteUrl}/en/competences` },
-    { url: `${siteUrl}/en/honoraires` },
-    { url: `${siteUrl}/en/contact` },
-    { url: `${siteUrl}/en/blog` },
-
     // Blog index FR
     { url: `${siteUrl}/blog` },
 
@@ -32,7 +25,3 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${siteUrl}/blog/tiers-au-contrat-janvier-2026` },
   ];
 }
-
-// TODO LOT 2 :
-// - Ajouter les routes dynamiques Sanity (posts, thèmes) en les hydratant via l'API.
-// - Ajuster éventuellement les priorités / fréquences de crawl.
