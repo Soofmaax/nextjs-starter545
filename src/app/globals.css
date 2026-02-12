@@ -58,7 +58,7 @@ body {
   }
 
   .app-main {
-    @apply mx-auto flex w-full max-w-6xl flex-1 flex-col gap-16 px-6 pb-20 pt-14;
+    @apply mx-auto flex w-full max-w-6xl flex-1 flex-col gap-16 px-6 pb-20 pt-10;
   }
 
   .app-panel {
