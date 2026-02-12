@@ -12,7 +12,7 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-30 border-b border-slate-200/70 bg-white/90 backdrop-blur-md">
-      <nav className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-3 sm:px-6 sm:py-4">
+      <nav className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-2 sm:px-6 sm:py-3">
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-2">
             <div className="flex h-10 w-10 items-center justify-center rounded-2xl border border-slate-300 bg-white shadow-sm">
@@ -135,7 +135,7 @@ export function SiteHeader() {
       {/* Mobile slide-down menu */}
       {!isEnglish && (
         <div
-          className={`border-b border-slate-200/80 bg-white/95 px-4 pb-3 pt-2 shadow-sm transition-[max-height,opacity] duration-200 sm:hidden ${
+          className={`border-b border-slate-200/80 bg-white/95 px-4 pb-2 pt-1 shadow-sm transition-[max-height,opacity] duration-200 sm:hidden ${
             isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
           } overflow-hidden`}
         >
