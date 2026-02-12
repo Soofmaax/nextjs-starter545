@@ -53,7 +53,7 @@ export default async function Home() {
         {/* Hero section */}
         <section
           id="cabinet"
-          className="app-panel grid gap-12 md:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)] md:items-center"
+          className="app-panel pt-3 md:pt-4 grid gap-12 md:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)] md:items-center"
         >
           <div className="space-y-8">
             <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1 text-[11px] text-slate-700">
