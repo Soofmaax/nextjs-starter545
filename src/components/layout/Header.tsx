@@ -22,12 +22,9 @@ export function SiteHeader() {
             </div>
             <Scale className="h-4 w-4 text-slate-500" aria-hidden="true" />
           </div>
-          <div className="flex flex-col">
+          <div className="flex flex-col justify-center">
             <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-900">
               Temple Boyer Legal
-            </span>
-            <span className="text-[11px] text-slate-500">
-              Cabinet d&apos;avocat d&apos;affaires international
             </span>
           </div>
         </div>
